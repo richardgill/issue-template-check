@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head />
-      <body>
+      <body style={{ opacity: 0 }}>
         <Main />
         <NextScript />
       </body>

@@ -1,0 +1,149 @@
+---
+sidebar_position: 5
+sidebar_label: Updating Data
+---
+
+# Updating Records
+
+## Replacing a Record
+
+You can overwrite a full record with a request like this:
+
+````ts|json
+  ```ts
+  const user = await xata.db.Users.createOrReplace("myid", { name: "Keanu Reeves" });
+  ```
+  ```json
+  // PUT https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/users/data/rec_c8hnbch26un1nl0rthkg
+
+  {
+    "name": "Keanu Reeves",
+  }
+  ```
+````
+
+Note that in the above example, the whole record was overwritten. If you want to update only some of the fields, see the [Partial Update](#partial-update) section below. Also, the `xata.version` field was automatically incremented to 1. We'll talk more about this special column in the [Optimistic Concurrency Control](#optimistic-concurrency-control) section.
+
+## Partial Update
+
+In order to do a partial update to a record, you can use a request like this:
+
+````ts|json
+  ```ts
+  const user = await xata.db.Users.update("myid", { email: "newemail@example.com" });
+
+  // or, using the `update` method on the record object:
+
+  user.update({ email: "newemail@example.com" })
+  ```
+  ```json
+  // PATCH https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/data/myid
+
+  {
+    "email": "newemail@example.com"
+  }
+  ```
+````
+
+It's also possible to update a record if it exists, or create it if it doesn't exist:
+
+````ts|json
+  ```ts
+  const user = await xata.db.Users.createOrUpdate("myid", {name: "Keanu Reave"});
+  ```
+  ```json
+  // POST https://tutorial-ng7s8c.xata.sh/db/tutorial:main/tables/users/data/rec_c8hnbch26un1nl0rthkg
+
+  {
+    "email": "keanu@example.com",
+    "full_name": "Keanu Reeves",
+    "address": {
+      "street": "123 Main St",
+      "zipcode": 12345
+    },
+    "team": "rec_c8hng2h26un90p8sr7k0"
+  }
+  ```
+````
+
+## Updating a Linked Record
+
+The SDK provides a method to update one or multiple columns in a Linked record via reference from the current table:
+
+```ts
+const record = await xata.db.table.getFirst()
+const updatedLinkedRecord = await record?.linkName?.update({
+  linkedColumn: 'new content'
+})
+```
+
+Each call only writes to a single table, so columns to `update` should live in the same linked table.
+
+## Optimistic Concurrency Control
+
+After executing a request, you will notice that the version field of the record is incremented automatically. In the TypeScript SDK, you can read the version by using the `getMetadata()` method on the record object. In the REST API, it is returned as the special column `xata.version`.
+
+````ts|json
+  ```ts
+    user.getMetadata();
+    // { version: 2}
+  ```
+  ```json
+  {
+    "address": {
+      "street": "123 New St",
+      "zipcode": 12345
+    },
+    "email": "keanu@example.com",
+    "fname": "Keanu Reeves",
+    "id": "rec_c8hnbch26un1nl0rthkg",
+    "xata": {
+      "version": 2
+    }
+  }
+  ```
+````
+
+The `version` field can be used to perform optimistic concurrency control, also known as "optimistic locking". Let's say you have two users of your web applications that are both trying to update the same record. They both retrieve the record at version 0, modify a field, and then write it back. Without locking or version checks, it's possible that the users will overwrite each other's changes.
+
+To prevent this, you can pass the `ifVersion` parameter to the PUT request. The value for `ifVersion` should be the value of `xata.version` from when you retrieved the record. For example, if you want to update the record only if the version is 0, you can send the following request:
+
+````ts|json
+   ```ts
+   const updatedUser = await xata.db.Users.update(
+    "myid1",
+    {
+      name: "Keanu Reave",
+      email: "keanu@xata.io",
+    },
+    {
+      ifVersion: 0,
+    }
+  );
+  ```
+  ```json
+  // PUT https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/users/data/rec_c8hnbch26un1nl0rthkg?ifVersion=0
+
+  {
+    "email": "keanu@xata.io",
+    "name": "Keanu Reeves"
+  }
+  ```
+````
+
+If someone else has updated the record since you have read it, the API will get a [422 Unprocessable Entity](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422) response:
+
+```json
+{
+  "message": "version condition not met",
+  "status": 422
+}
+```
+
+In this case, the TypeScript SDK, returns `null`.
+
+The way to treat this error depends on your application. You might be able to re-read the record, resolve the conflict, and then re-try the update. Or you might need to show the user a conflict error message.
+
+## Next Steps
+
+Great! We can now update data safely in our databases. Let's now explore how we [delete data](/typescript-client/delete) from a database. Alternatively, we can also look into [updating data](/typescript-client/update) or [inserting data](/typescript-client/insert). We've got guides for each of these operations.

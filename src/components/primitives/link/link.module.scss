@@ -1,0 +1,14 @@
+.link {
+  pointer-events: all;
+}
+
+.link:not(.unstyled) {
+  color: #fff;
+  position: relative;
+  transition: color 300ms var(--ease-link);
+  white-space: nowrap;
+
+  &:hover {
+    @apply text-gray-lighter;
+  }
+}

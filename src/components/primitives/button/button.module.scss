@@ -1,0 +1,79 @@
+.button__primary {
+  outline: none !important;
+  color: #fff;
+  z-index: 10;
+
+  &:focus {
+    box-shadow: 0 0 0 3px black;
+  }
+
+  @apply before:absolute before:hidden before:rounded-5xl focus:before:block before:bg-rainbow-radial-gradient before:-z-10 before:-inset-1 bg-rainbow-radial-gradient p-px rounded-5xl font-medium md:text-lg leading-6 relative hover:after:opacity-100 after:-z-10 after:transition-opacity after:duration-300 after:opacity-0 after:absolute after:inset-0.5 after:blur-lg after:bg-rainbow-radial-gradient;
+}
+
+.button__primary:disabled {
+  background-image: none;
+  cursor: not-allowed;
+
+  &:hover {
+    &::after {
+      display: none;
+    }
+  }
+
+  @apply bg-gray text-gray;
+}
+
+.button__secondary {
+  outline: none !important;
+
+  &:not(:disabled) {
+    &:hover {
+      opacity: 80%;
+    }
+  }
+
+  @apply disabled:text-gray disabled:cursor-not-allowed focus:border-white rounded-5xl border-transparent border-[1.5px] duration-300 transition-opacity font-medium md:text-lg px-6 py-[14px];
+}
+
+.button__secondary--magenta {
+  @apply text-magenta focus:border-magenta;
+}
+
+.button__secondary--blue {
+  @apply focus:border-blue text-blue;
+}
+
+.button__secondary--yellow {
+  @apply focus:border-yellow text-yellow;
+}
+
+.button__secondary--green {
+  @apply focus:border-green text-green;
+}
+
+.button__primary--sm,
+.button__secondary--sm {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.button__primary--md,
+.button__secondary--md {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.button__primary--lg,
+.button__secondary--lg {
+  font-size: 21px;
+  line-height: 1;
+}
+
+.button--unstyled {
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 1px solid #fff;
+    outline-offset: -1px;
+  }
+}

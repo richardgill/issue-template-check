@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'Eina03';
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+  src: url('/fonts/eina03/Eina03-Light.woff2') format('woff2'),
+    url('/fonts/eina03/Eina03-Light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Eina03';
+  font-style: italic;
+  font-weight: 300;
+  font-display: block;
+  src: url('/fonts/eina03/Eina03-LightItalic.woff2') format('woff2'),
+    url('/fonts/eina03/Eina03-LightItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Eina03';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/fonts/eina03/Eina03-Regular.woff2') format('woff2'),
+    url('/fonts/eina03/Eina03-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Eina03';
+  font-style: italic;
+  font-weight: 400;
+  font-display: block;
+  src: url('/fonts/eina03/Eina03-RegularItalic.woff2') format('woff2'),
+    url('/fonts/eina03/Eina03-RegularItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Eina03';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url('/fonts/eina03/Eina03-SemiBold.woff2') format('woff2'),
+    url('/fonts/eina03/Eina03-SemiBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Eina03';
+  font-style: italic;
+  font-weight: 600;
+  font-display: block;
+  src: url('/fonts/eina03/Eina03-SemiBoldItalic.woff2') format('woff2'),
+    url('/fonts/eina03/Eina03-SemiBoldItalic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Eina03';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url('/fonts/eina03/Eina03-Bold.woff2') format('woff2'),
+    url('/fonts/eina03/Eina03-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Eina03';
+  font-style: italic;
+  font-weight: 700;
+  font-display: block;
+  src: url('/fonts/eina03/Eina03-BoldItalic.woff2') format('woff2'),
+    url('/fonts/eina03/Eina03-BoldItalic.woff') format('woff');
+}

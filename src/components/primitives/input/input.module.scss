@@ -1,0 +1,66 @@
+.input,
+.input--rounded {
+  position: relative;
+
+  input {
+    position: relative;
+    display: inherit;
+    outline: none;
+
+    &::placeholder {
+      @apply text-gray-lighter;
+    }
+
+    &:focus + span::after {
+      opacity: 1;
+    }
+
+    @apply text-sm md:text-base px-5 md:px-4 bg-blue-darker z-10 text-white;
+  }
+
+  span {
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+
+      @apply bg-rainbow-radial-gradient opacity-0 transition-opacity duration-300;
+    }
+  }
+
+  @apply text-gray bg-gray p-[1px] flex flex-col;
+}
+
+.input {
+  input {
+    @apply rounded-lg;
+  }
+
+  span {
+    &::after {
+      @apply rounded-lg;
+    }
+  }
+
+  @apply rounded-lg;
+}
+
+.input--rounded {
+  input {
+    @apply rounded-5xl;
+  }
+
+  span {
+    &::after {
+      @apply rounded-5xl;
+    }
+  }
+
+  @apply rounded-5xl;
+}
+
+.input--disabled {
+  input {
+    @apply cursor-not-allowed bg-gray;
+  }
+}

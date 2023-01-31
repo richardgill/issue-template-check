@@ -1,0 +1,90 @@
+.console {
+  border: 1px solid theme('colors[gray[DEFAULT]]');
+  border-radius: theme('borderRadius[md]');
+  overflow: hidden;
+  position: relative;
+  background-image: radial-gradient(
+    100% 145.52% at 0% 0%,
+    #171923 2.49%,
+    #171923 32.18%,
+    #121212 100%
+  );
+
+  @screen md {
+    border-radius: theme('borderRadius[lg]');
+  }
+
+  .console__controls {
+    padding-left: 12px;
+    padding-right: 0.25rem;
+    border-bottom: 1px solid theme('colors[gray[DEFAULT]]');
+    border-radius: theme('borderRadius[md]') theme('borderRadius[md]') 0 0;
+
+    @screen md {
+      border-radius: theme('borderRadius[lg]') theme('borderRadius[lg]') 0 0;
+    }
+
+    display: flex;
+    align-items: center;
+  }
+
+  .console__controls--md {
+    height: 30px;
+  }
+
+  div.console-controls__dot {
+    height: 6px;
+    width: 6px;
+    border-radius: theme('borderRadius[full]');
+    background-color: #606060;
+
+    @screen md {
+      height: 8px;
+      width: 8px;
+    }
+    @screen xl {
+      height: 9px;
+      width: 9px;
+    }
+
+    &:not(:first-child) {
+      margin-left: 4px;
+
+      @screen md {
+        margin-left: 6px;
+      }
+    }
+  }
+}
+
+.console__controls--lg {
+  height: 21px;
+
+  @screen md {
+    height: 43px;
+  }
+
+  div.console-controls__dot {
+    height: 6px;
+    width: 6px;
+    border-radius: theme('borderRadius[full]');
+    background-color: #606060;
+
+    @screen md {
+      height: 12px;
+      width: 12px;
+    }
+    @screen xl {
+      height: 16px;
+      width: 16px;
+    }
+
+    &:not(:first-child) {
+      margin-left: 4px;
+
+      @screen md {
+        margin-left: 8px;
+      }
+    }
+  }
+}
