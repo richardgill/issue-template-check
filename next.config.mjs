@@ -18,6 +18,14 @@ const nextConfig = {
     //   permanent: false,
     // },
   },
+    async rewrites() {
+    return [
+      {
+        source: '/api-preview/:path*',
+        destination: 'https://api-preview-xata.vercel.app/:path*',
+      },
+    ]
+  },
 }
 
 export default nextConfig
