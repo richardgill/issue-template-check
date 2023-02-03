@@ -78,14 +78,17 @@ export default ApiReference
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { pathList } = await fetchApiReference('main')
-  // Paths without /docs/api-reference & #fragment
-  const cleanPaths = pathList.map(
-    ({ href }) => href.replace('/docs/api-reference/', '').split('#')[0]
-  )
+  // Paths without /api-reference & #fragment
+  const cleanPaths = pathList.map(({ href }) => {
+    const result = href.replace('/api-reference/', '').split('#')[0]
+    return result
+  })
   const pathsWithoutDuplicated = [...new Set(cleanPaths)]
-  const paths = pathsWithoutDuplicated.map((href) => ({
-    params: { slug: href.split('/') },
-  }))
+  const paths = pathsWithoutDuplicated.map((href) => {
+    return {
+      params: { slug: href.split('/') },
+    }
+  })
 
   return {
     paths,
@@ -97,7 +100,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!params?.slug) return { notFound: true, revalidate: 15 }
 
   const slug = params.slug as string[]
-  const fullSlug = slug.join('/')
+
+  const fullSlug = slug.length === 1 ? slug[0] : slug.join('/')
 
   if (/[{}]/gim.test(fullSlug)) {
     return {
