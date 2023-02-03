@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier **/*.{ts,tsx,mjs,js,jsx} --write"
+    "format": "prettier **/*.{ts,tsx,mjs,js,jsx} --write",
+    "test:ci": "vitest --run",
+    "test:ui": "vitest --ui",
+    "test": "vitest"
   },
   "dependencies": {
     "@babel/core": "^7.20.12",
@@ -65,6 +68,7 @@
   "devDependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@next/env": "^13.1.6",
     "@types/chroma-js": "^2.1.4",
     "@types/isomorphic-fetch": "^0.0.36",
     "@types/js-cookie": "^3.0.2",
@@ -74,7 +78,21 @@
     "@types/mixpanel-browser": "^2.38.1",
     "@types/react-copy-to-clipboard": "^5.0.4",
     "@types/react-syntax-highlighter": "^15.5.6",
+    "@types/xml2js": "^0.4.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "cheerio": "1.0.0-rc.12",
     "framer-motion": "^8.5.5",
-    "prettier": "^2.8.3"
+    "get-all-files": "^4.1.0",
+    "next-sitemap": "^3.1.49",
+    "prettier": "^2.8.3",
+    "remark-frontmatter": "^4.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-stringify": "^10.0.2",
+    "slash": "^5.0.0",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.2",
+    "vite": "4.1.0",
+    "vitest": "^0.28.4",
+    "xml2js": "^0.4.23"
   }
 }

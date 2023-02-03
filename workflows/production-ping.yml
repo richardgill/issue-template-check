@@ -1,0 +1,36 @@
+name: Ping routes [PRODUCTION]
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  ping-routes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Vercel Preview
+        uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
+        id: waitForVercelPreviewDeployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 120 # seconds
+
+      - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Run tests against preview url
+        id: integration
+
+        # test against main URL when it is pushing to `main`
+        run: TEST_URL=https://xata.io pnpm test:ci
