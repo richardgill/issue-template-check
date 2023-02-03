@@ -2,8 +2,9 @@ name: Ping routes [PREVIEW]
 
 # Run when a PR is opened or synchronized
 on:
-  pull_request:
-    types: [opened, synchronize]
+  push
+  # pull_request:
+  #   types: [opened, synchronize]
 
 jobs:
   ping-routes:
