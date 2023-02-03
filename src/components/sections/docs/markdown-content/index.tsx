@@ -13,7 +13,7 @@ import {
   Th,
   Thead,
   Tr,
-  UnorderedList
+  UnorderedList,
 } from '@chakra-ui/react'
 import { kebab } from 'case'
 import NextImage from 'next/image'
@@ -37,9 +37,9 @@ const CharkraReactMarkdown = chakra(ReactMarkdown)
 const commonProps = {
   sx: {
     '&:not(:last-child)': {
-      mb: 6
-    }
-  }
+      mb: 6,
+    },
+  },
 }
 
 const isChildAnElement = (c: any): c is ReactElement =>
@@ -145,7 +145,7 @@ const MarkdownComponents: Partial<
     if (!src) return null
 
     const videoFormats = ['mp4', 'webm']
-    const fullSrc = src.startsWith('/images/docs')
+    const fullSrc = src.startsWith('/docs/images/docs')
       ? src
       : `https://xata-docs.vercel.app${src}`
 
@@ -229,10 +229,8 @@ const MarkdownComponents: Partial<
   code: Codeblock as unknown as keyof SpecialComponents,
   video: ({ src }) => <Video url={src as string} />,
   a: ({ children, href }) => {
-    const isRelative = href?.startsWith('/')
-
     return (
-      <Link as={NextLink} href={isRelative ? `/docs${href}` : href}>
+      <Link as={NextLink} href={href}>
         {children}
       </Link>
     )
@@ -247,7 +245,7 @@ const MarkdownComponents: Partial<
   tbody: ({ children }) => <Tbody>{children}</Tbody>,
   th: ({ children }) => <Th>{children}</Th>,
   td: ({ children }) => <Td>{children}</Td>,
-  tr: ({ children }) => <Tr>{children}</Tr>
+  tr: ({ children }) => <Tr>{children}</Tr>,
 }
 
 export const MarkdownContent = ({ children }: { children: string }) => (

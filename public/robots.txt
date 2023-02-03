@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://xata.io
+
+# Sitemaps
+Sitemap: https://xata.io/sitemap.xml

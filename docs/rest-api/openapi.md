@@ -23,13 +23,13 @@ The base url is `https://{workspaceId}.{regionId}.xata.sh` and this give you acc
 
 Leading Open Source API Client, and Collaborative API Design Platform for REST, SOAP, GraphQL, and GRPC.
 
-![Xata API in Insomnia](/images/docs/insomnia.png)
+![Xata API in Insomnia](/docs/images/docs/insomnia.png)
 
 ### [Postman](https://www.postman.com/)
 
 Postman makes API development easy, offering tools to simplify each step of the API building process and streamlines collaboration so you can test APIs faster.
 
-![Xata API in Postman](/images/docs/postman.png)
+![Xata API in Postman](/docs/images/docs/postman.png)
 
 ### [OpenAPI Codegen](https://github.com/fabien0102/openapi-codegen)
 
@@ -37,4 +37,4 @@ Generate TypeScript fetcher functions or typed react-query hooks from your OpenA
 
 > ⚠️ Using generated react-query components in this context will leak your API key! The REST API must always be called in a server-side environment!
 
-![Xata API with openapi-codegen](/images/docs/openapi-codegen.png)
+![Xata API with openapi-codegen](/docs/images/docs/openapi-codegen.png)

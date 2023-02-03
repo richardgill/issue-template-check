@@ -22,7 +22,7 @@ export type FooterProps = {
 export const Footer = ({
   productLinks,
   companyLinks,
-  landingPagesLinks
+  landingPagesLinks,
 }: FooterProps) => {
   const { isOn, handleToggle } = useToggleState()
   const isMobile = useMedia('(max-width:640px)')
@@ -39,7 +39,7 @@ export const Footer = ({
         backgroundRepeat: 'no-repeat',
         backgroundPositionY: 'top',
         backgroundSize: 'cover',
-        backgroundColor: '#101114'
+        backgroundColor: '#101114',
       }}
     >
       <Container
@@ -52,7 +52,7 @@ export const Footer = ({
               <Logotype />
               <p className="text-sm md:text-base">
                 Xata is a{' '}
-                <Link href="/docs/concepts/serverless-data-platform">
+                <Link href="/concepts/serverless-data-platform">
                   Serverless Data Platform
                 </Link>{' '}
                 that radically simplifies the way developers work with data.

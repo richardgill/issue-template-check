@@ -7,7 +7,7 @@ sidebar_label: PruneYourFollows
 
 PruneYourFollows is a web app and was built Xata using GatsbyJS, NextAuth and Tailwind to let you find accounts on Twitter to unfollow. It uses Xata's search capabilities to find accounts that you follow that are inactive or stale and lets you unfollow them in bulk.
 
-![PruneYourFollows](/images/docs/examples/pyf.png)
+![PruneYourFollows](/docs/images/docs/examples/pyf.png)
 
 This app was contributed by [Lilly Labs](https://lillylabs.no/).
 

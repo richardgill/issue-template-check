@@ -7,12 +7,12 @@ import {
   LinkBox,
   LinkOverlay,
   Text,
-  Tooltip
+  Tooltip,
 } from '@chakra-ui/react'
 import {
   ArrowLeft16Filled,
   ArrowRight16Filled,
-  ArrowUp16Filled
+  ArrowUp16Filled,
 } from '@fluentui/react-icons'
 import React, { FC } from 'react'
 
@@ -46,7 +46,7 @@ const DocFooter: FC<DocFooterProps> = ({ prev, next }) => {
                   href={prev.href}
                   _groupHover={{
                     textDecoration: 'underline',
-                    textDecorationColor: 'primary'
+                    textDecorationColor: 'primary',
                   }}
                 >
                   <Text as={Link}>{prev.title}</Text>
@@ -66,7 +66,7 @@ const DocFooter: FC<DocFooterProps> = ({ prev, next }) => {
                   href={next.href}
                   _groupHover={{
                     textDecoration: 'underline',
-                    textDecorationColor: 'primary'
+                    textDecorationColor: 'primary',
                   }}
                 >
                   <Text as={Link}>{next.title}</Text>

@@ -10,7 +10,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  useDisclosure
+  useDisclosure,
 } from '@chakra-ui/react'
 import { Home16Filled, Navigation16Filled } from '@fluentui/react-icons'
 import NextLink from 'next/link'
@@ -99,12 +99,12 @@ const Sidebar: FC<{
                 overflowY="auto"
                 maxH={{
                   base: 'calc(100vh - 150px)',
-                  lg: 'calc(100vh - 200px)'
+                  lg: 'calc(100vh - 200px)',
                 }}
               >
                 <Flex
                   as={NextLink}
-                  href="/docs/overview"
+                  href="/overview"
                   mx={8}
                   gap={2}
                   mt={8}
@@ -118,7 +118,7 @@ const Sidebar: FC<{
                   _hover={{
                     color: 'text',
                     textDecoration: 'none',
-                    bg: isOverviewPage ? 'bgInfo' : 'contrastLow'
+                    bg: isOverviewPage ? 'bgInfo' : 'contrastLow',
                   }}
                 >
                   <Icon as={Home16Filled} boxSize={4} />
@@ -166,7 +166,7 @@ const Sidebar: FC<{
                             label: item.label,
                             href: item.href,
                             badge: item.badge,
-                            description: item.path
+                            description: item.path,
                           })
                         )}
                       />

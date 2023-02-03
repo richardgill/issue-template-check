@@ -41,7 +41,7 @@ const mapFileToSidebar = async (e: DocsFileContent, prevSegment: string) => {
     return {
       label: metadata.sidebar_label,
       position: metadata.sidebar_position,
-      href: `/docs/${prevSegment}${e.name.replace('.md', '')}`
+      href: `/${prevSegment}${e.name.replace('.md', '')}`,
     }
   }
 
@@ -56,7 +56,7 @@ const mapFileToSidebar = async (e: DocsFileContent, prevSegment: string) => {
   return {
     label: markdownToTxt(content || '').split('\n')[0],
     position: 100,
-    href: `/docs/${prevSegment}${e.name.replace('.md', '')}`
+    href: `/docs/${prevSegment}${e.name.replace('.md', '')}`,
   }
 }
 
@@ -66,6 +66,7 @@ export const buildSidebar = async (slug?: string) => {
   const api = await fetchApiReference('main')
   const { apiReference, pathList: apiReferencePathList } = api
   const allDocRoutes = [...markdownFilesPathList, ...apiReferencePathList]
+
   const currentRouteFirstIndex = allDocRoutes.findIndex(
     ({ href }) => href.split('#')[0] === slug
   )
@@ -86,8 +87,8 @@ export const buildSidebar = async (slug?: string) => {
     next,
     sidebar: {
       markdownFiles,
-      apiReference
-    }
+      apiReference,
+    },
   }
 }
 
@@ -106,7 +107,7 @@ export const fetchMarkdownFiles = async () => {
               type: 'blob',
               name: f,
               text,
-              object: { text }
+              object: { text },
             }
           })
         )),
@@ -130,16 +131,16 @@ export const fetchMarkdownFiles = async () => {
                       type: 'blob',
                       name: x,
                       object: { text },
-                      text
+                      text,
                     }
                   })
-                )
-              }
+                ),
+              },
             }
           })
-        ))
-      ] as DocsFileContent[]
-    }
+        )),
+      ] as DocsFileContent[],
+    },
   }
 
   const markdownFiles = await Promise.all(
@@ -174,13 +175,14 @@ export const fetchMarkdownFiles = async () => {
               if (!b.position) return 1
 
               return a.position < b.position ? -1 : 1
-            })
+            }),
           }
         }
 
         return await mapFileToSidebar(e, '')
       })
   )
+
   markdownFiles.sort((a: any, b: any) => {
     // @ts-ignore
     if (!a.position) return -1
@@ -193,7 +195,9 @@ export const fetchMarkdownFiles = async () => {
   const pathList = (markdownFiles as SidebarItemProps[]).reduce<
     { title: string; href: string }[]
   >((acum, current) => {
-    if (current.href) acum.push({ title: current.label, href: current.href })
+    if (current.href) {
+      acum.push({ title: current.label, href: current.href })
+    }
     if (current.content) {
       acum.push(
         ...current.content.map(({ label, href }) => ({ title: label, href }))
@@ -202,7 +206,6 @@ export const fetchMarkdownFiles = async () => {
 
     return acum
   }, [])
-
   return { markdownFiles, pathList }
 }
 
@@ -219,7 +222,7 @@ export const fetchApiReference = async (openApiBranch: string) => {
               .filter((k) =>
                 ['post', 'get', 'put', 'patch', 'delete'].includes(k)
               )
-              .map((k) => ({ method: k, path, ...pathConfig[k] }))
+              .map((k) => ({ method: k, path, ...pathConfig[k] })),
           ] as never[],
         []
       ),
@@ -248,15 +251,15 @@ const getApiReferenceMenuItems = (
         }[]
       ).map((r) => ({
         label: r.summary || r.path,
-        href: `/docs/api-reference${sanitizeOpenApiPath(r.path)}#${kebab(
+        href: `/api-reference${sanitizeOpenApiPath(r.path)}#${kebab(
           r.summary
         )}`,
         path: r.path,
         badge: {
           label: r.method,
-          backgroundColor: HTTP_METHODS_COLOR[r.method]
-        }
-      }))
+          backgroundColor: HTTP_METHODS_COLOR[r.method],
+        },
+      })),
     }),
     {}
   )
@@ -272,5 +275,5 @@ export const HTTP_METHODS_COLOR: { [key: string]: string } = {
   put: 'orange',
   delete: 'red',
   post: 'green',
-  patch: 'blue'
+  patch: 'blue',
 }

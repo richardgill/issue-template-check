@@ -44,7 +44,7 @@ Our VS Code Extension aims for feature parity with the [Xata Web UI](https://app
 - If you already have a `.env` and a `.xatarc` it will also show your project’s database in the **Project** section
 - If any of those are missing, you’ll see "Get Started" buttons that will trigger some prompts to get you set.
 
-![Xata VS Code Exentsion view](/images/docs/quick-start/vs-code-extension.png)
+![Xata VS Code Exentsion view](/docs/images/docs/quick-start/vs-code-extension.png)
 
 The full [documentation](https://github.com/xataio/vs-code-extension) is on GitHub.
 
@@ -60,7 +60,7 @@ XATA_API_KEY=<value of your access token>
 
 Now, to get the database URL, go to your workspace configurations page:
 
-![Xata Web UI, workspace configuration panel](/images/docs/quick-start/database-url.png)
+![Xata Web UI, workspace configuration panel](/docs/images/docs/quick-start/database-url.png)
 
 And now create a new `.xatarc` with your database information.
 

@@ -20,7 +20,7 @@ Everything else that falls under the context of a workspace is operable with Xat
 
 Each workspace in Xata can contain any number of databases. Each database has any number of tables and branches. When interacting with Xata properties within the bounds of a workspace, we use the workspace-level API. This is accessible at a domain that is visible to you in your workspace's management section.
 
-![Managing a Workspace in Xata](/images/docs/manage-workspace.png)
+![Managing a Workspace in Xata](/docs/images/docs/manage-workspace.png)
 
 For example, the general form of the database API is:
 

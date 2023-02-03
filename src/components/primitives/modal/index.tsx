@@ -29,7 +29,7 @@ export const Modal = ({ open, onOpenChange }: ModalProps) => (
               fill
               loading="eager"
               priority
-              src="/images/primitives/modal/modal-image.svg"
+              src="/docs/images/primitives/modal/modal-image.svg"
             />
           </div>
           <div

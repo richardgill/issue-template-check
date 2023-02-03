@@ -46,7 +46,7 @@ const Custom404 = () => (
             fill
             loading="eager"
             priority
-            src="/images/404/404-bg.png"
+            src="/docs/images/404/404-bg.png"
           />
         </span>
         <span className="md:hidden">
@@ -55,7 +55,7 @@ const Custom404 = () => (
             fill
             loading="eager"
             priority
-            src="/images/404/404-bg-mobile.png"
+            src="/docs/images/404/404-bg-mobile.png"
           />
         </span>
       </div>

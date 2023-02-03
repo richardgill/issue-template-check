@@ -7,7 +7,7 @@ sidebar_label: XMDb
 
 XMDb is a movie database application built on Xata to showcase how Xata can support large databases. **This app has over 1.2 billion records.**
 
-![XMDb](/images/docs/examples/xmdb.png)
+![XMDb](/docs/images/docs/examples/xmdb.png)
 
 ## Features
 
