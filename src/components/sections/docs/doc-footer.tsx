@@ -49,7 +49,9 @@ const DocFooter: FC<DocFooterProps> = ({ prev, next }) => {
                     textDecorationColor: 'primary',
                   }}
                 >
-                  <Text as={Link}>{prev.title}</Text>
+                  <Text color="textPrimary" fontWeight="bold">
+                    {prev.title}
+                  </Text>
                 </LinkOverlay>
               </Flex>
             </Flex>
@@ -69,7 +71,9 @@ const DocFooter: FC<DocFooterProps> = ({ prev, next }) => {
                     textDecorationColor: 'primary',
                   }}
                 >
-                  <Text as={Link}>{next.title}</Text>
+                  <Text color="textPrimary" fontWeight="bold">
+                    {next.title}
+                  </Text>
                 </LinkOverlay>
               </Flex>
               <Icon as={ArrowRight16Filled} boxSize={4} />
