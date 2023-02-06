@@ -15,12 +15,13 @@ export const persistPageToXataForSearch = async ({
   title,
   modified_at,
 }: Options) => {
-  if (process.env.NODE_ENV !== 'production') {
-    /**
-     * Only index the page if running a prod build!
-     */
-    return
-  }
+  // if (process.env.NODE_ENV !== 'production') {
+  //   /**
+  //    * Only index the page if running a prod build!
+  //    */
+  //   return
+  // }
+
   try {
     return await queryFromXata<Options>({
       body: {

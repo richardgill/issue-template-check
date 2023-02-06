@@ -1,5 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
+const xataBranch = process.env.XATA_BRANCH || 'development'
+
 type Subpath =
   | `tables/${string}/data`
   | 'search'
@@ -10,36 +12,46 @@ type Options<T extends Record<string, unknown>> = {
   subpath?: Subpath
   body: T
   db: string
-  branch?: 'main' | 'preview' | 'local' | 'newStructure' | string
+  branch?: string
 }
 
 export const queryFromXata = <T extends Record<string, unknown>>({
-  branch = 'main',
+  branch = xataBranch,
   db,
   subpath,
-  body
-}: Options<T>) =>
-  fetch(`https://xata-uq2d57.eu-west-1.xata.sh/db/${db}:${branch}/${subpath}`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${process.env.BLOG_API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
-  }).then((response) => response.json())
+  body,
+}: Options<T>) => {
+  branch = xataBranch
+  console.log(branch, 'queryFromXata')
+  return fetch(
+    `https://xata-uq2d57.eu-west-1.xata.sh/db/${db}:${branch}/${subpath}`,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.XATA_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    }
+  ).then((response) => response.json())
+}
 
 type SearchParams = {
-  branch?: 'main'
+  branch?: string
   db: 'blog'
   body?: BodyInit
 }
 
-export const searchFromXata = ({ branch = 'main', db, body }: SearchParams) =>
+export const searchFromXata = ({
+  branch = xataBranch,
+  db,
+  body,
+}: SearchParams) =>
   fetch(`https://xata-uq2d57.xata.sh/db/${db}:${branch}/search`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${process.env.BLOG_API_KEY}`,
-      'Content-Type': 'application/json'
+      Authorization: `Bearer ${process.env.XATA_API_KEY}`,
+      'Content-Type': 'application/json',
     },
-    body
+    body,
   }).then((response) => response.json())
