@@ -15,11 +15,7 @@ export const persistPageToXataForSearch = async ({
   title,
   modified_at,
 }: Options) => {
-  /**
-   * @TODO
-   * don't index for now!!!!
-   */
-  if (true) {
+  if (process.env.NODE_ENV !== 'production') {
     /**
      * Only index the page if running a prod build!
      */
