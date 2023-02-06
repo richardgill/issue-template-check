@@ -15,13 +15,15 @@ type SitemapJSON = {
     }[]
   }
 }
-
-const deploymentRoot = process.env.DEPLOYMENT_URL || sitemapConfig.siteUrl
+const deploymentUrl = process.env.DEPLOYMENT_URL
+  ? `${process.env.DEPLOYMENT_URL}/docs/`
+  : undefined
+const deploymentRoot = deploymentUrl || sitemapConfig.siteUrl
 
 const parseJson = promisify(parseString)
 
 async function getSitemap(url: string) {
-  const previewSitemap = await fetch(`${url}/sitemap-0.xml`)
+  const previewSitemap = await fetch(`${url}sitemap-0.xml`)
   const sitemap = (await parseJson(await previewSitemap.text())) as SitemapJSON
 
   return sitemap

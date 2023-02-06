@@ -8,17 +8,21 @@ describe('ping all routes in sitemaps and Redirects', async () => {
 
   sitemap.forEach((url: string) => {
     if (!url.endsWith('/:path*')) {
-      test.concurrent(`ping ${url}`, async () => {
-        const ping = await fetch(url)
-        expect(ping.status).toEqual(200)
-        expect(ping.ok).toBeTruthy()
-      })
+      test.concurrent(
+        `ping ${url}`,
+        async () => {
+          const ping = await fetch(url)
+          expect(ping.status).toEqual(200)
+          expect(ping.ok).toBeTruthy()
+        },
+        { timeout: 20000 }
+      )
     }
   })
 
   const fakeUrls = [
     sitemapConfig.siteUrl + '/fake-url9000',
-    sitemapConfig.siteUrl + '/docs/fake-url9000'
+    sitemapConfig.siteUrl + '/docs/fake-url9000',
   ]
   fakeUrls.forEach((fakeUrl: string) => {
     test.concurrent(`${fakeUrl} is 404`, async () => {
