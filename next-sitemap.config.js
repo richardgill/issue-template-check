@@ -5,11 +5,11 @@ const pickRoute = () => {
 
     // if it's Vercel Preview Build (Generates the sitemap with proper URL)
   } else if (process.env.VERCEL_URL) {
-    return 'https://' + process.env.VERCEL_URL
+    return 'https://' + process.env.VERCEL_URL + '/docs/'
 
     // if it's Github Actions with tests (this is VERCEL_URL + protocol)
   } else if (process.env.TEST_URL) {
-    return process.env.TEST_URL
+    return process.env.TEST_URL + '/docs/'
   }
 
   return 'https://xata.io/docs/'
