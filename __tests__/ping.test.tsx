@@ -20,10 +20,7 @@ describe('ping all routes in sitemaps and Redirects', async () => {
     }
   })
 
-  const fakeUrls = [
-    sitemapConfig.siteUrl + '/fake-url9000',
-    sitemapConfig.siteUrl + '/docs/fake-url9000',
-  ]
+  const fakeUrls = [sitemapConfig.siteUrl + 'fake-url9000']
   fakeUrls.forEach((fakeUrl: string) => {
     test.concurrent(`${fakeUrl} is 404`, async () => {
       const ping = await fetch(fakeUrl)

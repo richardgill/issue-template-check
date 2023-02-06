@@ -15,8 +15,8 @@ type SitemapJSON = {
     }[]
   }
 }
-const deploymentUrl = process.env.DEPLOYMENT_URL
-  ? `${process.env.DEPLOYMENT_URL}/docs/`
+const deploymentUrl = process.env.TEST_URL
+  ? `${process.env.TEST_URL}/docs/`
   : undefined
 const deploymentRoot = deploymentUrl || sitemapConfig.siteUrl
 
