@@ -1,4 +1,10 @@
-const baseRedirects = []
+const baseRedirects = [
+  {
+    source: '/',
+    destination: '/docs/overview',
+    permanent: true,
+  },
+]
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -11,20 +17,13 @@ const nextConfig = {
             source: '/:path((?!screenshots|icons|img|sounds|fonts|api).*)*',
             destination: 'https://xata.io/docs/:path*',
             permanent: true,
+            basePath: false,
           },
           ...baseRedirects,
         ]
       : baseRedirects
   },
   async rewrites() {
-    return [
-      {
-        source: '/api-preview/:path*',
-        destination: 'https://api-preview-xata.vercel.app/:path*',
-      },
-    ]
-  },
-    async rewrites() {
     return [
       {
         source: '/api-preview/:path*',
