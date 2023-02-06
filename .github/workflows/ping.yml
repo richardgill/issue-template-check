@@ -1,0 +1,27 @@
+name: Ping routes
+# Run when a PR is opened or synchronized
+on: [deployment_status]
+
+jobs:
+  ping-routes:
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.12
+          cache: 'pnpm'
+
+      - run: pnpm install
+
+      - name: Run tests against deploy url
+        id: integration
+        # production points to https://xata.io, otherwise it's the vercel deployment url
+        run: TEST_URL=${{ fromJSON('{"production":"https://xata.io"}')[github.event.deployment_status.environment] || github.event.deployment_status.target_url }} pnpm test:ci

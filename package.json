@@ -84,6 +84,7 @@
     "cheerio": "1.0.0-rc.12",
     "framer-motion": "^8.5.5",
     "get-all-files": "^4.1.0",
+    "jsdom": "^21.1.0",
     "next-sitemap": "^3.1.49",
     "prettier": "^2.8.3",
     "remark-frontmatter": "^4.0.1",
