@@ -9,11 +9,11 @@ Xata has first-class support for branches, a workflow for zero-downtime schema m
 If you’re in an exploring mood, we recommend to read more about:
 
 <div className="docs-card-group">
-<a href="/docs/concepts/how-it-works" className="docs-card">
+<a href="/concepts/how-it-works" className="docs-card">
 <span>How it Works</span>
 <p>A technical deep-dive into the underlying architecture of Xata.</p>
 </a>
-<a href="/docs/concepts/serverless-data-platform" className="docs-card">
+<a href="/concepts/serverless-data-platform" className="docs-card">
 <span>What is a Serverless Data Platform</span>
 <p>An explanation of the value Xata provides to developers</p>
 </a>
@@ -24,12 +24,12 @@ If you’re in an exploring mood, we recommend to read more about:
 If you’re already comfortable enough with database operations and just want to get your project setup to start poking around. Waste no more time!
 
 <div className="docs-card-group">
-<a href="/docs/getting-started/installation" className="docs-card">
+<a href="/getting-started/installation" className="docs-card">
 <span>Installation</span>
 
 <p>Set Xata up on JavaScript or TypeScript project.</p>
 </a>
-<a href="/docs/concepts/data-model" className="docs-card">
+<a href="/concepts/data-model" className="docs-card">
 <span>Data Model</span>
 <p>A reference guide to Xata’s data types. This will help you setting up your schema quicker!</p>
 </a>
@@ -41,22 +41,22 @@ It is possible to fetch, update, and delete data from a few different alternativ
 
 <div className="docs-card-group">
 
-<a href="/docs/getting-started/web-ui" className="docs-card">
+<a href="/getting-started/web-ui" className="docs-card">
 <span>Xata Web UI</span>
 <p>Learn how fundamental database operation and how to generate complex queries straight from the Web UI.</p>
 </a>
 
-<a href="/docs/cli/installation" className="docs-card">
+<a href="/cli/installation" className="docs-card">
 <span>Command-Line Interface (CLI)</span>
 <p>Explore the Xata Command Line Interface for better development workflows.</p>
 </a>
 
-<a href="/docs/getting-started/query-data" className="docs-card">
+<a href="/getting-started/query-data" className="docs-card">
 <span>First Queries</span>
 <p>Learn how to use type-generation in to speed-up your development.</p>
 </a>
 
-<a href="/docs/typescript-client/get" className="docs-card">
+<a href="/typescript-client/get" className="docs-card">
 <span>TypeScript Client</span>
 <p>Our first-class integration SDK for JavaScript runtimes.</p>
 </a>
