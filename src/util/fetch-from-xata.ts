@@ -22,7 +22,6 @@ export const queryFromXata = <T extends Record<string, unknown>>({
   body,
 }: Options<T>) => {
   branch = xataBranch
-  console.log(branch, 'queryFromXata')
   return fetch(
     `https://xata-uq2d57.eu-west-1.xata.sh/db/${db}:${branch}/${subpath}`,
     {
