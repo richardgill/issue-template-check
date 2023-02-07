@@ -19,14 +19,15 @@ const handler: NextApiHandler = async (req, res) => {
   const page = await browser.newPage()
   await page.setViewport({ height: 630, width: 1200 })
 
+  const host = `http${process.env.NODE_ENV === 'production' ? 's' : ''}://${
+    req.headers.host
+  }/docs`
   const html = renderToString(
     <OgImage
       title={makeTitleCase(String(title))}
       subtitle={String(subtitle)}
       content={content ? String(content) : undefined}
-      host={`http${process.env.NODE_ENV === 'production' ? 's' : ''}://${
-        req.headers.host
-      }`}
+      host={host}
     />
   )
 

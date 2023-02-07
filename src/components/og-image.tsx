@@ -12,17 +12,9 @@ export const OgImage: FC<Props> = ({ title, subtitle, content, host }) => {
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <style
           dangerouslySetInnerHTML={{
-            __html: `html,body{font-family: 'Inter', sans-serif; margin:0; padding:0;}@font-face {
-              font-family: 'Eina03';
-              font-style: normal;
-              font-weight: 300;
-              font-display: block;
-              src: url('${host}/fonts/eina03/Eina03-Light.woff2') format('woff2'),
-                url('${host}/fonts/eina03/Eina03-Light.woff') format('woff');
-            }
+            __html: `html,body{font-family: 'Inter', sans-serif; margin:0; padding:0;}
 
             * {
               text-rendering: optimizeLegibility;
@@ -30,14 +22,6 @@ export const OgImage: FC<Props> = ({ title, subtitle, content, host }) => {
               -webkit-font-smoothing: antialiased;
             }
             
-            @font-face {
-              font-family: 'Eina03';
-              font-style: italic;
-              font-weight: 300;
-              font-display: block;
-              src: url('${host}/fonts/eina03/Eina03-LightItalic.woff2') format('woff2'),
-                url('${host}/fonts/eina03/Eina03-LightItalic.woff') format('woff');
-            }
             
             @font-face {
               font-family: 'Eina03';
@@ -46,70 +30,6 @@ export const OgImage: FC<Props> = ({ title, subtitle, content, host }) => {
               font-display: block;
               src: url('${host}/fonts/eina03/Eina03-Regular.woff2') format('woff2'),
                 url('${host}/fonts/eina03/Eina03-Regular.woff') format('woff');
-            }
-            
-            @font-face {
-              font-family: 'Eina03';
-              font-style: italic;
-              font-weight: 400;
-              font-display: block;
-              src: url('${host}/fonts/eina03/Eina03-RegularItalic.woff2') format('woff2'),
-                url('${host}/fonts/eina03/Eina03-RegularItalic.woff') format('woff');
-            }
-            
-            @font-face {
-              font-family: 'Eina03';
-              font-style: normal;
-              font-weight: 600;
-              font-display: block;
-              src: url('${host}/fonts/eina03/Eina03-SemiBold.woff2') format('woff2'),
-                url('${host}/fonts/eina03/Eina03-SemiBold.woff') format('woff');
-            }
-            
-            @font-face {
-              font-family: 'Eina03';
-              font-style: italic;
-              font-weight: 600;
-              font-display: block;
-              src: url('${host}/fonts/eina03/Eina03-SemiBoldItalic.woff2') format('woff2'),
-                url('${host}/fonts/eina03/Eina03-SemiBoldItalic.woff') format('woff');
-            }
-            
-            @font-face {
-              font-family: 'Eina03';
-              font-style: normal;
-              font-weight: 700;
-              font-display: block;
-              src: url('${host}/fonts/eina03/Eina03-Bold.woff2') format('woff2'),
-                url('${host}/fonts/eina03/Eina03-Bold.woff') format('woff');
-            }
-            
-            @font-face {
-              font-family: 'Eina03';
-              font-style: italic;
-              font-weight: 700;
-              font-display: block;
-              src: url('${host}/fonts/eina03/Eina03-BoldItalic.woff2') format('woff2'),
-                url('${host}/fonts/eina03/Eina03-BoldItalic.woff') format('woff');
-            }
-            
-            
-            @font-face {
-              font-family: Inter;
-              font-weight: 100 900;
-              font-display: block;
-              font-style: normal;
-              font-named-instance: 'Regular';
-              src: url('${host}/fonts/inter/Inter-roman.var.woff2?v=3.15') format('woff2');
-            }
-            
-            @font-face {
-              font-family: Inter;
-              font-weight: 100 900;
-              font-display: block;
-              font-style: italic;
-              font-named-instance: 'Italic';
-              src: url('${host}/fonts/inter/Inter-italic.var.woff2?v=3.15') format('woff2');
             }
             `,
           }}
@@ -141,7 +61,7 @@ export const OgImage: FC<Props> = ({ title, subtitle, content, host }) => {
               height: '100vh',
             }}
           >
-            <img width="100%" src={`${host}/img/og-image/bg.jpg`} />
+            <img width="100%" src={`${host}/images/og-background.jpg`} />
           </div>
           <div
             style={{
@@ -162,7 +82,7 @@ export const OgImage: FC<Props> = ({ title, subtitle, content, host }) => {
             >
               <h1
                 style={{
-                  fontFamily: 'Eina03',
+                  fontFamily: 'Eina03, Inter, sans-serif',
                   fontSize: 54,
                   margin: 0,
                   fontWeight: 600,
@@ -176,7 +96,7 @@ export const OgImage: FC<Props> = ({ title, subtitle, content, host }) => {
                   fontSize: 24,
                   margin: 0,
                   color: '#999',
-                  fontFamily: 'Eina03',
+                  fontFamily: 'Eina03, Inter, sans-serif',
                   lineHeight: 1,
                 }}
               >
@@ -187,7 +107,7 @@ export const OgImage: FC<Props> = ({ title, subtitle, content, host }) => {
                   style={{
                     marginTop: 32,
                     fontSize: 30,
-                    fontFamily: 'Eina03',
+                    fontFamily: 'Eina03, Inter, sans-serif',
                     fontWeight: 600,
                     lineHeight: 1.6,
                   }}

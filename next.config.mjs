@@ -19,6 +19,12 @@ const nextConfig = {
             permanent: true,
             basePath: false,
           },
+          {
+            source: '/api/:path*',
+            destination: '/docs/api/:path*',
+            basePath: false,
+            permanent: false,
+          },
           ...baseRedirects,
         ]
       : baseRedirects
