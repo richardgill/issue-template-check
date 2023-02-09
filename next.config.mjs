@@ -4,6 +4,12 @@ const baseRedirects = [
     destination: '/overview',
     permanent: true,
   },
+  {
+    source: '/api/:path*',
+    destination: '/docs/api/:path*',
+    basePath: false,
+    permanent: true,
+  },
 ]
 
 /** @type {import('next').NextConfig} */
