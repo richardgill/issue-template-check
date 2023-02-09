@@ -8,7 +8,7 @@ const baseRedirects = [
     source: '/api/:path*',
     destination: '/docs/api/:path*',
     basePath: false,
-    permanent: true,
+    permanent: false,
   },
 ]
 
@@ -21,7 +21,7 @@ const nextConfig = {
       ? [
           {
             source:
-              '/:path((?!screenshots|icons|images|sounds|videos|fonts|api).*)*',
+              '/:path((?!screenshots|icons|images|sounds|videos|fonts|api|docs).*)*',
             destination: 'https://xata.io/docs/:path*',
             permanent: true,
             basePath: false,
