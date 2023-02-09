@@ -1,7 +1,7 @@
 const baseRedirects = [
   {
     source: '/',
-    destination: '/docs/overview',
+    destination: '/overview',
     permanent: true,
   },
 ]
@@ -14,7 +14,8 @@ const nextConfig = {
     return process.env.VERCEL_ENV === 'production'
       ? [
           {
-            source: '/:path((?!screenshots|icons|img|sounds|fonts|api).*)*',
+            source:
+              '/:path((?!screenshots|icons|images|sounds|videos|fonts|api).*)*',
             destination: 'https://xata.io/docs/:path*',
             permanent: true,
             basePath: false,

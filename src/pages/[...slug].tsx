@@ -31,6 +31,7 @@ import { diffBetweenToDates } from '~/lib/utils/dates'
 import theme from '~/theme/theme'
 import { headerLinks } from '~/util/header-links'
 import { persistPageToXataForSearch } from '~/util/persist-page-to-xata-for-search'
+import mdToTxt from 'markdown-to-txt'
 
 type Heading = { level: number; slug: string; text: string }
 
@@ -72,7 +73,7 @@ const Doc: FC<Props> = ({
               title
             )}&subtitle=${encodeURIComponent(
               `${siteOrigin}/docs/${slug}`
-            )}&content=${encodeURIComponent(description)}`,
+            )}&content=${encodeURIComponent(mdToTxt(description))}`,
           },
         }}
         header={{
