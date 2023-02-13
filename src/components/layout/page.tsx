@@ -18,12 +18,12 @@ import { Header, HeaderProps } from './header'
 import { defaultHeaderLinks } from './header/header'
 
 const preloadFonts = [
-  '/fonts/eina03/Eina03-Light.woff2',
-  '/fonts/eina03/Eina03-Regular.woff2',
-  '/fonts/eina03/Eina03-SemiBold.woff2',
-  '/fonts/eina03/Eina03-Bold.woff2',
-  '/fonts/inter/Inter-roman.var.woff2?v=3.15',
-  '/fonts/inter/Inter-italic.var.woff2?v=3.15',
+  '/docs/fonts/eina03/Eina03-Light.woff2',
+  '/docs/fonts/eina03/Eina03-Regular.woff2',
+  '/docs/fonts/eina03/Eina03-SemiBold.woff2',
+  '/docs/fonts/eina03/Eina03-Bold.woff2',
+  '/docs/fonts/inter/Inter-roman.var.woff2?v=3.15',
+  '/docs/fonts/inter/Inter-italic.var.woff2?v=3.15',
 ]
 
 type SeoMetadata = {

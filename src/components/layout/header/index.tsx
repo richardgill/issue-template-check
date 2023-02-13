@@ -93,7 +93,7 @@ const MobileMenu: FC<MobileMenuProps> = () => {
                   <Image
                     alt="email icon"
                     height={32}
-                    src="/icons/social/email.svg"
+                    src="/docs/icons/social/email.svg"
                     width={32}
                   />
                 </Link>
@@ -101,7 +101,7 @@ const MobileMenu: FC<MobileMenuProps> = () => {
                   <Image
                     alt="twitter logo"
                     height={32}
-                    src="/icons/social/twitter.svg"
+                    src="/docs/icons/social/twitter.svg"
                     width={32}
                   />
                 </Link>
@@ -112,7 +112,7 @@ const MobileMenu: FC<MobileMenuProps> = () => {
                   <Image
                     alt="linkedin logo"
                     height={32}
-                    src="/icons/social/linkedin.svg"
+                    src="/docs/icons/social/linkedin.svg"
                     width={32}
                   />
                 </Link>
@@ -131,7 +131,7 @@ const HeaderMobile = ({
   handleToggle,
   links,
   isOn,
-  rightSideButton
+  rightSideButton,
 }: HeaderMobileProps) => (
   <>
     {isOn && <MobileMenu isOn={true} links={links} />}
@@ -155,7 +155,7 @@ const HeaderMobile = ({
             <Image
               alt="toggle menu icon"
               height={24}
-              src={`/icons/layout/header/${isOn ? 'cross' : 'menu'}.svg`}
+              src={`/docs/icons/layout/header/${isOn ? 'cross' : 'menu'}.svg`}
               width={24}
             />
           </Button>
@@ -200,7 +200,7 @@ export const Header = ({ links, rightSideButton }: HeaderProps) => {
   if (isDocsPage) {
     headerDocsStyle = {
       background: 'rgb(20, 20, 23)',
-      borderBottom: '1px solid rgb(38, 38, 41)'
+      borderBottom: '1px solid rgb(38, 38, 41)',
     }
   }
 
@@ -210,7 +210,7 @@ export const Header = ({ links, rightSideButton }: HeaderProps) => {
         <div
           className={clsx('transition-colors duration-300 max-w-screen', {
             'bg-blue-darker bg-opacity-80 backdrop-blur-sm':
-              hasScrolled && !isDocsPage
+              hasScrolled && !isDocsPage,
           })}
           style={headerDocsStyle}
         >

@@ -32,7 +32,7 @@ export const Footer = ({
     <footer
       className="relative w-screen border-t border-gray-800"
       style={{
-        backgroundImage: `url(/layout/footer/gradient${
+        backgroundImage: `url(/docs/layout/footer/gradient${
           isMobile ? '-sm' : is2xl ? '-2xl' : ''
         }.svg)`,
         backgroundPositionX: 'center',
@@ -140,7 +140,7 @@ export const Footer = ({
                   alt="Email"
                   role="presentation"
                   height={32}
-                  src="/icons/social/email.svg"
+                  src="/docs/icons/social/email.svg"
                   width={32}
                 />
                 <span className="sr-only">
@@ -157,7 +157,7 @@ export const Footer = ({
                   alt="Twitter"
                   role="presentation"
                   height={32}
-                  src="/icons/social/twitter.svg"
+                  src="/docs/icons/social/twitter.svg"
                   width={32}
                 />
                 <span className="sr-only">
@@ -174,7 +174,7 @@ export const Footer = ({
                   alt="Discord"
                   role="presentation"
                   height={32}
-                  src="/icons/social/discord.svg"
+                  src="/docs/icons/social/discord.svg"
                   width={32}
                 />
                 <span className="sr-only">
@@ -191,7 +191,7 @@ export const Footer = ({
                   alt="LinkedIn"
                   role="presentation"
                   height={32}
-                  src="/icons/social/linkedin.svg"
+                  src="/docs/icons/social/linkedin.svg"
                   width={32}
                 />
                 <span className="sr-only">
