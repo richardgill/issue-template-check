@@ -19,7 +19,8 @@ export const persistPageToXataForSearch = async ({
    * Avoid indexing other builds in `main` branch at all costs!
    */
   if (
-    process.env.NODE_ENV !== 'production' &&
+    // don't index in main yet
+    // process.env.NODE_ENV !== 'production' &&
     process.env.XATA_API_KEY === 'main'
   ) {
     return
