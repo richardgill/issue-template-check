@@ -31,6 +31,11 @@ const nextConfig = {
       : baseRedirects
   },
   async rewrites() {
+    /**
+     * @TODO -> bring this from old docs and remove Rewrite
+     * This is legacy views from the first docs that are still
+     * in use by the SDKs.
+     */
     return [
       {
         source: '/api-preview/:path*',
