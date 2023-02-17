@@ -159,6 +159,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             operation.operationId
           )}`,
           title: title(operation.operationId),
+          section: 'api-reference',
+          keywords: null,
         })
 
         return operation

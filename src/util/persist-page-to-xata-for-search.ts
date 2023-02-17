@@ -7,13 +7,17 @@ type Options = {
   content: string
   title: string
   modified_at: string | null
+  section: string
+  keywords: string | null
 }
 
 export const persistPageToXataForSearch = async ({
   slug,
   content,
   title,
+  section,
   modified_at,
+  keywords,
 }: Options) => {
   /**
    * Avoid indexing other builds in `main` branch at all costs!
@@ -33,6 +37,8 @@ export const persistPageToXataForSearch = async ({
         modified_at,
         slug,
         title,
+        section,
+        keywords,
       },
       subpath: `tables/search/data/${md5(slug)}`,
       db: 'docs',

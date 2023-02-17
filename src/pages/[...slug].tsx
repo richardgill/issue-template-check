@@ -181,7 +181,9 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
   const fileContent = await readFile(file, 'utf8')
   const { mtime } = await stat(file)
-  let { content } = metadataParser(fileContent)
+  const parsed = metadataParser(fileContent)
+  let { content } = parsed
+  const { metadata } = parsed
 
   if (content.startsWith('See')) {
     const [, sourceUrl] = content.split('See ')
@@ -204,12 +206,16 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const modifiedAt = mtime
   const today = new Date()
   const lastModified = diffBetweenToDates(modifiedAt ?? today, today)
+  const slugPath = slug.join('/')
+  const section = slugPath.startsWith('examples/') ? 'examples' : 'guide'
 
   await persistPageToXataForSearch({
     content,
     modified_at: modifiedAt ? modifiedAt.toISOString() : null,
-    slug: `/docs/${slug.join('/')}`,
+    slug: `/docs/${slugPath}`,
     title: title(content.trim().split('\n')[0].replace(/#/gi, '')).trim(),
+    section,
+    keywords: metadata.keywords || null,
   })
 
   const headings: Heading[] = []
