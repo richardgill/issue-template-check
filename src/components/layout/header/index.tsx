@@ -93,7 +93,7 @@ const MobileMenu: FC<MobileMenuProps> = () => {
                   <Image
                     alt="email icon"
                     height={32}
-                    src="/docs/icons/social/email.svg"
+                    src="/docs/gsicons/social/email.svg"
                     width={32}
                   />
                 </Link>
@@ -101,7 +101,7 @@ const MobileMenu: FC<MobileMenuProps> = () => {
                   <Image
                     alt="twitter logo"
                     height={32}
-                    src="/docs/icons/social/twitter.svg"
+                    src="/docs/gsicons/social/twitter.svg"
                     width={32}
                   />
                 </Link>
@@ -112,7 +112,7 @@ const MobileMenu: FC<MobileMenuProps> = () => {
                   <Image
                     alt="linkedin logo"
                     height={32}
-                    src="/docs/icons/social/linkedin.svg"
+                    src="/docs/gsicons/social/linkedin.svg"
                     width={32}
                   />
                 </Link>
@@ -155,7 +155,7 @@ const HeaderMobile = ({
             <Image
               alt="toggle menu icon"
               height={24}
-              src={`/docs/icons/layout/header/${isOn ? 'cross' : 'menu'}.svg`}
+              src={`/docs/gsicons/layout/header/${isOn ? 'cross' : 'menu'}.svg`}
               width={24}
             />
           </Button>

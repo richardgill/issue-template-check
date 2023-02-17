@@ -20,12 +20,12 @@ import {
   Text,
   Tooltip,
   useDisclosure,
-  VStack
+  VStack,
 } from '@chakra-ui/react'
 import {
   ChevronRight16Filled,
   Eye16Filled,
-  Search24Filled
+  Search24Filled,
 } from '@fluentui/react-icons'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -61,7 +61,6 @@ export const Search = ({ openApiBranch = 'main' }: Props) => {
   const router = useRouter()
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [isMac, setIsMac] = useState<boolean>()
-  // const [previewType, setPreviewType] = useState<'none' | 'preview'>('preview')
   const [previewType, setPreviewType] = useLocalStorage<string>(
     `previewType`,
     'preview'
@@ -324,7 +323,7 @@ export const Search = ({ openApiBranch = 'main' }: Props) => {
               <Box
                 w={{
                   base: '100%',
-                  lg: previewType === 'none' ? '100%' : '30%'
+                  lg: previewType === 'none' ? '100%' : '30%',
                 }}
                 overflowY="auto"
                 ref={resultsRef}
@@ -337,7 +336,7 @@ export const Search = ({ openApiBranch = 'main' }: Props) => {
                   if (loading) {
                     return (
                       <Flex justifyContent="space-between" p={12}>
-                        <Text>loading...</Text>
+                        <Text>loading…</Text>
                       </Flex>
                     )
                   }
@@ -349,8 +348,12 @@ export const Search = ({ openApiBranch = 'main' }: Props) => {
                       </Flex>
                     )
                   }
-
                   return results.map((r) => {
+                    console.log(r.slug)
+                    const url = r.slug.startsWith('/docs')
+                      ? r.slug.replace('/docs', '')
+                      : r.slug
+
                     return (
                       <LinkBox
                         key={r.id}
@@ -359,7 +362,7 @@ export const Search = ({ openApiBranch = 'main' }: Props) => {
                         bg={focused === r ? 'contrastLowest' : 'transparent'}
                         _hover={{
                           bg: 'contrastLowest',
-                          borderColor: 'stroke'
+                          borderColor: 'stroke',
                         }}
                         py={2}
                         px={4}
@@ -375,7 +378,7 @@ export const Search = ({ openApiBranch = 'main' }: Props) => {
                             <LinkOverlay
                               as={NextLink}
                               onClick={handleClose}
-                              href={`${r.slug}${
+                              href={`${url}${
                                 isClient ? window.location.search : ''
                               }`}
                             >
@@ -397,14 +400,14 @@ export const Search = ({ openApiBranch = 'main' }: Props) => {
                                       em: {
                                         textDecoration: 'underline',
                                         color: 'textPrimary',
-                                        fontStyle: 'normal'
-                                      }
+                                        fontStyle: 'normal',
+                                      },
                                     }}
                                   >
                                     {r.xata.highlight.title ? (
                                       <span
                                         dangerouslySetInnerHTML={{
-                                          __html: r.xata.highlight.title
+                                          __html: r.xata.highlight.title,
                                         }}
                                       />
                                     ) : (

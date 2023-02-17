@@ -16,7 +16,7 @@ type Link = {
 export type FooterProps = {
   productLinks: Link[]
   companyLinks: Link[]
-  landingPagesLinks: Link[]
+  landingPagesLinks?: Link[]
 }
 
 export const Footer = ({
@@ -96,7 +96,7 @@ export const Footer = ({
                 ))}
               </ul>
             </div>
-            {landingPagesLinks.length > 0 && (
+            {landingPagesLinks && landingPagesLinks.length > 0 && (
               <div className="flex-1 space-y-6 md:space-y-4 sm:flex-none">
                 <p className="text-sm font-semibold leading-4 md:text-base">
                   Landing Pages
@@ -121,11 +121,14 @@ export const Footer = ({
           </p>
           <div className="flex flex-col-reverse items-center md:flex-row">
             <div className="flex items-center justify-center mb-2 md:mb-0">
-              <Link href="/terms-of-use" className="inline-block">
+              <Link
+                href="https://xata.io/terms-of-use"
+                className="inline-block"
+              >
                 Terms
               </Link>
               <div className="mx-2">|</div>
-              <Link href="/privacy" className="inline-block">
+              <Link href="https://xata.io/privacy" className="inline-block">
                 Privacy Policy
               </Link>
             </div>

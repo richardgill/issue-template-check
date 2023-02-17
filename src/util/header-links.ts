@@ -6,11 +6,11 @@ export const headerLinks = {
     // },
     {
       title: 'Features',
-      href: '/features'
+      href: '/features',
     },
     {
       title: 'Pricing',
-      href: '/pricing'
+      href: '/pricing',
     },
     // {
     //   title: 'About Us',
@@ -22,11 +22,11 @@ export const headerLinks = {
     // },
     {
       title: 'Blog',
-      href: '/blog'
+      href: '/blog',
     },
     {
       title: 'Docs',
-      href: '/docs/overview'
-    }
-  ]
+      href: '/overview',
+    },
+  ],
 }
