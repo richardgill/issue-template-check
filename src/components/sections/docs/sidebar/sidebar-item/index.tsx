@@ -7,7 +7,7 @@ import {
   Box,
   Link,
   Text,
-  Tooltip
+  Tooltip,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
@@ -41,7 +41,7 @@ export type SidebarItemProps =
 const SidebarItem: FC<SidebarItemProps> = ({
   label,
   content,
-  allowTooltip = false
+  allowTooltip = false,
 }) => {
   const router = useRouter()
 
@@ -62,6 +62,7 @@ const SidebarItem: FC<SidebarItemProps> = ({
           let sidebarLink = (
             <Link
               as={NextLink}
+              key={item.href + item.label}
               href={item.href}
               fontSize="sm"
               color={isActive ? 'text' : 'textSubtle'}
@@ -78,7 +79,7 @@ const SidebarItem: FC<SidebarItemProps> = ({
               _hover={{
                 color: 'text',
                 textDecoration: 'none',
-                bg: isActive ? 'bgInfo' : 'contrastLow'
+                bg: isActive ? 'bgInfo' : 'contrastLow',
               }}
             >
               <Box flexGrow={1}>
@@ -94,7 +95,7 @@ const SidebarItem: FC<SidebarItemProps> = ({
                   textAlign="center"
                   colorScheme={item.badge.backgroundColor}
                   sx={{
-                    textDecoration: 'none !important'
+                    textDecoration: 'none !important',
                   }}
                 >
                   {item.badge.label}

@@ -118,7 +118,9 @@ const Doc: FC<Props> = ({
                         if (level === 4) levelPadding = 8
                         return createElement(
                           `h${level}`,
-                          {},
+                          {
+                            key: slug,
+                          },
                           <Link
                             fontSize="xs"
                             color="textSubtle"
