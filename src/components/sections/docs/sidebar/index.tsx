@@ -50,7 +50,7 @@ const Sidebar: FC<{
     setTabIndex(index)
   }
 
-  const isOverviewPage = router.asPath === '/docs/overview'
+  const isOverviewPage = router.asPath === '/overview'
 
   return (
     <Box
@@ -123,7 +123,7 @@ const Sidebar: FC<{
                 >
                   <Icon as={Home16Filled} boxSize={4} />
                   <Box as="span" fontSize="sm">
-                    Docs overview
+                    Overview
                   </Box>
                 </Flex>
                 <Accordion
@@ -134,9 +134,15 @@ const Sidebar: FC<{
                     (_entry, index) => index
                   )}
                 >
-                  {entries.markdownFiles.map((entry, index) => (
-                    <SidebarItem {...entry} key={index} />
-                  ))}
+                  {entries.markdownFiles.map((entry, index) => {
+                    /**
+                     * `/overview` does not go in sidebar list
+                     */
+                    if (entry.href === '/docs/overview') {
+                      return null
+                    }
+                    return <SidebarItem {...entry} key={index} />
+                  })}
                 </Accordion>
               </Box>
             </TabPanel>
