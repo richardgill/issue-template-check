@@ -1,6 +1,6 @@
 export const defaultHeaderLinks = [
-  { href: '/', title: 'Home' },
+  { href: 'https://xata.io', title: 'Home' },
   { href: '/pricing', title: 'Pricing' },
   { href: '/about', title: 'About' },
-  { href: '/blog', title: 'Blog' }
+  { href: '/blog', title: 'Blog' },
 ]
