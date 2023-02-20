@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+sidebar_label: Netlify
+---
+
 # Netlify
 
 Xata offers a first class integration with Netlify and its [Deploy Previews](https://www.netlify.com/products/deploy-previews/). With this plugin, you can synchronize your Xata branch with your Netlify deploy preview branch.
