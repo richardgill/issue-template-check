@@ -1,28 +1,16 @@
 export const headerLinks = {
   links: [
-    // {
-    //   title: 'Home',
-    //   href: '/'
-    // },
     {
       title: 'Features',
-      href: '/features',
+      href: 'https://xata.io/features',
     },
     {
       title: 'Pricing',
-      href: '/pricing',
+      href: 'https://xata.io/pricing',
     },
-    // {
-    //   title: 'About Us',
-    //   href: '/about'
-    // },
-    // {
-    //   title: 'Careers',
-    //   href: '/careers'
-    // },
     {
       title: 'Blog',
-      href: '/blog',
+      href: 'https://xata.io/blog',
     },
     {
       title: 'Docs',

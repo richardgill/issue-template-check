@@ -1,1 +1,1 @@
-export const hiringLink = '/careers'
+export const hiringLink = 'https://xata.io/careers'
