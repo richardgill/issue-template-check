@@ -13,7 +13,7 @@ If you just want to build apps and use the Xata serverless service, you **do not
 
 Xata is a global multi-tenant system, composed of **cells**, each living in a region. At the high level, one Xata **cell** implements the following architecture:
 
-![Xata cell](/docs/images/docs/xata-cell.png)
+![Xata cell](/images/docs/xata-cell.png)
 
 - The data is stored in PostgreSQL, which is considered the source of truth.
 - The PostgreSQL logical replication events are written in a Kafka queue, from where they can be read by multiple consumers.
@@ -27,7 +27,7 @@ While the above architecture is a very common one in the industry, it hasn’t b
 
 As we’ve seen above, we call the combination of PostgreSQL + Elasticsearch and the associated services a “cell”. The cells are grouped into regions and form our **data plane**.
 
-![Xata global regions](/docs/images/docs/global-regions.png)
+![Xata global regions](/images/docs/global-regions.png)
 
 Besides the cells, the regions contain other services:
 
@@ -80,9 +80,9 @@ Indexes:
     "tbl_cd46p95cefoedabj77gg_a_xata_unique_b" UNIQUE CONSTRAINT, btree (b)
 Check constraints:
     "tbl_cd46p95cefoedabj77gg_a_xata_multiple_length_h" CHECK (octet_length(array_to_string(h, ''::text)) < 65536)
-    "tbl_cd46p95cefoedabj77gg_a_xata_string_length_a" CHECK (length(a) < 256)
-    "tbl_cd46p95cefoedabj77gg_a_xata_string_length_b" CHECK (length(b) < 256)
-    "tbl_cd46p95cefoedabj77gg_a_xata_string_length_g" CHECK (length(g) < 256)
+    "tbl_cd46p95cefoedabj77gg_a_xata_string_length_a" CHECK (length(a) <= 2048)
+    "tbl_cd46p95cefoedabj77gg_a_xata_string_length_b" CHECK (length(b) <= 2048)
+    "tbl_cd46p95cefoedabj77gg_a_xata_string_length_g" CHECK (length(g) <= 2048)
     "tbl_cd46p95cefoedabj77gg_a_xata_text_length_e" CHECK (octet_length(e) < 204800)
 ```
 
@@ -104,7 +104,7 @@ There are multiple benefits to having database branches, which is why they are b
 
 The last one is particularly interesting because migrating database schemas is usually easy with small amounts of data, but becomes very painful when dealing with large amounts of data. In the NoSQL wave of DB products, this issue was avoided by going schemaless. However, not having a schema introduces its own class of problems, so lately the pendulum is swinging back toward databases with strict schemas.
 
-![Migration Request](/docs/images/docs/migration-screenshot.png)
+![Migration Request](/images/docs/migration-screenshot.png)
 
 One reason why migrations are difficult at scale is that `ALTER` statements can lock the database table. If an `ALTER` statement takes an exclusive table lock and it takes, say, one minute to execute, it essentially means one minute of downtime for your application, which is usually unacceptable. In PostgreSQL some `ALTER` statements are “safe”, meaning that they don’t take an exclusive lock, or if they take a lock they hold it for a very small amount of time. Simple migrations like adding a column or dropping a column are usually safe in PostgreSQL, but if that column has constraints, then the operation might become unsafe.
 
@@ -206,7 +206,7 @@ To update the record in the DB you can do:
 
 ```tsx
 await user.update({
-  name: 'John Smith Jr.',
+  name: 'John Smith Jr.'
 })
 ```
 
@@ -226,7 +226,7 @@ Another interesting aspect of the TypeScript SDK is that it has the notion of pl
 
 ```tsx
 return await xata.db.products.sort('popularity', 'desc').getMany({
-  cache: 10 * 60 * 1000, // TTL
+  cache: 10 * 60 * 1000 // TTL
 })
 ```
 
@@ -258,6 +258,19 @@ export const Home = () => {
 ```
 
 Behind the scenes, we’re using [Cloudflare Workers for Platforms](https://blog.cloudflare.com/workers-for-platforms/), but you don’t need a Cloudflare account, it works automatically with your Xata account. The Xata Edge Functions are currently in private Beta, if you are interested to try them out, make sure to reach out to us.
+
+## Data Safety
+
+Xata is committed to protecting the security and ensuring the availability of user data. To do so, we implement appropriate technical measures and internal organization policies to protect from unauthorized access, data leak or loss.
+
+As part of our commitment to securing data access and storage, Xata encrypts user data content:
+
+- during network transit with Transport Layer Security
+- at rest with storage encryption provided by our underlying infrastructure providers
+
+The same level of security standard applies to internal backups, logs and traces which do not expose plain text data content to third parties.
+
+For disaster recovery and change control purposes, Xata performs frequent backups of user data which is retained only as required and while it continues to have a legitimate purpose for delivering our services to the user.
 
 ## Conclusions and Design Principles
 

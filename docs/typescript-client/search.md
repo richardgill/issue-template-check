@@ -1,6 +1,7 @@
 ---
 sidebar_position: 7
 sidebar_label: Searching
+keywords: search, search data, search record, search records, searching record
 ---
 
 # Full-text search

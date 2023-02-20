@@ -1,6 +1,7 @@
 ---
 sidebar_position: 9
 sidebar_label: Summarizing
+keywords: summarize, summarize data
 ---
 
 # Summarize
@@ -28,7 +29,7 @@ Let's look at a table. Each time you sell something on your e-commerce store, yo
 | shirt      | 40.0       |
 | shirt      | 80.0       |
 
-Using the above example, a **column** is something you wish to run a calculation for. If you set `product` as a **column** you will see only one row returned for each unique value from the `product` column. In this table, it would mean would receive two rows back. One row for `basketball` and one row for `shirt`.
+Using the above example, a **column** is something you wish to run a calculation for. If you set `product` as a **column** you will see only one row returned for each unique value from the `product` column. In this table, it would mean you receive two rows back. One row for `basketball` and one row for `shirt`.
 
 A **summary** has two parts. These consist of a _function_ (the summary) and a _parameter_ (the column name). The function can be called `sum`, or `average`. The parameter is the column name on which you would like to execute the function. A question I can ask is to `{"sum": "sale_price"}` to retrieve the total sale price.
 
@@ -49,7 +50,7 @@ Here, the column is `product`. The `summary` - in it's two parts - will be `aver
   })
   ```
   ```json
-  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/aggregate
+  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/summarize
   {
     "filter": {"product": "basketball"},
     "columns": ["product"],
@@ -84,7 +85,7 @@ Here, as above, the column is `product`. We will also want to run a calculation 
   })
   ```
   ```json
-  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/aggregate
+  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/summarize
   {
     "columns": ["product"],
     "summaries": {
@@ -153,7 +154,7 @@ One can specify several summaries in the same request. As long as the names are 
   })
   ```
   ```json
-  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/aggregate
+  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/summarize
   {
   "summaries": {
     // count all rows
@@ -198,7 +199,7 @@ You may submit explicit column names, use wildcards, and reference linked column
   })
   ```
   ```json
-  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/aggregate
+  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/summarize
   {
     "columns": [
       "settings.*",        // group by all columns in the `settings` object
@@ -237,7 +238,7 @@ Sort lets you decide how you'd like your results sorted. You may sort on `column
   })
   ```
   ```json
-  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/aggregate
+  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/summarize
   {
     "columns": {"store_name"},
     "summaries": {
@@ -272,7 +273,7 @@ An example of a page request looks like:
   })
   ```
   ```json
-  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/aggregate
+  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/summarize
   {
     "page": {
       "size": 50 // return up to 50 results
@@ -308,7 +309,7 @@ An example looks like:
   })
   ```
   ```json
-  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/aggregate
+  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/summarize
   {
     "columns": ["product_name"],
     "summaries": {
@@ -321,6 +322,38 @@ An example looks like:
       "revenue": {"$ge": 100.0},
       "items_sold": {"$ge": 1000}
     }
+  }
+  ```
+````
+
+**consistency**
+
+By specifying the option `consistency: eventual` the summarize request will be serviced by the Replica Store which has a small, typically insignificant, propagation delay compared to the Primary Store as outlined in the [Data Model](/concepts/data-model) guide.
+
+The default value for the consistency option is `strong`, which retrieves data from the Primary Store and guarantees that the response is up to date with the latest state of the record content.
+
+It is recommended to use the Replica Store for summarize requests wherever possible, in order to get the best possible performance out of your branch's assigned units.
+
+````ts|json
+  ```ts
+  const records = await xata.db.titles.summarize({
+    filter: {"product": "basketball"},
+    columns: ["product"],
+    summaries: {
+      "average_sales_price": {"average": "sale_price"}
+    },
+    consistency: "eventual"
+  })
+  ```
+  ```json
+  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/summarize
+  {
+    "filter": {"product": "basketball"},
+    "columns": ["product"],
+    "summaries": {
+      "average_sale_price": {"average": "sale_price"}
+    },
+    "consistency": "eventual"
   }
   ```
 ````
@@ -346,6 +379,10 @@ Links always add time to the request. If you do not need to reference a link in 
 **Use `filters` instead of `summariesFilter` if possible**
 
 Our advice is always to use `filters` where you can. This will give you a much quicker response. Use `summariesFilter` only to filter on summary results, or in complex cases where you need to combine a filter between a column and a summary result.
+
+**Use `consistency: "eventual"` if possible**
+
+Eventual consistency utilizes the dedicated concurrency connections of the Read Replica store, leaving more concurrency slots available for operations that can only operate on the Primary store, such as data inserts and updates. Which makes it less likely to reach the [concurrency limit](/rest-api/limits) of either Store type.
 
 **Use the aggregate endpoint**
 

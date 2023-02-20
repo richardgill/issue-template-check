@@ -1,6 +1,7 @@
 ---
 sidebar_position: 6
 sidebar_label: Deleting Data
+keywords: delete, delete data, delete record, delete records, deleting record
 ---
 
 ## Deleting Records

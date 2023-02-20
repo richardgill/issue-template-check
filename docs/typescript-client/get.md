@@ -1,6 +1,7 @@
 ---
 sidebar_position: 3
 sidebar_label: Getting Data
+keywords: get, get data, get record, get records, getting record
 ---
 
 # Querying Records
@@ -454,8 +455,10 @@ An example of offset based pagination:
 // POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/query
 
 {
-  "offset": 10,
-  "size": 10
+  "page": {
+    "offset": 10,
+    "size": 10
+  }
 }
 ```
 
@@ -535,3 +538,28 @@ You can find more infromation about pagination in the [API reference](/api-refer
 ## Next Steps
 
 Now that we can get retrieve data from a database, we might be interested in [creating more data](/typescript-client/insert), [updating data](/typescript-client/update) or [deleting data](/typescript-client/delete). We've got guides for each of these operations.
+
+## Using the Replica Store
+
+By specifying the option `consistency: eventual` the query request will be serviced by the Replica Store which has a small, typically insignificant, propagation delay compared to the Primary Store as outlined in the [Data Model](/concepts/data-model) guide.
+
+The default value for the consistency option is `strong`, which retrieves data from the Primary Store and guarantees that the response is up to date with the latest state of the record content.
+
+It is recommended to use the Replica Store for queries wherever possible, in order to get the best possible performance out of your branch's assigned units.
+
+````ts|json
+  ```ts
+  const page = await xata.db.Users.getPaginated({
+    consistency: "eventual"
+  })
+  ```
+  ```json
+  //POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/query
+
+  {
+    "columns": ["*"],
+    "consistency": "eventual"
+  }
+  ```
+```
+````

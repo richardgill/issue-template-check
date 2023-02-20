@@ -38,7 +38,8 @@ Xata applies some limits based on the plan level and the API endpoint in order t
 | Scope                       | Limit       |
 | :-------------------------- | :---------- |
 | Number of columns per table | 256         |
-| String column length        | 256 chars   |
+| id column length            | 255 chars   |
+| String column length        | 2048 chars  |
 | Text column size            | 200 kb      |
 | Multiple type total size    | 65536 chars |
 
@@ -96,5 +97,6 @@ Tips & best practices useful to optimize requests for the Xata API:
 - In case the client receives a `429` response code from Xata, it means the request was **not** processed so your application can safely retry it.
 - Log and track errors in your application error channels or log streams in order to monitor for throttling errors, so you can make informed decisions for adjusting the units assigned to your branch.
 - For writing records to Xata, use the bulk endpoint instead of the atomic (individual record insert) data endpoint. The bulk endpoint allows batching of multiple records in a single request, which favors the optimal use of both your branch's request rate limit and concurrency slots in the transactional store.
+- For requests to the `query` and `summarize` endpoits, consider using the `consistency: eventual` option to use the Read Replicas Store. This makes it less likely to reach the concurrency limit of either Store type and gets the best possible performance from your Xata branch's assigned units.
 
 Custom plans can increase or remove some limits. To discuss upgrading, contact us by [email](mailto:support@xata.io) or fill the [Contact Form](https://support.xata.io/hc/en-us/requests/new).

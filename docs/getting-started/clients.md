@@ -13,9 +13,9 @@ Xata offers a set of client SDKs to help you build your application. The SDKs ar
             <span>JavaScript and TypeScript</span>
             <p>Type-safe SDK for Node.js, V8 and Deno</p>
         </a>
-        <a href="/other-clients/python" className="docs-card">
+        <a href="/python-sdk/overview" className="docs-card">
             <span>Python</span>
-            <p>Work in progress SDK client for Python 3.5+</p>
+            <p>Work in progress SDK client for Python 3.8+</p>
         </a>
     </div>
 </div>

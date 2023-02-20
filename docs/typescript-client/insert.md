@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 sidebar_label: Creating Data
+keywords: create, insert, insert data, create record, insert record, inserting record
 ---
 
 # Creating Records

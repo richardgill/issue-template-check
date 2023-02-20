@@ -22,3 +22,16 @@ export const getXataClient = () => {
   return instance
 }
 ```
+
+## Manually passing the apiKey
+
+Some frameworks may not be compatible with parsing credentials from `.env`, instead requiring to pass your API key manually with the `apiKey` constructor option:
+
+```ts
+import { XataClient } from './xata'
+const xata = new XataClient({ apiKey: XATA_API_KEY })
+```
+
+## Providing a fetch implementation
+
+In case your runtime does not provide a built-in Fetch API (such as with versions prior to Node 18), you will need to pass a fetch implementation to the `fetch ` constructor parameter of the XataClient in the `xata.ts` / `xata.js `file in your project.

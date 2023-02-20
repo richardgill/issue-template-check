@@ -259,6 +259,12 @@ To insert a value of type `object`, simply use a JSON map:
 }
 ```
 
+While the API supports the object type, the Web UI and CLI do not expose it as an option yet. There is still work in progress.
+
+In the Web UI, object fields can be created implicitly by creating columns with dotted names. For example columns "user.id" and "user.name" will result in a column "user" of type "object" with the fields "id" and "name" in it, while "user.details.address" will create a nested object "details" within the object "user".
+
+At the moment Xata does not provide automatic schema expansion from JSON objects. The object's structure must be explicitly defined with matching columns in the schema. In case an incoming record contains a JSON object that does not comply with the defined schema, the record will be rejected. Alternatively, JSON content can be stored in text columns.
+
 ### link
 
 The `link` type represents a link to another table. See the [links and relations](#links-and-relations) section for more information.
@@ -293,7 +299,7 @@ The `id` and `xata.*` are not explicitely represented in the [schema](/concepts/
 
 ### id
 
-The `id` column contains the record ID. It is of type `string` and it is guaranteed to be unique within the table. If you don't explicitly provide an `id` value, Xata will generate one for you, with the following properties:
+The `id` column contains the record ID. It is of type `string`, limited to 255 chars and it is guaranteed to be unique within the table. If you don't explicitly provide an `id` value, Xata will generate one for you, with the following properties:
 
 - globally unique
 - sortable, with the newest record having the highest ID
@@ -354,6 +360,16 @@ You can add constraints to protect the integrity of your data. We support the fo
 - `notNull`: Column value cannot be NULL. Requests to create or update a record are rejected with an error if they set this column to NULL. When `notNull` is set, you must also set a default value for the column using `defaultValue`. In case no value is set for this column when creating a record, **the defaultValue will be applied**.
 
 Limitations: You can add constraints only to new columns of empty tables.
+
+## Consistency
+
+Branches in Xata are replicated from a Primary Store to multiple Replica Stores. Data operations such as insert/update/delete are first performed in the Primary Store and changes are subsequently propagated to the Replica Stores, making them eventually consistent.
+
+The propagation delay may vary and there is no strict guarantee but it is typically much less than 100 milliseconds for the vast majority of requests.
+
+Xata units grant dedicated concurrency slots to the Primary and the eventually consistent Replica Stores. Read operations performed by the `/query` and `/summarize` endpoints can run against either of the Primary or Replica Stores. While the default method for those operations is `consistency: strong`, so they use the Primary Store to ensure the Xata API returns most accurate data by default, it is strongly advised to use the Replica Store wherever possible.
+
+This allows the available concurrency slots in the Primary Store to serve write operations and queries that purposely retrieve the latest state of content. Thus making it less likely for the operations that use the Primary Store to reach the [concurrency limit](/rest-api/limits) and allowing you to get the best possible performance out of your branch's assigned units by utilizing both Store types.
 
 ## Conclusion
 

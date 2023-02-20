@@ -9,7 +9,7 @@ An directory of classic games, this app was built with Xata using Next.js 13 to 
 
 **The app contains over 7k games, and searches through them in milliseconds.**
 
-![search-retro-games](/docs/images/docs/examples/retro-games.png)
+![search-retro-games](/images/docs/examples/retro-games.png)
 
 This app was contributed by [Anjana Sofia Vakil](https://anjana.dev/).
 
