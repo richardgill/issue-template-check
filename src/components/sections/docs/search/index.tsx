@@ -336,7 +336,7 @@ export const Search = ({ openApiBranch = 'main' }: Props) => {
                   if (loading) {
                     return (
                       <Flex justifyContent="space-between" p={12}>
-                        <Text>loading…</Text>
+                        <Text>Loading...</Text>
                       </Flex>
                     )
                   }
