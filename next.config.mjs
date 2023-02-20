@@ -28,7 +28,20 @@ const nextConfig = {
           },
           ...baseRedirects,
         ]
-      : baseRedirects
+      : [
+          /**
+           * To help work on non-production envs,
+           * we redirect root to /docs/overview so it
+           * does not throw a 404.
+           */
+          {
+            source: '/',
+            destination: '/docs/overview',
+            basePath: false,
+            permanent: false,
+          },
+          ...baseRedirects,
+        ]
   },
   async rewrites() {
     /**
