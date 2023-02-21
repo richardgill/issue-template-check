@@ -15,7 +15,6 @@ import { defaultAnnouncement } from './announcement-banner/announcement-banner'
 import { Footer, FooterProps } from './footer'
 import { defaultFooterLinks } from './footer/footer'
 import { Header, HeaderProps } from './header'
-import { defaultHeaderLinks } from './header/header'
 
 const preloadFonts = [
   '/docs/fonts/eina03/Eina03-Light.woff2',
@@ -43,7 +42,7 @@ type SeoMetadata = {
 type PageLayoutProps = {
   seoMetadata?: SeoMetadata
   announcement?: AnnouncementBannerProps | false
-  header?: HeaderProps
+  header: HeaderProps
   footer?: FooterProps
   overflowHidden?: boolean
   mainOverflowing?: boolean
@@ -53,7 +52,7 @@ export const PageLayout: FC<PropsWithChildren<PageLayoutProps>> = ({
   children,
   seoMetadata,
   announcement = defaultAnnouncement,
-  header = { links: defaultHeaderLinks, mobileMenu: true },
+  header,
   footer = defaultFooterLinks,
   overflowHidden = false,
   mainOverflowing = true,
