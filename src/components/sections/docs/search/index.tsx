@@ -349,7 +349,6 @@ export const Search = ({ openApiBranch = 'main' }: Props) => {
                     )
                   }
                   return results.map((r) => {
-                    console.log(r.slug)
                     const url = r.slug.startsWith('/docs')
                       ? r.slug.replace('/docs', '')
                       : r.slug
@@ -451,7 +450,7 @@ export const Search = ({ openApiBranch = 'main' }: Props) => {
                                       color="textSubtle"
                                       noOfLines={1}
                                     >
-                                      {r.slug}
+                                      /docs{r.slug}
                                     </Code>
                                   </Flex>
                                 </Box>

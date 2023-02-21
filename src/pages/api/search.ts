@@ -44,11 +44,13 @@ const handler: NextApiHandler = async (req, res) => {
 
   const { records } = response
   res.setHeader('Cache-Control', 'max-age=1, stale-while-revalidate=300')
-
   res.end(
     JSON.stringify(
       records.map((r: { content: string; [k: string]: string }) => ({
         ...r,
+        slug: r.slug.startsWith('/docs/')
+          ? r.slug.replace('/docs/', '/')
+          : r.slug,
         content: r.content,
         contentText: markdownToTxt(r.content ?? ''),
         xata: r.xata,
