@@ -27,17 +27,17 @@ const handler: NextApiHandler = async (req, res) => {
     // c-v.sh is a secure pastebin
     imageUrl = await fetch('https://c-v.sh/?from_gui=true', {
       method: 'POST',
-      body: body as unknown as BodyInit
+      body: body as unknown as BodyInit,
     })
       .then((r) => r.text())
       .then((r) => r.match(/https:\/\/c-v.sh\/(.*)\.(jpg|png)/gim)?.[0] ?? '')
   }
 
-  await fetchFromGitHub('/repos/xataio/website/issues', {
+  await fetchFromGitHub('/repos/xataio/docs/issues', {
     method: 'POST',
     headers: { Accept: 'application/vnd.github.v3+json' },
     body: JSON.stringify({
-      title: `Feedback from Docs Site`,
+      title: `User Feedback`,
       body: `## Feedback
 ${feedback}${
         imageUrl
@@ -51,8 +51,8 @@ ${feedback}${
 ${route}
 
 ## From
-${userId}`
-    })
+${userId}`,
+    }),
   })
 
   res.end()
