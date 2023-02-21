@@ -193,15 +193,9 @@ export const Header = ({ links, rightSideButton }: HeaderProps) => {
     window.open('https://github.com/xataio/company', '_blank')
   }
 
-  const isDocsPage = router?.pathname?.startsWith('/docs')
-
-  // Hardcoded color hack because the header doesn't know about Chakra sometimes
-  let headerDocsStyle = undefined
-  if (isDocsPage) {
-    headerDocsStyle = {
-      background: 'rgb(20, 20, 23)',
-      borderBottom: '1px solid rgb(38, 38, 41)',
-    }
+  const headerDocsStyle = {
+    background: 'rgb(20, 20, 23)',
+    borderBottom: '1px solid rgb(38, 38, 41)',
   }
 
   return (
@@ -209,8 +203,7 @@ export const Header = ({ links, rightSideButton }: HeaderProps) => {
       <header className="sticky top-0 z-50 w-screen">
         <div
           className={clsx('transition-colors duration-300 max-w-screen', {
-            'bg-blue-darker bg-opacity-80 backdrop-blur-sm':
-              hasScrolled && !isDocsPage,
+            'bg-blue-darker bg-opacity-80 backdrop-blur-sm': hasScrolled,
           })}
           style={headerDocsStyle}
         >
@@ -221,10 +214,7 @@ export const Header = ({ links, rightSideButton }: HeaderProps) => {
             rightSideButton={rightSideButton}
           />
 
-          <Container
-            size={isDocsPage ? 'full' : 'xl'}
-            className={`hidden lg:block`}
-          >
+          <Container size="full" className="hidden lg:block">
             <div className="flex items-center justify-start w-full py-3 3xl:py-2">
               <div className="lg:flex-0">
                 <a
