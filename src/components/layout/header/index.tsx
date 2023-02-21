@@ -138,12 +138,12 @@ const HeaderMobile = ({
 
     <div className="bg-rainbow-radial-gradient pb-[1px] lg:hidden relative z-30">
       <Container className="flex items-center justify-between py-4 bg-blue-darker lg:hidden">
-        <Link href="/" aria-label="Logo">
+        <a href="https://xata.io" aria-label="Logo">
           <span className="sr-only">Xata</span>
           <span>
             <Logo className="w-[80px]" />
           </span>
-        </Link>
+        </a>
         <div className="flex items center">
           <span className="flex mr-4">{rightSideButton}</span>
           <Button
@@ -227,12 +227,16 @@ export const Header = ({ links, rightSideButton }: HeaderProps) => {
           >
             <div className="flex items-center justify-start w-full py-3 3xl:py-2">
               <div className="lg:flex-0">
-                <Link href="/" aria-label="Logo" className="inline-block">
+                <a
+                  href="https://xata.io"
+                  aria-label="Logo"
+                  className="inline-block"
+                >
                   <span className="sr-only">Xata</span>
                   <span onContextMenu={handleLogoRightClick}>
                     <Logo className="w-[105px]" />
                   </span>
-                </Link>
+                </a>
               </div>
 
               {links.length > 0 && (

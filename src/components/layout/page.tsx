@@ -119,10 +119,7 @@ export const PageLayout: FC<PropsWithChildren<PageLayoutProps>> = ({
         ]}
         additionalMetaTags={seoMetadata?.additionalMetaTags ?? []}
       />
-      <Header
-        links={header?.links}
-        rightSideButton={(header as any).rightSideButton}
-      />
+      <Header links={header.links} rightSideButton={header.rightSideButton} />
       <main
         className={clsx({
           '-mt-[99px] lg:-mt-[118px]': announcement && mainOverflowing,
