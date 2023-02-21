@@ -137,7 +137,9 @@ export const Search = ({ openApiBranch = 'main' }: Props) => {
 
     setLoading(true)
     fetch(
-      `/api/search?query=${encodeURIComponent(query)}&branch=${openApiBranch}`,
+      `/docs/api/search?query=${encodeURIComponent(
+        query
+      )}&branch=${openApiBranch}`,
       { signal: controller.signal }
     )
       .then((r) => r.json())
@@ -170,7 +172,7 @@ export const Search = ({ openApiBranch = 'main' }: Props) => {
 
     setLoading(true)
     fetch(
-      `/api/search?query=${encodeURIComponent(
+      `/docs/api/search?query=${encodeURIComponent(
         debouncedQuery
       )}&branch=${openApiBranch}`
     )
