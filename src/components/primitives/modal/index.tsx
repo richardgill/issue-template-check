@@ -44,7 +44,7 @@ export const Modal = ({ open, onOpenChange }: ModalProps) => (
                 className="absolute z-20 flex top-2 right-2 lg:top-6 lg:right-6"
               >
                 <Image
-                  src="/icons/layout/header/cross.svg"
+                  src="/docs/icons/layout/header/cross.svg"
                   width={24}
                   height={24}
                   alt="close"
@@ -93,7 +93,7 @@ export const Modal = ({ open, onOpenChange }: ModalProps) => (
                 <Image
                   alt="close"
                   height={24}
-                  src="/icons/layout/header/cross.svg"
+                  src="/docs/icons/layout/header/cross.svg"
                   width={24}
                 />
               </Button>
