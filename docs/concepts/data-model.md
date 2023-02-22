@@ -206,7 +206,7 @@ Example value:
 
 ### multiple
 
-The `multiple` type represents an array of strings. Set `notNull` to require a value.
+The `multiple` type represents an array of strings.
 
 Example definition:
 
