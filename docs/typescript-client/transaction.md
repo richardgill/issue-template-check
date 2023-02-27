@@ -94,8 +94,25 @@ Inserts can be used to insert records across any number of tables in your databa
 you can explicitly set an ID, or omit it and have Xata auto-generate one for you. Either way, on a successful transaction,
 Xata will return the ID to you.
 
-By default, if a record exists with the same explicit ID, Xata will overwrite the record. You can tune this behavior by
+By default, if a record exists with the same explicit ID, Xata will overwrite the record. You can adjust this behavior by
 setting `createOnly` to `true` for the operation.
+
+
+````ts|json
+  ```ts
+  const result = await xata.transactions.run([
+    { insert: { table: 'titles', record: { id: "rec_cfl4g6v838og05h0iv6g", originalTitle: 'A new film' }, createOnly: true } }
+  ]);
+  ```
+  ```json
+  // POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/transaction
+  {
+      "operations": [
+          {"insert": {"table": "titles", "record": {"id": "rec_cfl4g6v838og05h0iv6g", "originalTitle": "A new film"}, "createOnly": true } }
+      ]
+  }
+  ```
+````
 
 We also support the `ifVersion` flag to avoid overwriting unexpected versions of the record.
 

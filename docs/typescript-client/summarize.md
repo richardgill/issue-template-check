@@ -260,7 +260,7 @@ Page lets you determine how many results are returned. We currently only support
 
 The default setting for `size` , if not specified in the request, is 20 results. We allow you to set this between 1 and 1000.
 
-If this limitation is too small, we ask that you move your workload to the [aggregate](./aggregate) endpoint which does not have such limitations.
+If this limitation is too small, we ask that you move your workload to the [aggregate](/typescript-client/aggregate) endpoint which does not have such limitations.
 
 An example of a page request looks like:
 
@@ -386,12 +386,12 @@ Eventual consistency utilizes the dedicated concurrency connections of the Read 
 
 **Use the aggregate endpoint**
 
-The [aggregate](./aggregate) endpoint will almost always perform better. It's quicker to handle larger tables, with more cardinality, and does not have a hard limit on the amount of results that one can request in a single request. See the below section "Summarize or Aggregate" to understand why.
+The [aggregate](/typescript-client/aggregate) endpoint will almost always perform better. It's quicker to handle larger tables, with more cardinality, and does not have a hard limit on the amount of results that one can request in a single request. See the below section "Summarize or Aggregate" to understand why.
 
 ## Summarize or Aggregate?
 
-Summarize and [aggregate](./aggregate) both return similar results. They differ in terms of the underlying store the data is served from. When using summarize, one retrieves data from PostgreSQL. This means that you will retrieve consistent results.
+Summarize and [aggregate](/typescript-client/aggregate) both return similar results. They differ in terms of the underlying store the data is served from. When using summarize, one retrieves data from PostgreSQL. This means that you will retrieve consistent results.
 
 However, PostgreSQL storage is not optimized to work on these types of queries. Running these workloads will tend to be slower and consume for of your account's concurrency limits. For larger tables and for cases where eventual consistency is acceptable, we recommend using the aggregate endpoint. The aggregate endpoint services the same kinds of requests, but from our column-store rather than from Postgres. This results in far faster responses to your requests.
 
-Note: there are some minor differences to how the two endpoints function. Please see the [documentation for aggregate](./aggregate) for more information.
+Note: there are some minor differences to how the two endpoints function. Please see the [documentation for aggregate](/typescript-client/aggregate) for more information.

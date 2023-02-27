@@ -93,7 +93,10 @@ The response looks like this:
 
 For the REST API example, note that the `id` and `xata.version` are included in the returned records. We will discuss the `meta.page` object when we talk about [paginating](#paginating-results) through the records.
 
-## The TypeScript SDK functions for querying
+## The TypeScript SDK Functions for Querying
+
+The `getFirst()` method returns the first record matching the query, in ascending order of the `id` string field. In case there are no matching records it returns `null`.
+Alternatively, the `getFirstOrThrow()` method can be used to throw a `"No results found."` console error in case there are no results to return.
 
 The TypeScript SDK provides three methods for querying multiple records:
 

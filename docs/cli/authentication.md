@@ -20,6 +20,22 @@ From now on, when you use the Xata CLI _outside_ of a project (i.e, _globally_) 
 
 Working with workspaces globally does not require any further flags.
 
+#### Authentication Profiles
+
+The Xata CLI support multiple authentication profiles to manage accounts accessible with different API keys.
+
+To create a named authentication profile, provide the `--profile` parameter to the login command:
+
+```
+xata auth login --profile personal
+```
+
+This creates a new profile entry in your credentials file at `~/.config/xata/credentials`.
+
+In case no profile parameter is specified, the login command uses the `default` profile.
+
+Once a named login profile is created, you can use it by adding the `--profile` argument to your Xata CLI commands.
+
 ### Project Mode
 
 To authenticate in a specific project, run `xata init --db=[databaseUrl]`. You can get your database URL from the workspace configuration page in the Web UI. Replace the `{region}` and `{database}` parts in the Workspace API base URL with your database region and name. This will create some configuration files in your project that the CLI will reference when working with Xata. Here's what happens when you initialize a project:
