@@ -5,6 +5,9 @@ import {
   Heading,
   Hide,
   Link,
+  Button,
+  Text,
+  Divider,
 } from '@chakra-ui/react'
 import { title } from 'case'
 import { readFile, stat } from 'fs/promises'
@@ -32,6 +35,7 @@ import theme from '~/theme/theme'
 import { headerLinks } from '~/util/header-links'
 import { persistPageToXataForSearch } from '~/util/persist-page-to-xata-for-search'
 import mdToTxt from 'markdown-to-txt'
+import { ChatModal } from '~/components/common/chat'
 
 type Heading = { level: number; slug: string; text: string }
 
@@ -95,6 +99,18 @@ const Doc: FC<Props> = ({
                 maxW={960}
                 m="auto"
               >
+                <Flex align="center" mb={4} gap={4}>
+                  <Text color="textSubtle">Want to find the answer quick?</Text>
+
+                  <ChatModal
+                    button={
+                      <Button size="xs" colorScheme="primary">
+                        Ask our chat bot
+                      </Button>
+                    }
+                  />
+                </Flex>
+                <Divider mb={4} />
                 <MarkdownContent>{content}</MarkdownContent>
                 <DocFooter
                   lastModified={lastModified}

@@ -65,7 +65,7 @@ export const ConsoleWithCode: FC<PropsWithChildren<Props>> = ({
       const expectedLanguages = languages.join(', ')
       const snippetLanguages = snippets.map((s) => s.language).join(', ')
 
-      throw new Error(
+      console.warn(
         `The first line of this multi-code snippet tells us to expect snippets for ${expectedLanguages}, but we only found ${snippets.length} snippets, for languages ${snippetLanguages}. Please either adjust the first line of the multi-code snippet, or add a snippet for the missing language.`
       )
     }

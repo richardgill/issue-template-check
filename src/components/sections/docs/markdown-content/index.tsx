@@ -254,6 +254,7 @@ export const MarkdownContent = ({ children }: { children: string }) => (
     rehypePlugins={[rehypeRaw]}
     remarkPlugins={[remarkGfm]}
     components={MarkdownComponents}
+    width="full"
   >
     {children}
   </CharkraReactMarkdown>
