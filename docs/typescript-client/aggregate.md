@@ -1,6 +1,7 @@
 ---
 sidebar_position: 8
 sidebar_label: Aggregating
+keywords: aggregate, aggregate data, aggregations, aggregate request
 ---
 
 # Aggregations
