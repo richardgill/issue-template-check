@@ -1,5 +1,4 @@
 import {
-  BoxProps,
   Button,
   Flex,
   Input,
@@ -15,14 +14,14 @@ import {
   Text,
   useDisclosure,
 } from '@chakra-ui/react'
-import { cloneElement, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MarkdownContent } from '~/components/sections/docs/markdown-content'
 import { useAskXataDocs } from '~/hooks/use-ask-docs'
 import { useGetXataDocs } from '~/hooks/use-get-docs'
 import { XataAnimated } from '../loader/'
 
-interface ChatModalProps extends BoxProps {
-  button: JSX.Element
+interface ChatModalProps {
+  defaultOpen?: boolean
 }
 
 const questions = [
@@ -36,7 +35,7 @@ const questions = [
   'What is the difference between the aggregate and summarize API?',
 ]
 
-export const ChatModal: React.FC<ChatModalProps> = ({ button, ...props }) => {
+export const ChatModal: React.FC<ChatModalProps> = ({ defaultOpen }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { answer, records, askQuestion, isLoading, clearAnswer } =
     useAskXataDocs()
@@ -65,10 +64,15 @@ export const ChatModal: React.FC<ChatModalProps> = ({ button, ...props }) => {
     }
   }, [value])
 
+  useEffect(() => {
+    if (defaultOpen) onOpen()
+  }, [defaultOpen])
+
   return (
     <>
-      {/* Clone the prop onClick={onOpen} to button */}
-      {cloneElement(button, { onClick: onOpen, ...props })}
+      <Button size="xs" colorScheme="primary" onClick={onOpen}>
+        Ask our chat bot
+      </Button>
 
       <Modal isOpen={isOpen} onClose={handleClose} size="3xl">
         <ModalOverlay />
@@ -177,7 +181,10 @@ export const ChatModal: React.FC<ChatModalProps> = ({ button, ...props }) => {
           >
             <Text color="textSubtle" fontWeight="normal" fontSize="xs">
               This feature is powered by Xata and OpenAI. Read this{' '}
-              <Link>blog post</Link> to learn more.
+              <Link href="https://xata.io/blog/chatgpt-on-your-data">
+                blog post
+              </Link>{' '}
+              to learn more.
             </Text>
           </ModalFooter>
         </ModalContent>

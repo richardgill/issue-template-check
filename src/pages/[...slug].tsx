@@ -1,13 +1,12 @@
 import {
   Box,
   ChakraProvider,
+  Divider,
   Flex,
   Heading,
   Hide,
   Link,
-  Button,
   Text,
-  Divider,
 } from '@chakra-ui/react'
 import { title } from 'case'
 import { readFile, stat } from 'fs/promises'
@@ -16,8 +15,10 @@ import metadataParser from 'markdown-yaml-metadata-parser'
 import { marked } from 'marked'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { join } from 'path'
-import { createElement, type FC } from 'react'
+import { createElement, useEffect, useState, type FC } from 'react'
 
+import mdToTxt from 'markdown-to-txt'
+import { ChatModal } from '~/components/common/chat'
 import { PageLayout } from '~/components/layout/page'
 import DocFooter, {
   DocFooterProps,
@@ -34,8 +35,7 @@ import { diffBetweenToDates } from '~/lib/utils/dates'
 import theme from '~/theme/theme'
 import { headerLinks } from '~/util/header-links'
 import { persistPageToXataForSearch } from '~/util/persist-page-to-xata-for-search'
-import mdToTxt from 'markdown-to-txt'
-import { ChatModal } from '~/components/common/chat'
+import { useRouter } from 'next/router'
 
 type Heading = { level: number; slug: string; text: string }
 
@@ -59,6 +59,16 @@ const Doc: FC<Props> = ({
 }) => {
   const title = markdownToTxt(content || '').split('\n')[0]
   const description = markdownToTxt(content || '').split('\n')[2]
+  const [showChat, setShowChat] = useState(false)
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!router.isReady) return
+    if (router.query['show-chat'] !== undefined) {
+      setShowChat(true)
+    }
+  }, [router.isReady, router.query])
 
   if (!content) return null
 
@@ -102,13 +112,7 @@ const Doc: FC<Props> = ({
                 <Flex align="center" mb={4} gap={4}>
                   <Text color="textSubtle">Want to find the answer quick?</Text>
 
-                  <ChatModal
-                    button={
-                      <Button size="xs" colorScheme="primary">
-                        Ask our chat bot
-                      </Button>
-                    }
-                  />
+                  <ChatModal defaultOpen={showChat} />
                 </Flex>
                 <Divider mb={4} />
                 <MarkdownContent>{content}</MarkdownContent>
