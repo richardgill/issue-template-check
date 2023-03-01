@@ -16,7 +16,7 @@ export const useGetXataDocs = (ids: string[] = []) => {
     }
 
     const fetchData = async () => {
-      const response = await fetch(`/api/docs-get`, {
+      const response = await fetch(`/docs/api/docs-get`, {
         method: 'POST',
         body: JSON.stringify({ ids }),
         headers: { 'Content-Type': 'application/json' },

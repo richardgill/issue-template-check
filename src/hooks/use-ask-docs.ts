@@ -14,7 +14,7 @@ export const useAskXataDocs = () => {
     setRecords([])
     setIsLoading(true)
 
-    void fetchEventSource(`/api/docs-chat`, {
+    void fetchEventSource(`/docs/api/docs-chat`, {
       method: 'POST',
       body: JSON.stringify({ question }),
       headers: { 'Content-Type': 'application/json' },
