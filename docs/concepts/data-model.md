@@ -225,6 +225,24 @@ To insert a value into a `multiple` column, use a JSON array of strings, for exa
 }
 ```
 
+### vector
+
+The `vector` type represents a vector of floating point numbers with a fixed dimension. This type can be used to store embeddings computed via machine learning, for example by calling the [OpenAI embeddings API](https://platform.openai.com/docs/guides/embeddings). The dimension of the vector must
+be defined in the schema, and must be a number between 2 and 10,000. For example:
+
+```json
+{
+  "name": "embedding",
+  "type": "vector",
+  "vector": {
+    "dimension": 1536
+  }
+}
+```
+
+In the example above we set the dimension to 1536, which is the output dimension produced by the OpenAI embeddings API, however, you can store embeddings
+produced by any other machine learning model. Once you store the embeddings, you can use vector search for a number of use cases, see the [Similarity/Vector search](/typescript-client/vector-search) section for more information.
+
 ### object
 
 The `object` type represents a group of columns. Objects can also be nested multiple times by adding a column of type `object` inside the object. Set `unique` to make sure the objects you insert are unique.
