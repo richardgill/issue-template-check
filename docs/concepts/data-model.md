@@ -142,9 +142,9 @@ Example definition:
 ```json
 {
   "name": "createdAt",
-  "type": "datetime"
+  "type": "datetime",
   "notNull": true,
-  "defaultValue": "now",
+  "defaultValue": "now"
 }
 ```
 
