@@ -454,30 +454,44 @@ The offset-page pagination is limited to querying up to 1000 records and is reco
 
 An example of offset based pagination:
 
-```json
-// POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/query
-
-{
-  "page": {
-    "offset": 10,
-    "size": 10
+````ts|json
+  ```ts
+  const page = await xata.db.Users.getPaginated({
+    pagination: { size: 10, offset: 10 }
+  })
+  ```
+  ```json
+  // POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/query
+  
+  {
+    "page": {
+      "offset": 10,
+      "size": 10
+    }
   }
-}
-```
+  ```
+````
 
 ### Cursor-based Pagination
 
 When running a query, you can specify a particular page size. For example:
 
-```json
-// POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/query
+````ts|json
+  ```ts
+  const page = await xata.db.Users.getPaginated({
+    pagination: { size: 2 }
+  })
+  ```
+  ```json
+  // POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/query
 
-{
-  "page": {
-    "size": 2
+  {
+    "page": {
+      "size": 2
+    }
   }
-}
-```
+  ```
+````
 
 Returns only the first two records:
 
@@ -523,16 +537,25 @@ Returns only the first two records:
 
 In this case, notice that the `meta.page` objects contains `"more": true`. This is an indication that there are more records available. The `"cursor"` key is a pointer to the current page. To retrieve the next page of results, you can make a request like this:
 
-```json
-// POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/query
+````ts|json
+  ```ts
+  const page1 = await xata.db.Users.getPaginated({
+    pagination: { size: 2 }
+  });
+  
+  const page2 = await page1.nextPage();
+  ```
+  ```json
+  // POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/query
 
-{
-  "page": {
-    "size": 2,
-    "after": "VMoxDsIwDAXQnWP8OUPSASFfAnZUoZDWtSEEyTFT1bujion9PdKK_"
+  {
+    "page": {
+      "size": 2,
+      "after": "VMoxDsIwDAXQnWP8OUPSASFfAnZUoZDWtSEEyTFT1bujion9PdKK_"
+    }
   }
-}
-```
+  ```
+````
 
 You can continue like this until `"more"` is returned as `false`.
 
