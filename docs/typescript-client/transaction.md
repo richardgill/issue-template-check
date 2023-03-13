@@ -37,7 +37,7 @@ Our approach with transactions has been to start small, and to be careful about 
 
 The Xata transactions API be thought of as a way to wrap our existing insert, update, and delete operations into a single operation. The options for each operation are almost identical to their non-transactional counterparts.
 
-We'll start by taking a look at a look at a full request-response, and then we'll step into each operation and it's options.
+We'll start by taking a look at a full request-response, and then we'll step into each operation and its options.
 
 ````ts|json
   ```ts
@@ -88,6 +88,19 @@ Or, in case of error, you know that all operations have been rolled back for you
 }
 ```
 
+In order to access the errors array returned from the Typescript SDK you can handle errors with a `try catch` statement:
+
+```ts
+import { FetcherError } from '@xata.io/client';
+
+try {
+    const result = await xata.transactions.run([{...operations...}]);
+} catch (error: FetcherError) {
+    console.log(error.status);
+    console.log(error.errors);
+}
+```
+
 **inserts**
 
 Inserts can be used to insert records across any number of tables in your database. As with the insert endpoints,
@@ -96,7 +109,6 @@ Xata will return the ID to you.
 
 By default, if a record exists with the same explicit ID, Xata will overwrite the record. You can adjust this behavior by
 setting `createOnly` to `true` for the operation.
-
 
 ````ts|json
   ```ts
