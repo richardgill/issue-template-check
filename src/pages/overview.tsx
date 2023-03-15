@@ -187,7 +187,7 @@ const Overview: FC<Props> = ({ sidebar }) => {
                   <Text mb={4}>
                     If you are new to Xata, we recommend you start by{' '}
                     <Link href="https://app.xata.io">creating an account</Link>,{' '}
-                    <Link href="/docs/gettings-started/installation">
+                    <Link href="/docs/getting-started/installation">
                       installing the CLI
                     </Link>{' '}
                     and then learning about a SDK client or the REST API.
