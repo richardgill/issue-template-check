@@ -1,108 +1,115 @@
 ---
 sidebar_position: 1
-sidebar_label: Installation
+sidebar_label: Installation and API keys
+keywords: api keys, cli, init
 ---
 
-# Installation
+# Installation and API keys
 
-Once you already got your account and is ready to start, there are 2 steps to go through.
+This document will get you started with the very basics of how to authenticate your project against a Xata database. More context on how to use Xata once you've installed it can either be found in the client SDK pages, the API reference pages, or with one of our platform quickstarts.
 
-1. Link your project to a Xata Database.
-2. Install and generate an instance of the Client SDK.
+## Install the Xata CLI
 
-## Link Your Project
+Xata comes with a CLI (command line tool) to help connect your project code to xata. It does this by setting up environment variables for your database location and API keys to securely fetch against your data. We recommend installing Xata globally to make this easier.
 
-There are multiple ways to link a project to a Xata Database.
-
-1. Via the CLI (quickest and most ergonomic).
-2. Via the VS Code Extension (for VS Code users, doesn’t affect your system).
-3. Creating a `.xatarc` and a `.env` manually.
-
-> Make sure your app has a way of reading `.env` files in the Node.js runtime.
-
-### Xata CLI
-
-The quickest is probably having the Xata CLI installed and initializing the connection.
-
-```sh
-npm install -g @xata.io/cli@latest
+```bash
+# Installs the CLI globally
+npm install -g @xata.io/cli
 ```
 
-This will install the package globally in your system and add the `xata` command to your `$PATH`. Once this is done, from the root of your project you can initialize the link.
+You can alternatively install xata only within your project and manage it through your package manager and scripts.
+
+### Authenticate the CLI to your account
+
+The CLI needs to know who is running it. This means authenticating it against our logged in user and generating an API key to use when we push, pull or create any databases we make. To set this up run:
+
+```bash
+xata auth login
+```
+
+This should open your browser and give a confirmation message. Remember to make sure you are logged in to Xata before performing this step. On completion this command will create a new API key for your user account which you should [see in account settings page within the Xata UI][1]. That key will also be stored locally on your computer (the location might vary for each OS). It should look like this:
 
 ```sh
+# .config/xata/credentials
+[default]
+apiKey=YOUR_API_KEY_HERE
+```
+
+## Setting up necessary Xata files in your project
+
+Once you have the CLI globally installed with an API key, you can run `xata init` inside any project folder to set up project specific files that Xata requires to know which database to connect to. This is done with the `xata init` command.
+
+```bash
+# Initialize xata in your project directory
 xata init
 ```
 
-When using the CLI from your system, make sure to keep it in sync with your SDK (ideally both in their latest versions), so the generated types are compatible to the instance of the ORM (Object-Relational Mapping).
+When run for the first time within a project directory the `xata init` command will prompt you with questions about how to set up your project. If you've already set up a database using the [web application][0], you can select it and generate code to match.
 
-### VS Code Extension
+The `xata init` command will create three important files in your project that you'll want to become familiar with.
 
-Our VS Code Extension aims for feature parity with the [Xata Web UI](https://app.xata.io) and it leverages the Xata CLI to provide a all-in-one dashboard/integration mechanism for your projects with via VS Code.
+### .env
 
-- If you already have a `.env` it will show your Databases in the **Explorer** section.
-- If you already have a `.env` and a `.xatarc` it will also show your project’s database in the **Project** section
-- If any of those are missing, you’ll see "Get Started" buttons that will trigger some prompts to get you set.
+The `.env` file will contain an API key (auto-generated for you) along with any branch details you may have set up.
 
-![Xata VS Code Exentsion view](/images/docs/quick-start/vs-code-extension.png)
-
-The full [documentation](https://github.com/xataio/vs-code-extension) is on GitHub.
-
-### Manually
-
-In order to do initialize manually, it will be necessary to hop into the [Xata Web UI]to generate an [API access token](/getting-started/api-keys), and get your database URL.
-
-With the access token, it’s possible to create the `.env` file at the root of your project.
-
-```sh
-XATA_API_KEY=<value of your access token>
+```bash
+# API key used by the CLI and the SDK
+# Make sure your framework/tooling loads this file on startup to have it available for the SDK
+XATA_API_KEY=YOUR_API_KEY_HERE
+XATA_BRANCH=main
 ```
 
-Now, to get the database URL, go to your workspace configurations page:
+If for some reason you lose your API KEY, you can always generate a new one within the [account settings][1] page of the web application.
 
-![Xata Web UI, workspace configuration panel](/images/docs/quick-start/database-url.png)
+### .xatarc
 
-And now create a new `.xatarc` with your database information.
+The `.xatarc` file is located in the root of your project directory and includes the location of your database, as well as the location of where to store generated code (if you optionally chose language codegen during `xata init`).
 
 ```json
 {
-  "databaseUrl": "<database url>"
-}
-```
-
-With that, we’re off to generating our SDK instance and types!
-
-## Installing the SDK
-
-Now that your project is linked, it’s time to add the Xata Client to your dependencies and generate your schema types.
-
-```sh
-npm i @xata.io/client@latest
-```
-
-## TypeScript Codegen
-
-Now go to the `.xatarc` generated in the step before, and add an output path to your SDK instance.
-
-```json
-{
-  "database": "https://your-database-url",
+  "databaseUrl": "https://my-xata-app-database-url"
   "codegen": {
-    "output": "relative-path/xata.codegen.ts"
+    "output": "src/xata.ts"
   }
 }
 ```
 
-Never tweak the generated file manually. Or your changes might be wiped by the next codegen run.
+### Generated code and credentials
 
-Once this is done, you can run the **codegen** task. If you have the CLI globally installed, you can hop to the terminal and run:
+Depending upon the codegen you went with during `xata init` the CLI will create a file to store generated client code and typings. When choosing TypeScript the default file location will be the `src/xata.ts`. Because the content of this file is generated, you shouldn't edit it directly but import and wrap its contents. This can be helpful to pass in the environment variables.
 
-```shell
-xata codegen
+```tsx
+// This would allow you to wrap the generated client from src/xata.ts with your own credentials in a NEXT.js system
+import { XataClient } from './xata.ts'
+export const xata = new XataClient({ apiKey: process.env.XATA_API_KEY })
 ```
 
-But if you decided against installing it globally, it is also possible to run via `npx`:
+## Working with client SDKs
 
-```sh
-npx @xata.io/cli@latest codegen
-```
+Xata offers a set of client SDKs to help you build your application. The SDKs are available for the following languages:
+
+<div className="docs-cards">
+    <div className="docs-card-group">
+        <a href="/typescript-client/overview" className="docs-card">
+            <span>JavaScript and TypeScript</span>
+            <p>Type-safe SDK for Node.js, V8 and Deno</p>
+        </a>
+        <a href="/python-sdk/overview" className="docs-card">
+            <span>Python</span>
+            <p>Work in progress SDK client for Python 3.8+</p>
+        </a>
+    </div>
+</div>
+
+## Trying out the JavaScript SDK within the web application
+
+The Xata [web application][0] contains a playground area where you can try out the SDK.
+
+Right now the playground is only available for the JavaScript/TypeScript SDK, but we plan to add support for other languages in the future. This should allow you to try out a couple queries against your live database without needed to work with local code.Be careful when pointing to your `main` branch as any operations you perform there will be permanent.
+
+## Managing API keys
+
+Create new API keys by visiting your [account settings][1] page. From here you can also delete or refresh existing keys. If you forget a key, we recommend deleting it and making a new one.
+
+[0]: https://app.xata.io/
+[1]: https://app.xata.io/settings

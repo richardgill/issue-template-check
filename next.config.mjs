@@ -10,6 +10,26 @@ const baseRedirects = [
     basePath: false,
     permanent: false,
   },
+  {
+    source: '/getting-started/clients',
+    destination: '/getting-started/installation',
+    permanent: false,
+  },
+  {
+    source: '/getting-started/api-keys',
+    destination: '/getting-started/installation',
+    permanent: false,
+  },
+  {
+    source: '/tutorials/load-schema',
+    destination: '/recipes/load-schema',
+    permanent: false,
+  },
+  {
+    source: '/tutorials/nextjs-basic-auth',
+    destination: '/getting-started/quickstart-nextjs',
+    permanent: false,
+  },
 ]
 
 /** @type {import('next').NextConfig} */

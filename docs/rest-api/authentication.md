@@ -7,7 +7,7 @@ sidebar_label: Authentication
 
 The Xata API authenticates users using API keys that provide identity while interacting with a database in a secure manner. Below, we'll explore creating a key and then using it to fetch data from the Xata web API.
 
-To create an API key, follow the instructions in the [API keys](/getting-started/api-keys) conceptual explainer.
+To create an API key, visit the [account settings](https://app.xata.io/settings) page.
 
 ## Sending an Authenticated Request
 
@@ -19,8 +19,8 @@ import fetch from 'node-fetch'
 fetch('https://api.xata.io/workspaces', {
   headers: {
     Authorization: 'Bearer YOUR_API_KEY', // <- the magic
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  },
 })
   .then((response) => response.json())
   .then((workspaces) => console.log('Look ma! Workspaces!', workspaces))

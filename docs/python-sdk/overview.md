@@ -23,9 +23,10 @@ pip install xata
 
 ### Workspace URL
 
-To bootstrap the SDK we advise to use the workspace URL. In the [Web UI](/getting-started/web-ui), please navigate to _Workspaces_ then _Configuration_ and you will see the workspace API base URL. Please copy the URL and use it to setup routing.
+To bootstrap the SDK we advise to use the workspace URL. In the [Web UI](https://app.xata.io), please navigate to _Workspaces_ then _Configuration_ and you will see the workspace API base URL. Please copy the URL and use it to setup routing.
 
 The URL can be passed to the client as parameter:
+
 ```py
 xata = XataClient(db_url="REDACTED_DB_URL")
 ```
@@ -35,6 +36,7 @@ Or you can set the environment variable: `XATA_DATABASE_URL`. The parameter valu
 ### Authorization
 
 There are multiple options to pass your Xata credentials to the client. Xata will check following this order of precedence:
+
 1. Parameters passed to the constructor
 2. Environment variables
 3. The `.env` file
@@ -76,7 +78,7 @@ XATA_DATABSE_URL="REDACTED_DB_URL"
 
 #### xatarc configuration file
 
-The `.xatarc` configuration file is the final source to retrieve the API key and the workspace. 
+The `.xatarc` configuration file is the final source to retrieve the API key and the workspace.
 Please refer to the [authentication](/cli/authentication) page to learn more about the `.xatarc` file and best practices.
 
 ## Logging

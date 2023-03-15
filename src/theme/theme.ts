@@ -1,12 +1,12 @@
 import {
   ComponentStyleConfig,
   extendTheme,
-  theme as chakraTheme
+  theme as chakraTheme,
 } from '@chakra-ui/react'
 import {
   GlobalStyleProps,
   mode,
-  StyleFunctionProps
+  StyleFunctionProps,
 } from '@chakra-ui/theme-tools'
 
 import { breakpoints, colors, fonts, semanticTokens } from './tokens'
@@ -18,22 +18,22 @@ const inputStyles = (props: GlobalStyleProps) => ({
   bg: 'inputBg',
   borderColor: 'inputBorder',
   _placeholder: {
-    color: props.colorMode === 'light' ? `gray.400` : `contrastMedium`
+    color: props.colorMode === 'light' ? `gray.400` : `contrastMedium`,
   },
   _focusVisible: {
     outline: 'none',
     boxShadow: `inset var(--chakra-colors-text) 0 0 0 0.07rem !important`,
-    borderColor: 'text'
+    borderColor: 'text',
   },
   _hover: {
-    borderColor: 'contrastMedium'
+    borderColor: 'contrastMedium',
   },
   _disabled: {
     color: 'textSubtle',
     bg: 'contrastLow',
     borderColor: 'stroke',
-    opacity: 1
-  }
+    opacity: 1,
+  },
 })
 
 export type Statuses =
@@ -49,9 +49,9 @@ const Link: ComponentStyleConfig = {
   baseStyle: {
     color: 'textPrimary',
     _hover: {
-      textDecoration: `underline`
-    }
-  }
+      textDecoration: `underline`,
+    },
+  },
 }
 
 const variantSolid = (props: StyleFunctionProps) => {
@@ -62,8 +62,8 @@ const variantSolid = (props: StyleFunctionProps) => {
       color: 'white',
       background: props.colorMode === 'light' ? `${c}.500` : `${c}.500`,
       _hover: {
-        background: props.colorMode === 'light' ? `${c}.600` : `${c}.400`
-      }
+        background: props.colorMode === 'light' ? `${c}.600` : `${c}.400`,
+      },
     }
   }
 }
@@ -74,8 +74,8 @@ const variantSubdued = (props: StyleFunctionProps) => {
     color: 'text',
     background: props.colorMode === 'light' ? `${c}.50` : `${c}.800`,
     _hover: {
-      background: props.colorMode === 'light' ? `${c}.100` : `${c}.700`
-    }
+      background: props.colorMode === 'light' ? `${c}.100` : `${c}.700`,
+    },
   }
 }
 
@@ -83,13 +83,13 @@ const variantSubdued = (props: StyleFunctionProps) => {
 export default extendTheme({
   config: {
     initialColorMode: 'dark',
-    useSystemColorMode: false
+    useSystemColorMode: false,
   },
   styles: {
     global: {
       // This fixes a bug where Stripe's 3DS prompt was broken on darkmode.
       'iframe[src*="stripe.com"]': {
-        colorScheme: 'light'
+        colorScheme: 'light',
       },
       body: {
         // default outline style
@@ -97,15 +97,15 @@ export default extendTheme({
           outlineWidth: '2px',
           outlineStyle: 'solid',
           outlineColor: 'text',
-          boxShadow: 'none !important'
+          boxShadow: 'none !important',
         },
         // main navbar outline should always be a white border for increased visiblity against the various navbar background colors
         '#main-navbar *:focus-visible': {
-          outlineColor: 'white'
+          outlineColor: 'white',
         },
         // A selector with more specificity to override the behavior of the above selector.
         '#main-navbar .default-outline *:focus-visible': {
-          outlineColor: 'text'
+          outlineColor: 'text',
         },
         // Bad hack till we move to MDX
         '.docs-card-group': {
@@ -127,19 +127,19 @@ export default extendTheme({
             ':hover': {
               bg: 'contrastLow',
               span: {
-                textDecoration: 'underline'
-              }
+                textDecoration: 'underline',
+              },
             },
             span: {
-              fontWeight: 'bold'
+              fontWeight: 'bold',
             },
             p: {
-              color: 'textSubtle'
-            }
-          }
-        }
-      }
-    }
+              color: 'textSubtle',
+            },
+          },
+        },
+      },
+    },
   },
   colors,
   fonts,
@@ -149,64 +149,64 @@ export default extendTheme({
     Link,
     Text: {
       baseStyle: {
-        fontSize: 'sm'
-      }
+        fontSize: 'sm',
+      },
     },
     Input: {
       defaultProps: {
         ...chakraTheme.components.Input.defaultProps,
-        size: 'sm'
+        size: 'sm',
       },
       variants: {
         outline: (props: GlobalStyleProps) => ({
-          field: inputStyles(props)
-        })
-      }
+          field: inputStyles(props),
+        }),
+      },
     },
     NumberInput: {
       defaultProps: {
         ...chakraTheme.components.Input.defaultProps,
-        size: 'sm'
+        size: 'sm',
       },
       variants: {
         outline: (props: GlobalStyleProps) => ({
-          field: inputStyles(props)
-        })
-      }
+          field: inputStyles(props),
+        }),
+      },
     },
     Textarea: {
       defaultProps: {
         ...chakraTheme.components.Textarea.defaultProps,
-        size: 'sm'
+        size: 'sm',
       },
       variants: {
-        outline: (props: GlobalStyleProps) => inputStyles(props)
-      }
+        outline: (props: GlobalStyleProps) => inputStyles(props),
+      },
     },
     FormLabel: {
       baseStyle: {
         color: 'textSubtle',
         fontSize: '12px',
-        fontWeight: 700
-      }
+        fontWeight: 700,
+      },
     },
     Select: {
       defaultProps: {
         ...chakraTheme.components.Select.defaultProps,
-        size: 'sm'
+        size: 'sm',
       },
       variants: {
         outline: (props: GlobalStyleProps) => ({
-          field: inputStyles(props)
-        })
-      }
+          field: inputStyles(props),
+        }),
+      },
     },
     Popover: {
       baseStyle: {
         header: {
           fontSize: 'lg',
           fontWeight: 600,
-          border: 'none'
+          border: 'none',
         },
         content: {
           padding: '6px',
@@ -214,22 +214,27 @@ export default extendTheme({
           borderColor: 'dialogBorder',
           boxShadow: 'lg',
           _focus: {
-            boxShadow: 'lg'
+            boxShadow: 'lg',
           },
           _active: {
-            boxShadow: 'lg'
-          }
+            boxShadow: 'lg',
+          },
         },
         body: {
           fontWeight: 400,
-          fontSize: 'sm'
+          fontSize: 'sm',
         },
         footer: {
           borderTopWidth: 0,
           px: 3,
-          py: 3
-        }
-      }
+          py: 3,
+        },
+      },
+    },
+    Code: {
+      baseStyle: {
+        fontSize: 'inherit',
+      },
     },
     Menu: {
       baseStyle: {
@@ -238,39 +243,39 @@ export default extendTheme({
           borderColor: 'dialogBorder',
           boxShadow: '2xl',
           zIndex: 100,
-          minWidth: '180px'
+          minWidth: '180px',
         },
         item: {
           fontSize: 'sm',
           bg: 'dialogBg',
           _hover: {
-            bg: 'contrastLow'
+            bg: 'contrastLow',
           },
           _focus: {
-            bg: 'transparent'
+            bg: 'transparent',
           },
           '.chakra-menu__icon-wrapper': {
             display: 'flex',
-            alignItems: 'center'
-          }
-        }
-      }
+            alignItems: 'center',
+          },
+        },
+      },
     },
     Button: {
       baseStyle: {
         lineHeight: 'unset',
-        fontWeight: 500
+        fontWeight: 500,
       },
       defaultProps: {
         ...chakraTheme.components.Button.defaultProps,
-        size: 'sm'
+        size: 'sm',
       },
       variants: {
         solid: variantSolid,
         subdued: variantSubdued,
         outline: (props: GlobalStyleProps) => {
           return {
-            bg: mode('white', 'transparent')(props)
+            bg: mode('white', 'transparent')(props),
           }
         },
         ghost: (props: GlobalStyleProps) => {
@@ -283,7 +288,7 @@ export default extendTheme({
             _disabled: {
               bg: 'transparent',
               color: defaultColor,
-              opacity: disabledOpacity
+              opacity: disabledOpacity,
             },
             _hover: {
               bg: 'transparent',
@@ -291,13 +296,13 @@ export default extendTheme({
               _disabled: {
                 bg: 'transparent',
                 color: defaultColor,
-                opacity: disabledOpacity
-              }
+                opacity: disabledOpacity,
+              },
             },
             _active: {
               bg: 'transparent',
-              color: defaultColor
-            }
+              color: defaultColor,
+            },
           }
         },
         link: (props: GlobalStyleProps) => {
@@ -310,30 +315,30 @@ export default extendTheme({
             _disabled: {
               bg: 'transparent',
               color: defaultColor,
-              opacity: disabledOpacity
+              opacity: disabledOpacity,
             },
             _hover: {
               textDecoration: 'transparent',
               color: hoverColor,
               _disabled: {
                 color: defaultColor,
-                opacity: disabledOpacity
-              }
+                opacity: disabledOpacity,
+              },
             },
             _active: {
               bg: 'transparent',
-              color: defaultColor
-            }
+              color: defaultColor,
+            },
           }
         },
         warning: (props: GlobalStyleProps) => {
           return {
             ...chakraTheme.components.Button.variants?.solid(props),
             color: 'textDanger',
-            bg: 'bgDanger'
+            bg: 'bgDanger',
           }
-        }
-      }
+        },
+      },
     },
     Checkbox: {
       baseStyle: (props: GlobalStyleProps) => {
@@ -347,43 +352,43 @@ export default extendTheme({
               borderColor: 'contrastFull',
               _hover: {
                 bg: 'text',
-                borderColor: 'text'
-              }
+                borderColor: 'text',
+              },
             },
             _checked: {
               bg: 'contrastFull',
               borderColor: 'contrastFull',
               _hover: {
                 bg: 'contrastFull',
-                borderColor: 'contrastFull'
-              }
+                borderColor: 'contrastFull',
+              },
             },
             _hover: {
-              borderColor: 'text'
+              borderColor: 'text',
             },
             _focusVisible: {
               outline: 'none',
               boxShadow: `inset var(--chakra-colors-text) 0 0 0 0.07rem !important`,
-              borderColor: 'text'
-            }
-          }
+              borderColor: 'text',
+            },
+          },
         }
-      }
+      },
     },
     Modal: {
       baseStyle: {
         dialog: {
           marginTop: '120px',
-          bg: 'bg'
+          bg: 'bg',
         },
         header: {
           fontSize: 'xl',
-          fontWeight: 600
+          fontWeight: 600,
         },
         body: {
-          fontSize: 'md'
-        }
-      }
+          fontSize: 'md',
+        },
+      },
     },
     Tabs: {
       variants: {
@@ -400,96 +405,96 @@ export default extendTheme({
             flexShrink: 0,
             borderColor: 'stroke',
             _notLast: {
-              marginRight: 7
+              marginRight: 7,
             },
             _hover: {
-              color: 'primary'
+              color: 'primary',
             },
             _selected: {
               color: 'textPrimary',
               borderColor: 'primary',
               _hover: {
                 color: 'textPrimary',
-                borderColor: 'primary'
-              }
-            }
+                borderColor: 'primary',
+              },
+            },
           },
           tablist: {
             overflowX: { base: 'scroll', md: 'unset' },
             scrollbarWidth: 'none',
             '::-webkit-scrollbar': {
-              display: 'none'
+              display: 'none',
             },
             borderBottom: 'solid 2px',
             borderBottomWidth: '2px',
             paddingBottom: '-1px',
-            borderColor: 'stroke'
-          }
-        }
-      }
+            borderColor: 'stroke',
+          },
+        },
+      },
     },
     Drawer: {
       baseStyle: {
         dialog: {
-          bg: 'bg'
-        }
+          bg: 'bg',
+        },
       },
       sizes: {
         // This hack adds a custom size drawer for the code drawer.
         codeDrawer: {
           dialog: {
-            maxW: '800px'
-          }
-        }
-      }
+            maxW: '800px',
+          },
+        },
+      },
     },
     Table: {
       baseStyle: {
         th: {
           textTransform: 'none',
           letterSpacing: 'normal',
-          fontWeight: 'semibold'
-        }
+          fontWeight: 'semibold',
+        },
       },
       sizes: {
         sm: {
           th: {
             px: 2,
             fontSize: 'sm',
-            py: 2
+            py: 2,
           },
           td: {
             px: 2,
-            py: 1.5
-          }
-        }
+            py: 1.5,
+          },
+        },
       },
       variants: {
         striped: {
           thead: {
             th: {
-              borderColor: 'transparent'
-            }
+              borderColor: 'transparent',
+            },
           },
           tbody: {
             tr: {
               '&:nth-of-type(even)': {
                 'th, td': {
-                  borderColor: 'transparent'
-                }
+                  borderColor: 'transparent',
+                },
               },
               '&:nth-of-type(odd)': {
                 'th, td': {
-                  borderColor: 'transparent'
+                  borderColor: 'transparent',
                 },
                 td: {
-                  background: 'contrastLowest'
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+                  background: 'contrastLowest',
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 })

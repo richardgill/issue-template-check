@@ -20,7 +20,7 @@ export const Codeblock: FC<PropsWithChildren<CodeProps>> = ({
   children,
   node,
   className,
-  inline
+  inline,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false)
   // MDX code has extra lines
@@ -49,7 +49,7 @@ export const Codeblock: FC<PropsWithChildren<CodeProps>> = ({
   try {
     parsedMeta = JSON.parse(String(node.data?.meta))
     // eslint-disable-next-line no-empty
-  } catch {}
+  } catch { }
 
   if (language === 'mermaid') {
     return <Mermaid>{children}</Mermaid>
@@ -62,11 +62,11 @@ export const Codeblock: FC<PropsWithChildren<CodeProps>> = ({
         if (hasHighlight) {
           const style = highlightLines.includes(lineNumber)
             ? {
-                background: 'var(--chakra-colors-bgInfo)',
-                margin: '0 -16px',
-                paddingLeft: '16px',
-                display: 'block'
-              }
+              background: 'var(--chakra-colors-bgSuccess)',
+              margin: '0 -16px',
+              paddingLeft: '16px',
+              display: 'block',
+            }
             : null
           return { style }
         } else {
@@ -85,7 +85,7 @@ export const Codeblock: FC<PropsWithChildren<CodeProps>> = ({
           <div
             style={{
               // @ts-ignore This is valid CSS.
-              '--tw-gradient-from': '#1e1e1e'
+              '--tw-gradient-from': '#1e1e1e',
             }}
             className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black"
           />
