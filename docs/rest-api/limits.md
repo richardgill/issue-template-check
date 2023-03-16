@@ -84,7 +84,7 @@ Xata uses three Store types with individual concurrency limits:
 - **Read replicas store:** 3 concurrent requests / unit  
   Endpoints: `query`, `summarize` with option `consistency: eventual`
 - **Search & Analytics store:** 5 concurrent requests / unit.  
-  Endpoints: `aggregate`, `search`
+  Endpoints: `aggregate`, `search`, `ask`
 
 In case the concurrency limit in a Store is exceeded, requests to it are throttled internally with a timeout of 50ms. After reaching the timeout, the API errors with HTTP response code `429`.
 
