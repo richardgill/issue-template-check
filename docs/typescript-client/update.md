@@ -66,6 +66,68 @@ It's also possible to update a record if it exists, or create it if it doesn't e
   ```
 ````
 
+## Numeric operations
+
+The numeric types (int and float) support basic mathematical operations: addition, subtraction, multiplication, and division. These operations are performed in a transaction, which means they are atomic.
+
+Here is a simple example that increments a counter:
+
+````ts|json
+  ```ts
+  const user = await xata.db.Users.update("myid", { counter: { $increment: 1 } });
+  ```
+  ```json
+  // PATCH https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/data/rec_c8hnbch26un1nl0rthkg
+
+  {
+    "counter": {
+      "$increment": 1
+    }
+  }
+  ```
+````
+
+And here is an example that adds 10 to the counter:
+
+````ts|json
+  ```ts
+  const user = await xata.db.Users.update("myid", { counter: { $increment: 10 } });
+  ```
+  ```json
+  // PATCH https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/data/rec_c8hnbch26un1nl0rthkg
+
+  {
+    "counter": {
+      "$increment": 10
+    }
+  }
+  ```
+````
+
+And here is an example that divides the counter by 2:
+
+````ts|json
+  ```ts
+  const user = await xata.db.Users.update("myid", { counter: { $divide: 2 } });
+  ```
+  ```json
+  // PATCH https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/data/rec_c8hnbch26un1nl0rthkg
+
+  {
+    "counter": {
+      "$divide": 2
+    }
+  }
+  ```
+````
+
+The following operations are supported:
+
+- `$increment` - adds N to the current value
+- `$decrement` - subtracts N from the current value
+- `$multiply` - multiplies the current value by N
+- `$divide` - divides the current value by N
+
 ## Updating a Linked Record
 
 The SDK provides a method to update one or multiple columns in a Linked record via reference from the current table:
