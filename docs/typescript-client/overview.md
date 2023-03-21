@@ -9,6 +9,10 @@ The Xata SDK supports typescript definitions for your Xata database schema. It a
 
 It has zero dependencies and can run in Node.js, V8, Deno, and Bun.
 
+## Installation
+
+We recommend installing the [Xata CLI](/cli/installation) globally and import the Xata Client from the [code generated](/cli/codegen) by the CLI.
+
 ## Usage
 
 There are three ways to use the SDK:

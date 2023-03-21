@@ -5,7 +5,16 @@ sidebar_label: Deno
 
 # Deno Support
 
-Since Deno 1.28, node modules can be imported directly, you can import the SDK like this:
+The recommended method is to install the [Xata CLI](/cli/installation) globally and import the client from the [code generated](/cli/codegen) by the CLI.
+
+The Xata CLI provides the option to generate code with Deno imports. When initializing a project with `xata init`, select the "Deno imports" method at the code generation prompt:
+
+```
+? Do you want to use code generation in your project?
+❯   Generate TypeScript code with Deno imports
+```
+
+Since Deno 1.28 node modules can be imported directly, so you can import the SDK like this:
 
 ```ts
 import {
