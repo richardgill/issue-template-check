@@ -10,8 +10,8 @@ If you want to ingest multiple records in Xata, using `bulk` is the most efficie
 You can use the `BulkProcessor` to e.g. ingest a CSV file into Xata or read documents from a queue and delegate the ingestion to the processor.
 
 Two methods are available to put data in the processing queue:
-* `bp.add_records(":table", ":records")` to add multiple records
-* `bp.add_record(":table", ":record")` to add only one record
+* `bp.put_records(":table", ":records")` to add multiple records
+* `bp.put_record(":table", ":record")` to add only one record
 
 Using the option of multiples, `bp.add_records(":table", ":records")` is more efficient as it requires less locking of the internal data structures.
 
@@ -43,7 +43,7 @@ data = [
    {"name": "Mia Diaz", "email": "mia@acme.co"},
 ]
 # Add records to processor
-bp.add_records("Users", data)
+bp.put_records("Users", data)
 # Ensure the Processing queue is flushed before the script terminates.
 # This command will halt the script until all records have been pushed.
 bp.flush_queue()
@@ -67,7 +67,7 @@ while queue.subscribed():
    record = msg["data"]
 
    # Add records to processor
-   bp.add_record(table_name, record)
+   bp.put_record(table_name, record)
 
 # Ensure the Processing queue is flushed before the script terminates.
 # This command will halt the script until all records have been pushed.
