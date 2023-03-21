@@ -78,11 +78,18 @@ The `.xatarc` file is located in the root of your project directory and includes
 
 Depending upon the codegen you went with during `xata init` the CLI will create a file to store generated client code and typings. When choosing TypeScript the default file location will be the `src/xata.ts`. Because the content of this file is generated, you shouldn't edit it directly but import and wrap its contents. This can be helpful to pass in the environment variables.
 
-```tsx
-// This would allow you to wrap the generated client from src/xata.ts with your own credentials in a NEXT.js system
-import { XataClient } from './xata.ts'
-export const xata = new XataClient({ apiKey: process.env.XATA_API_KEY })
-```
+````tsx|python
+  ```tsx
+  // This would allow you to wrap the generated client from src/xata.ts with your own credentials
+  import { XataClient } from './xata.ts'
+  export const xata = new XataClient({ apiKey: process.env.XATA_API_KEY })
+  ```
+  ```python
+  # Environment variables, like `XATA_API_KEY` are detected from the client
+  from xata.client import XataClient
+  client = XataClient()
+  ```
+````
 
 ## Working with client SDKs
 
