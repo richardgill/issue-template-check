@@ -58,7 +58,7 @@ const handler = async (req: NextRequest): Promise<Response> => {
   }
 
   return await fetch(
-    `https://xata-uq2d57.eu-west-1.xata.sh/db/docs:main/tables/search/ask`,
+    `https://xata-uq2d57.eu-west-1.xata.sh/db/docs:main/tables/search/ask?log=yes`,
     {
       method: 'POST',
       body: JSON.stringify(params),
