@@ -438,6 +438,27 @@ It is also possible to have secondary sort criteria. For example:
   ```
 ````
 
+To sort results in random order, use `random` instead of `desc` or `asc`:
+
+````ts|json
+  ```ts
+  const users = await xata.db.Users
+    .sort("*", "random")
+    .getMany();
+  ```
+  ```json
+  // POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/query
+
+  {
+    "sort": {
+      "*": "random"
+    }
+  }
+  ```
+````
+
+Note that random sorting does not apply to a specific column, hence the special column name `"*"`.
+
 ## Paginating Results
 
 This section doesn't apply to the TypeScript SDK, because it is offering a higher-level abstraction over the pagination mechanism. See the
