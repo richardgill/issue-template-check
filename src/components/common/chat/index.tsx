@@ -37,7 +37,7 @@ const questions = [
 
 export const ChatModal: React.FC<ChatModalProps> = ({ defaultOpen }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const { answer, records, askQuestion, isLoading, clearAnswer } =
+  const { answer, records, askQuestion, isLoading, clearAnswer, error } =
     useAskXataDocs()
   const relatedDocs = useGetXataDocs(records)
 
@@ -155,6 +155,10 @@ export const ChatModal: React.FC<ChatModalProps> = ({ defaultOpen }) => {
               <Flex justifyContent="center" alignItems="center" h="100%">
                 <XataAnimated />
               </Flex>
+            ) : error ? (
+              <Text fontWeight="semibold" fontSize="sm">
+                {error}
+              </Text>
             ) : (
               <>
                 <Text fontSize="xs" fontWeight="semibold" color="textSubtle">

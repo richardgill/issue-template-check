@@ -6,28 +6,50 @@ export const useAskXataDocs = () => {
   const [records, setRecords] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string>()
+  const [, setAbortController] = useState<AbortController>()
 
   const askQuestion = useCallback((question: string) => {
     if (!question) return
 
+    setError(undefined)
     setAnswer(undefined)
     setRecords([])
     setIsLoading(true)
+
+    const controller = new AbortController()
+    setAbortController((prev) => {
+      prev?.abort()
+      return controller
+    })
 
     void fetchEventSource(`/docs/api/docs-chat`, {
       method: 'POST',
       body: JSON.stringify({ question }),
       headers: { 'Content-Type': 'application/json' },
+      signal: controller.signal,
+      openWhenHidden: true,
       onmessage(ev) {
         try {
-          const { text = '', records, done } = JSON.parse(ev.data)
+          const { text = '', records, done, error } = JSON.parse(ev.data)
+          if (error) {
+            setError(`Error: ${error}`)
+            return
+          }
+
           setAnswer((prev = '') => `${prev}${text}`)
           setRecords(records)
           setIsLoading(!done)
         } catch (e) {}
       },
-    }).catch(({ message }) => {
-      setError(message)
+      onclose() {
+        setIsLoading(false)
+      },
+      onerror(error) {
+        // Re-throw the error to stop the event source
+        throw error
+      },
+    }).catch(() => {
+      setIsLoading(false)
     })
   }, [])
 
