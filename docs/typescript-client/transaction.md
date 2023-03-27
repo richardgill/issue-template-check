@@ -44,7 +44,7 @@ We'll start by taking a look at a full request-response, and then we'll step int
   const result = await xata.transactions.run([
     { insert: { table: 'titles', record: { originalTitle: 'A new film' } } },
     { insert: { table: 'titles', record: { id: 'new-0', originalTitle: 'The squeel' }, createOnly: true } },
-    { update: { table: 'titles', id: 'new-0', fields: { originalTitle: 'The sequel' }, ifVersion: 1 } },
+    { update: { table: 'titles', id: 'new-0', fields: { originalTitle: 'The sequel' }, ifVersion: 0 } },
     { update: { table: 'titles', id: 'new-1', fields: { originalTitle: 'The third' }, upsert: true } },
     { delete: { table: 'titles', id: 'new-0' } }
   ]);
@@ -55,7 +55,7 @@ We'll start by taking a look at a full request-response, and then we'll step int
       "operations": [
           {"insert": {"table": "titles", "record": {"originalTitle": "A new film"}}},
           {"insert": {"table": "titles", "record": {"id": "new-0", "originalTitle": "The squeel"}, "createOnly": true}},
-          {"update": {"table": "titles", "id": "new-0", "fields": {"originalTitle": "The sequel"}, "ifVersion": 1}},
+          {"update": {"table": "titles", "id": "new-0", "fields": {"originalTitle": "The sequel"}, "ifVersion": 0}},
           {"update": {"table": "titles", "id": "new-1", "fields": {"originalTitle": "The third"}, "upsert": true}},
           {"delete": {"table": "titles", "id": "new-0"}}
       ]
