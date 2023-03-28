@@ -46,6 +46,7 @@ We'll start by taking a look at a full request-response, and then we'll step int
     { insert: { table: 'titles', record: { id: 'new-0', originalTitle: 'The squeel' }, createOnly: true } },
     { update: { table: 'titles', id: 'new-0', fields: { originalTitle: 'The sequel' }, ifVersion: 0 } },
     { update: { table: 'titles', id: 'new-1', fields: { originalTitle: 'The third' }, upsert: true } },
+    { get:    { table: "titles", id: "new-0", columns: ['id', 'originalTitle']}},
     { delete: { table: 'titles', id: 'new-0' } }
   ]);
   ```
@@ -57,6 +58,7 @@ We'll start by taking a look at a full request-response, and then we'll step int
           {"insert": {"table": "titles", "record": {"id": "new-0", "originalTitle": "The squeel"}, "createOnly": true}},
           {"update": {"table": "titles", "id": "new-0", "fields": {"originalTitle": "The sequel"}, "ifVersion": 0}},
           {"update": {"table": "titles", "id": "new-1", "fields": {"originalTitle": "The third"}, "upsert": true}},
+          {"get":    {"table": "titles", "id": "new-0", "columns": ["id", "originalTitle"]}},
           {"delete": {"table": "titles", "id": "new-0"}}
       ]
   }
@@ -72,6 +74,7 @@ If successful, you can be certain that all operations have succeeded. You will r
         {"operation": "insert", "rows": 1, "id": "new-0"},
         {"operation": "update", "rows": 1, "id": "new-0"},
         {"operation": "update", "rows": 1, "id": "new-1"},
+        {"operation": "get",    "columns": { "id": "new-0", "originalTitle": "The sequel" }},
         {"operation": "delete", "rows": 1}
     ]
 }
@@ -146,6 +149,11 @@ database.
 
 A delete is used to remove records. Delete can operate on records from the same transaction, and will not cancel a transaction
 if no record is found.
+
+**gets**
+
+A get is used to retrieve a record by id. A get operation can retrieve records created in the same transaction but will not cancel
+a transaction if no record is found.
 
 # Limitations
 
