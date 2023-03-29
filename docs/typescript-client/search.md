@@ -337,6 +337,46 @@ By default, Xata searches across all columns from the selected tables. You can r
   ```
 ````
 
+## Pagination
+
+The search API provides a configurable page size and offset-based pagination. To skip pages set offset to a multiple of the page size.
+
+For example, here we retrieve the second page of up to `10` search results:
+
+````ts|json
+  ```ts
+  const records = await xata.search.all("new st", {
+    tables: [
+      {
+        table: "Users",
+        target: ["name", "address.street"],
+      },
+    ],
+    page: {
+      size: 10,
+      offset: 10,
+    }
+  });
+  ```
+  ```json
+  // POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/search
+
+  {
+    "query": "new st",
+    "tables": [
+      {
+        "table": "Users",
+        "target": ["name", "address.street"]
+      }
+    ],
+    "page": {
+      "size": 10,
+      "offset": 10
+    }
+  }
+  ```
+````
+
 ## Relevancy control
 
 When using the search API, Xata assigns a relevancy score to each result and the results are returned sorted by their relevancy to the provided query. Behind the scenes,
