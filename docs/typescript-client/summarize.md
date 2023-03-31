@@ -112,6 +112,28 @@ Here, we've chosen to call the summarized column `total_sales` and added up all 
 
 Before we get started, keep in mind that we keep reference material that can be found [here](/api-reference/db/db_branch_name/tables/table_name/summarize#summarize-table).
 
+In its most basic form `summarize` can be used as a "distinct" method to get the unique values or value combinations of the summarized columns.
+
+````ts|json
+  ```ts
+    const records = await xata.db.titles.summarize({
+      columns: ["username"],
+      summaries: {},
+    });
+  ```
+  ```json
+  // POST https://tutorial-ngs8c.us-east-1.xata.sh/db/tutorial:main/tables/sales/summarize
+  {
+      "columns": ["username"],
+      "summaries": {}
+  }
+  ```
+````
+
+In the above example, we get the unique values of the column "username".
+
+The `summarize` API is limited to one page of results. Refer to the **page** section below for more details.
+
 Let's take a look at the different parameters.
 
 **summaries**
