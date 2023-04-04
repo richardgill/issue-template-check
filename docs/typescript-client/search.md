@@ -253,7 +253,7 @@ The above matches `Keanu`. You can disable this typo tolerance by setting the `f
 
 The above won't match `Keanu`.
 
-You can also increase the fuzzyness to accept two typos per word:
+You can also increase the `fuzziness` to accept two typos per word:
 
 ````ts|json
   ```ts
