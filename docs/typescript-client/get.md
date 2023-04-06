@@ -466,36 +466,14 @@ This section doesn't apply to the TypeScript SDK, because it is offering a highe
 
 Xata offers two types of pagination:
 
-- offset-based, using `offset` and `limit` parameters
 - cursor-based, using `after` and `before` parameters
-
-### Offset-based Pagination
-
-The offset-page pagination is limited to querying up to 1000 records and is recommended only for usecases where you don't expect the number of records to grow beyond that. In most cases, you should use the cursor-based pagination.
-
-An example of offset based pagination:
-
-````ts|json
-  ```ts
-  const page = await xata.db.Users.getPaginated({
-    pagination: { size: 10, offset: 10 }
-  })
-  ```
-  ```json
-  // POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/query
-  
-  {
-    "page": {
-      "offset": 10,
-      "size": 10
-    }
-  }
-  ```
-````
+- offset-based, using `offset` and `limit` parameters
 
 ### Cursor-based Pagination
 
-When running a query, you can specify a particular page size. For example:
+The depth of cursor-based pagination is unrestricted. When running a query, you can specify a particular page size.
+
+For example:
 
 ````ts|json
   ```ts
@@ -579,6 +557,30 @@ In this case, notice that the `meta.page` objects contains `"more": true`. This 
 ````
 
 You can continue like this until `"more"` is returned as `false`.
+
+### Offset-based Pagination
+
+The offset-page pagination is limited to querying up to 1000 records and is recommended only for usecases where you don't expect the number of records to grow beyond that. In most cases, you should use the cursor-based pagination.
+
+An example of offset based pagination:
+
+````ts|json
+  ```ts
+  const page = await xata.db.Users.getPaginated({
+    pagination: { size: 10, offset: 10 }
+  })
+  ```
+  ```json
+  // POST https://tutorial-ng7s8c.us-east-1.xata.sh/db/tutorial:main/tables/Users/query
+  
+  {
+    "page": {
+      "offset": 10,
+      "size": 10
+    }
+  }
+  ```
+````
 
 You can find more infromation about pagination in the [API reference](/api-reference/db/db_branch_name/tables/table_name/query#pagination).
 
