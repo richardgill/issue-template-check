@@ -23,7 +23,7 @@ Then use the `generate random data` button on the bottom of the screen to popula
 
 ## Install the Xata CLI
 
-Xata comes with a CLI (command line tool) to help connect your project code to xata. It does this by setting up environment variables for your database location and API keys to securely fetch against your data. We recommend installing Xata globally to make this easier.
+Xata comes with a CLI (command line tool) to help connect your project code to xata. It does this by setting up environment variables for your database location and API keys to securely fetch against your data. We recommend installing Xata globally to make this easier. The xata client is delivered through [npm](https://nodejs.dev/en/download/) which you'll need to have installed before this step.
 
 ```bash
 # Installs the CLI globally
@@ -54,7 +54,7 @@ To start lets create a Next.js application. Set it up with typescript support so
 npx create-next-app@latest --typescript my-xata-app
 ```
 
-For the purpose of this tutorial, we're going to assume you named this project `my-xata-app`
+For the purpose of this tutorial, we're going to assume you named this project `my-xata-app`. Move to that directory, and run `npm run` to see your website at http://localhost:3000
 
 ### Initialize Xata in your your `my-xata-app` directory
 
@@ -95,7 +95,7 @@ xata codegen
 
 ## Create a new page to output our posts
 
-Create a new file at `src/pages/posts.tsx` and start with a typical Hello World output.
+Create a new file at `src/pages/posts.tsx` and start with a typical Hello World output. Next JS will render and pages added to the `pages` directory as distinct URL. This means we can find our new page at https://localhost:3000/posts
 
 ```tsx
 export default function PostsListsPage() {
