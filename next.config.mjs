@@ -30,6 +30,11 @@ const baseRedirects = [
     destination: '/getting-started/quickstart-nextjs',
     permanent: false,
   },
+  {
+    source: '/cli/branches-git',
+    destination: '/cli/branches',
+    permanent: false,
+  },
 ]
 
 /** @type {import('next').NextConfig} */
