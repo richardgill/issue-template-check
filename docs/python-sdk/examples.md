@@ -66,19 +66,21 @@ resp = client.records().upsertRecordWithID("Avengers", "spidey-1", record)
 assert resp.status_code == 200
 ```
 
-## Get a Record from a Table
+## Get a record from a table
+
+The following example shows how to retrieve a record from a table and instantiate a [namespace](/python-sdk/namespace-reference) object directly using the Python SDK.
 
 ```python
 from xata.client import XataClient
 
-client = XataClient(api_key="REDACTED_API_KEY", db_name="my_db", branch_name="feature-042")
+records = XataClient(api_key="REDACTED_API_KEY", db_name="my_db", branch_name="feature-042").records()
 
-resp = client.records().getRecord("Avengers", "spidey-1")
+resp = my_records.getRecord("Avengers", "spidey-1")
 assert resp.status_code == 200
 print("Record: %s" % resp.json())
 
 # If the record with the Id does not exist, the status code will be 404
-resp = client.records().getRecord("Avengers", "bruce-wayne-7")
+resp = my_records.getRecord("Avengers", "bruce-wayne-7")
 assert resp.status_code == 404
 ```
 
@@ -93,7 +95,9 @@ resp = client.records().deleteRecord("Avengers", "spidey-1")
 assert resp.status_code == 204
 ```
 
-## Insert Records in bulk
+## Insert records in bulk
+
+The Bulk Processor is a helpful tool for performing bulk operations using the Xata Python client. It abstracts away the complexity of managing bulk operations, making it easier to perform large-scale insert operations. Using the [Bulk Processor](/python-sdk/bulk-processor) is recommended  for bulk operations in Xata.
 
 ```python
 from xata.client import XataClient

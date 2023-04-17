@@ -5,84 +5,21 @@ sidebar_label: Namespaces
 
 # Namespace Reference
 
-The API surface of the SDK is organized in namespaces. Each namespace holds a set of APIs, e.g. `databases` provides all available Xata endpoints to manage your databases. The endpoints and namespaces are generated from the [OpenAPI specification](/rest-api/openapi).
+The API surface of the Python SDK is organized into namespaces, with each namespace associated with a specific set of APIs. For instance, the `databases` namespace provides access to all the available Xata endpoints for managing databases. 
 
-## Authentication
+The endpoints and namespaces are generated from the [OpenAPI specification](/rest-api/openapi).
 
-Authentication and API Key management.
+> ⓘ Alternatively, you can directly instantiate a namespace, as demonstrated in this [example](python-sdk/examples#get-a-record-from-a-table).
 
-```python
-client.authentication()
-```
-
-## Branch
-
-Branch management.
-
-```python
-client.branch()
-```
-
-## Databases
-
-Workspace databases management.
-
-```python
-client.databases()
-```
-
-## Invites
-
-Manage user invites.
-
-```python
-client.invites()
-```
-
-## Migrations
-
-Branch schema migrations and history.
-
-```python
-client.migrations()
-```
-
-## Users
-
-User management.
-
-```python
-client.users()
-```
-
-## Workspaces
-
-Workspace management.
-
-```python
-client.workspaces()
-```
-
-## Records
-
-Access the table records operations.
-
-```python
-client.records()
-```
-
-## Search And Filter
-
-APIs for searching, querying, filtering, and aggregating records.
-
-```python
-client.search_and_filter()
-```
-
-## Table
-
-Table management.
-
-```python
-client.table()
-```
+|   |   |
+|---|---|
+| Authentication and API key management | `client.authentication()` |
+| Branch management | `client.branch()` |
+| Database operations | `client.databases()` |
+| User invites management | `client.invites()` |
+| Branch schema migrations and history | `client.migrations()` |
+| User management | `client.users()` |
+| Workspace management | `client.workspaces()` |
+| Table records access operations | `client.records()` |
+| APIs for searching, querying, filtering, and aggregating records | `client.data()` |
+| Database table management | `client.table()` |
