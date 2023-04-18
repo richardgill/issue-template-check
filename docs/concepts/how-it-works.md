@@ -278,7 +278,7 @@ Xata uses a **unit** to define the amount of capacity in your database. Billing 
 
 - Each billing unit enables extra capacity per the unit definition in the [Pricing](https://xata.io/pricing) page.
 - By default, every branch is assigned 3 units. Additional units can be purchased in the Usage & Limits section of a branch.
-- In addition to the resources that depend on billing units, there are also [service limits](/rest-api/limits) which are not tied to the number of units assigned on a branch. Some of those limits can be inreased or removed under Custom Plans, [contact us](https://support.xata.io/hc/en-us/requests/new) for more details.
+- In addition to the resources that depend on billing units, there are also [service limits](/rest-api/limits) which are not tied to the number of units assigned on a branch. Some of those limits can be increased or removed under Custom Plans, [contact us](https://support.xata.io/hc/en-us/requests/new) for more details.
 
 ## Conclusions and Design Principles
 
