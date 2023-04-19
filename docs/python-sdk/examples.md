@@ -114,6 +114,24 @@ resp = client.records().bulkInsertTableRecords("Avengers", {"records": avengers}
 assert resp.status_code == 200
 ```
 
+## Ask AI Endpoint
+
+The `ask` endpoint uses search or similarity search algorithms to find relevant information from your database. Please refer to [this page](/typescript-client/ask) to get more information about the endpoint.
+
+```python
+client = XataClient(api_key="REDACTED_API_KEY", workspace_id="REDACTED_WS_ID")
+client.set_db_and_branch_names("harry-potter", "main")
+
+question_to_ask = "is harry potter able to fly?"
+resp = client.search_and_filter().askTable(my_table_name, {
+    "question": question_to_ask
+})
+
+assert resp.status_code == 200
+print("Answer: %s" % resp.json()["answer"])
+print("Records: %s" % resp.json()["records"])
+```
+
 ## Get the current User
 
 ```python
