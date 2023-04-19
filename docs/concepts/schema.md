@@ -97,3 +97,11 @@ xata init --schema=schema.json
 ```
 
 For a more complete example see the [API Guide](/typescript-client/overview).
+
+## Editing the Schema
+
+You can edit the schema in a variety of ways:
+
+- From the web UI in the Schema menu or in the Table view.
+- From the [CLI](/cli/schema-edit) using commands such as `xata schema edit` or `xata schema upload`.
+- From the Typescript/Javascript SDK using the `XataApiClient`.

@@ -16,7 +16,7 @@ export const getXataClient = () => {
     databaseURL: process.env.XATA_DATABASE_URL,
     apiKey: process.env.XATA_API_KEY,
     fetch: fetch,
-    branch: process.env.XATA_BRANCH
+    branch: process.env.XATA_BRANCH,
     // ... other configuration
   })
   return instance
@@ -35,3 +35,7 @@ const xata = new XataClient({ apiKey: XATA_API_KEY })
 ## Providing a fetch implementation
 
 In case your runtime does not provide a built-in Fetch API (such as with versions prior to Node 18), you will need to pass a fetch implementation to the `fetch ` constructor parameter of the XataClient in the `xata.ts` / `xata.js `file in your project.
+
+## Updating the schema
+
+The command `xata codegen` updates the schema for the Xata client. Applying schema changes from the CLI, such as using the command `xata schema edit`, will automatically run codegen to update your client. However, in case schema changes have been applied from the web UI, you should run `xata codegen` to update your existing client with the latest schema.

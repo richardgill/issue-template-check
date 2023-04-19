@@ -9,7 +9,7 @@ You can edit the schema in the CLI with `xata schema edit` which provides an int
 
 You can also quickly jump to the Web UI with `xata browse` and edit the schema there.
 
-If you edit the schema in the CLI, the code generator will be used if it's configured after applying the schema changes. If you choose to edit the schema in the web UI, remember to execute `xata codegen` when you are back to your code.
+If you edit the schema in the CLI, the code generator (which is configured and enabled by default) will be used after applying the schema changes. If you choose to edit the schema in the web UI, remember to execute `xata codegen` to update your existing client with the latest schema.
 
 ## Importing Your Database Schema
 

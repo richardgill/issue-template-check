@@ -9,4 +9,4 @@ We strongly recommend using the CLI to generate your Xata client for you. The Xa
 
 Once you have a generated Xata client, you can import it into your project and use it. The Playground in the [Xata web application](https://app.xata.io) can serve as a companion for you to build and test out your queries. Once you're happy with them, you copy and paste them into your project.
 
-As your schema changes, running `xata codegen` will consistently refresh your auto-generated Xata client with the latest schema for your database branch.
+As your schema changes, running `xata codegen` will consistently refresh your auto-generated Xata client with the latest schema for your database branch. After making changes to the schema from the web UI, run `xata codegen` to update your existing client with the current schema. Refer to the [Editing Your Database Schema](/cli/schema-edit) page for more details.
