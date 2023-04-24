@@ -6,9 +6,6 @@ keywords: summarize, summarize data
 
 # Summarize
 
-> ⚠️ **Warning**: This feature is Beta. It is still under active development. While we are avoiding breaking changes, we do not guarantee backwards compatibility
-> until the functionality is GA.
-
 The summarize endpoint is used to run calculations on your data. This guide runs through the key concepts, parameters, and how you should use the summarize endpoint.
 
 Summarizing or performing calculations on your data can reveal information to you or the users of your product. You could request the total number of sales in January, the profit on a basketball, or to find the store in your city with the best sales numbers.

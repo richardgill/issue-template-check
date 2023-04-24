@@ -5,8 +5,6 @@ sidebar_label: Transactions
 
 # Transactions
 
-> ⚠️ **Warning**: This feature is Beta. It is still under active development. While we are avoiding breaking changes, we do not guarantee backwards compatibility until the functionality is GA.
-
 # Intro
 
 The transactions endpoint lets you execute multiple operations together as a single unit. In this guide, we'll run through why transactions are important and run through Xata's transactions endpoint.
