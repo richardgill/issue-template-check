@@ -27,7 +27,6 @@ Xata applies some limits based on the plan level and the API endpoint in order t
 | Scope                   | Limit     |
 | :---------------------- | :-------- |
 | Databases per workspace | 40        |
-| Branches per database   | 40        |
 | Tables per branch       | 100       |
 | Tables per workspace    | 1000      |
 | Database name length    | 255 chars |
