@@ -87,11 +87,11 @@ Since we set the project up with TypeScript support it also created files that p
 }
 ```
 
-The `src/xata.ts` includes generated code that typically you should never touch manually. If you change the schema of your `my-xata-app` database, like adding a column to `Posts`, you'll want to run `xata codegen` to update the typings within that file.
+The `src/xata.ts` includes generated code that typically you should never touch manually. If you change the schema of your `my-xata-app` database, like adding a column to `Posts`, you'll want to run `xata pull` to update the typings within that file.
 
 ```
 # To update the contents of ~/project/src/.xatarc
-xata codegen
+xata pull
 ```
 
 ## Edit the index.astro file

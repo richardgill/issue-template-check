@@ -5,7 +5,7 @@ sidebar_label: Schema
 
 # Schema
 
-Xata databases are described by a **schema**. A schema describes each table in the database, and the relationships between tables. Xata schemas are expressed as code in JSON and used by our internal systems, as well as the [Command Line Interface](/cli/installation) to work with your database.
+Xata databases are described by a **schema**. A schema describes each table in the database, and the relationships between tables. Xata schemas are expressed as code in JSON and used by our internal systems, as well as the [Command Line Interface](/getting-started/cli) to work with your database.
 
 ## Understanding the Schema
 
@@ -103,5 +103,5 @@ For a more complete example see the [API Guide](/typescript-client/overview).
 You can edit the schema in a variety of ways:
 
 - From the web UI in the Schema menu or in the Table view.
-- From the [CLI](/cli/schema-edit) using commands such as `xata schema edit` or `xata schema upload`.
+- From the [CLI](/getting-started/cli#schema) using commands such as `xata schema edit` or `xata schema upload`.
 - From the Typescript/Javascript SDK using the `XataApiClient`.

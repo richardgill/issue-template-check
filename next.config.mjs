@@ -32,7 +32,7 @@ const baseRedirects = [
   },
   {
     source: '/cli/branches-git',
-    destination: '/cli/branches',
+    destination: '/getting-started/cli#branches',
     permanent: false,
   },
 ]

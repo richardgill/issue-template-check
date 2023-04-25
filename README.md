@@ -4,13 +4,13 @@ The documentation app is a Next.js app running with `/docs` as the `basePath`. T
 
 This app uses Next.js Multi-Zone features, where the Xata Website is the main server. Hence why there are some production specific redirects.
 
-## Setup the Environment
+## Setup the environment
 
 Follow the [`.env.template`](/.env.template) to create your own `.env.local`. This will define the API Tokens neccessary for the app to function properly.
 
 > ⚠️ Do not use `main` as your schema branch for development or your routes won't be properly indexed. This branch is protected only for **production** builds.
 
-## Install and Run
+## Install and run
 
 Once the environment is properly configured, it’s all about installing the JavaScript dependencies and running the app.
 

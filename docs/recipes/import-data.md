@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 1
 sidebar_label: Import CSV Data
 ---
 
@@ -18,7 +18,7 @@ The CLI tool can optionally create your table and its [schema](/concepts/schema)
 
 Here we will go over an example in which the table and schema are created by the Xata CLI import tool.
 
-After following the [Getting Started](/cli/installation) guide to install and login with the CLI, create a Workspace, a Database and a branch (or use the default `main` branch), so we can have a place in Xata to create our tables.
+After following the [Getting Started](/getting-started/cli) guide to install and login with the CLI, create a Workspace, a Database and a branch (or use the default `main` branch), so we can have a place in Xata to create our tables.
 
 For the purpose of this example, we assume that the Workspace name is `my_workspace`, the database name is `my_database` and the branch is `main`.
 
@@ -128,7 +128,7 @@ With this method, each record's unique id will be set using the id column from o
 
 ## Tips for Working with CSV Files
 
-- We keep enriching the Xata CLI with new features and improvements so make sure you [install](/cli/installation) the latest version.
+- We keep enriching the Xata CLI with new features and improvements so make sure you [install](/getting-started/cli) the latest version.
 - As different solutions often make their own choices and conventions, it may be possible that a CSV export from another database or tool requires some processing and adjustments to work with the Xata CLI.
 - Check the help output `xata import csv --help` for the list of available options (configurable batch size, custom delimiter and more).
 - If you have any questions, don't hesitate to [reach out to us](https://support.xata.io/hc/en-us/requests/new)!

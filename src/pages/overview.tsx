@@ -161,8 +161,8 @@ const Overview: FC<Props> = ({ sidebar }) => {
                   </Link>{' '}
                   and exposes a single consistent REST API. Xata has first-class
                   support for{' '}
-                  <Link href="/docs/cli/branches-git">branches</Link>, a
-                  workflow for zero-downtime schema migrations, and edge
+                  <Link href="/docs/getting-started/cli#branch">branches</Link>,
+                  a workflow for zero-downtime schema migrations, and edge
                   caching. Optionally it provides an{' '}
                   <Link href="/docs/api-reference/db/db_branch_name/tables/table_name/ask#ask-table">
                     ask endpoint
@@ -202,8 +202,8 @@ xata auth login
 # Initialize xata in your project directory
 xata init
 
-# Regenerate client code and optional typings for your project
-xata codegen
+# Run when you've made changes in the UI and want to update locally
+xata pull
 `}
                   </ConsoleWithCode>
                   <SimpleGrid columns={{ base: 1, md: 2 }} gap={12}>

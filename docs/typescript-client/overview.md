@@ -11,7 +11,7 @@ It has zero dependencies and can run in Node.js, V8, Deno, and Bun.
 
 ## Installation
 
-We recommend installing the [Xata CLI](/cli/installation) globally and import the Xata Client from the [code generated](/cli/codegen) by the CLI.
+We recommend installing the [Xata CLI](/getting-started/cli) globally and import the Xata Client from the [code generated](/getting-started/cli#codegen) by the CLI.
 
 When initializing the Xata CLI with the command `xata init` in a project, the `@xata.io/client` package is installed locally using the current project's package manager. In case no package manager can be determined, the Xata CLI will prompt you to install the `@xata.io/client` package manually.
 
