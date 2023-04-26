@@ -39,7 +39,7 @@ The Xata GitHub application must be installed either at the user level (for pers
 
 ![Adding another organization](/docs/images/docs/workflow/add-github-organization.png)
 
-![Github authorization](/docs/images/docs/workflow/github-authorization.png)
+![GitHub authorization](/docs/images/docs/workflow/github-authorization.png)
 
 ![Granting permissions](/docs/images/docs/workflow/github-permissions.png)
 
@@ -87,20 +87,20 @@ package = "@xata.io/netlify"
 
 ## Branching your database
 
-With the Github and Vercel or Netlify integrations installed, you can now follow a typical code-based PR workflow to migrate your database through code and provide previews during PRs. At a summary level, you'll find yourself performing the following workflow loop to branch, review and merge your changes. We'll go through each step individually.
+With the GitHub and Vercel or Netlify integrations installed, you can now follow a typical code-based PR workflow to migrate your database through code and provide previews during PRs. At a summary level, you'll find yourself performing the following workflow loop to branch, review and merge your changes. We'll go through each step individually.
 
 1. Create and checkout a new code branch with `git branch my_feature` for your feature.
-2. Create a new Xata branch with `xata branch my_feature`, then update your `.env` file to point to the `my_feature` branch.
-3. Perform a `xata pull my_feature` command in your local project to pull in the changes, generating the necessary `client` and `migration` code files.
-4. Continue to edit your code and database as needed
-5. Commit the migration files (along with any other code) and create a new GitHub PR.
-6. The Xata App will add a comment to your PR with a health check of your migration. It will also generate a `preview-my_feature` branch with data copied from your source branch.
-7. If Netlify or Vercel is also present in that repository, the deployment previews for your application will use the Xata `preview-my_feature` as the source for those previews.
-8. On merge of the PR, Xata will perform an automatic migration, applying your branch schema to your target branch.
+1. Create a new Xata branch with `xata branch my_feature`, then update your `.env` file to point to the `my_feature` branch.
+1. Perform a `xata pull my_feature` command in your local project to pull in the changes, generating the necessary `client` and `migration` code files.
+1. Continue to edit your code and database as needed
+1. Commit the migration files (along with any other code) and create a new GitHub PR.
+1. The Xata App will add a comment to your PR with a health check of your migration. It will also generate a `preview-my_feature` branch with data copied from your source branch.
+1. If Netlify or Vercel is also present in that repository, the deployment previews for your application will use the Xata `preview-my_feature` as the source for those previews.
+1. On merge of the PR, Xata will perform an automatic migration, applying your branch schema to your target branch.
 
-### Create a new git branch
+### Create a new Git branch
 
-Similar to a project without Xata, you'll want to start your project off by creating a new git branch for your changes. Let's assume a new feature called `my_feature` that we're branching from `main`.
+Similar to a project without Xata, you'll want to start your project off by creating a new Git branch for your changes. Let's assume a new feature called `my_feature` that we're branching from `main`.
 
 ```bash
 git branch my_feature
@@ -111,7 +111,7 @@ The Xata CLI creates client and migration files that will vary based upon the da
 
 ### Initialize Xata, and create a branch
 
-In the same Xata database that we installed the integrations to, create a new database branch using either the UI or the CLI. Although the name of the branch does not need to match the git branch we made earlier, it's typically good practice, so we'll use the CLI to make a `my_feature` branch. Xata will assume you are branching from your `main` database branch unless told otherwise.
+In the same Xata database that we installed the integrations to, create a new database branch using either the UI or the CLI. Although the name of the branch does not need to match the Git branch we made earlier, it's typically good practice, so we'll use the CLI to make a `my_feature` branch. Xata will assume you are branching from your `main` database branch unless told otherwise.
 
 ```bash
 ## If you haven't done so yet, you'll need to do a one-time initialization to let Xata know which database to use
@@ -153,11 +153,11 @@ On completion, notice Xata updated our client files in `src/xata.ts` and added m
 
 ### Commit your code, and create a GitHub PR
 
-Once you are happy with your changes you should commit your files and create a GitHub PR for your git branch. Xata's GitHub application will look for new files in your `.xata/migrations` folder so make sure they are included in the commit. Regardless of whether migrations are present, Xata will generate a preview branch for any PR you deploy using a `preview-{branch_name}` naming system and copy over sample data. The Xata app bot will leave a comment with the details.
+Once you are happy with your changes you should commit your files and create a GitHub PR for your Git branch. Xata's GitHub application will look for new files in your `.xata/migrations` folder so make sure they are included in the commit. Regardless of whether migrations are present, Xata will generate a preview branch for any PR you deploy using a `preview-{branch_name}` naming system and copy over sample data. The Xata app bot will leave a comment with the details.
 
 If you also have Vercel or Netlify configured for your repository you should see their bot make a similar comment. As long as your integrations were set up properly, the preview deployment that your host provides should be using the preview database that Xata provides. The workflow should be the same whether you are using the Netlify of Vercel integration.
 
-![Xata bot on Github](/docs/images/docs/workflow/xata-bot.png)
+![Xata bot on GitHub](/docs/images/docs/workflow/xata-bot.png)
 
 ### Merge your PR
 
@@ -184,9 +184,9 @@ The GitHub integration will output errors if your migration files are out of syn
 - Does your `.xatarc` file match the correct database endpoint?
 - Did you run `xata pull` against the correct data branch? Have you run it recently?
 - Are you running the CLI with the correct API credentials?
-- GitHub accounts can only be connected to a single Xata account. If you're unsure which Xata account you used, try logging in to Xata with Github, and then deleting that account.
+- GitHub accounts can only be connected to a single Xata account. If you're unsure which Xata account you used, try logging in to Xata with GitHub, and then deleting that account.
 
-Since the `.xata/migrations` folder is simply a code-based ledger of the content we keep on the server, you can always delete the folder and rerun `xata pull my_feature` to rebuild it. Then recommit your files to Github and check the results.
+Since the `.xata/migrations` folder is simply a code-based ledger of the content we keep on the server, you can always delete the folder and rerun `xata pull my_feature` to rebuild it. Then recommit your files to GitHub and check the results.
 
 [0]: https://app.xata.io/settings
 [1]: https://xata.io/docs/getting-started/installation

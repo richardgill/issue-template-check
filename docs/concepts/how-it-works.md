@@ -98,7 +98,7 @@ For each branch, we record its schema history in a list of “commits”. These 
 
 There are multiple benefits to having database branches, which is why they are being lately adopted by multiple database products:
 
-- enable development workflows that match git-workflows, for example having a branch for development, one for staging, one for production, etc.
+- enable development workflows that match Git workflows, for example having a branch for development, one for staging, one for production, etc.
 - enable development previews on platforms like Vercel and Netlify.
 - enable standardized workflows for applying schema migrations safely.
 

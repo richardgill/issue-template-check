@@ -23,7 +23,7 @@ Then use the `generate random data` button on the bottom of the screen to popula
 
 ## Install the Xata CLI
 
-Xata comes with a CLI (command line tool) to help connect your project code to xata. It does this by setting up environment variables for your database location and API keys to securely fetch against your data. We recommend installing Xata globally to make this easier. The xata client is delivered through [npm](https://nodejs.dev/en/download/) which you'll need to have installed before this step.
+Xata comes with a CLI (command line tool) to help connect your project code to Xata. It does this by setting up environment variables for your database location and API keys to securely fetch against your data. We recommend installing Xata globally to make this easier. The Xata client is delivered through [npm](https://nodejs.dev/en/download/) which you'll need to have installed before this step.
 
 ```bash
 # Installs the CLI globally

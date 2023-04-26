@@ -17,7 +17,7 @@ Xata comes with a CLI (command line tool) to help connect your project code to x
 npm install -g @xata.io/cli
 ```
 
-You can alternatively install xata only within your project and manage it through your package manager and scripts.
+You can alternatively install Xata only within your project and manage it through your package manager and scripts.
 
 ### Authenticate the CLI to your account
 

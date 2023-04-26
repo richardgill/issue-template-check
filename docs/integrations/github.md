@@ -6,13 +6,13 @@ keywords: git, github, preview, pull request, integration
 
 # GitHub
 
-The Xata GitHub app promotes a collaborative git-based workflow by managing all the necessary operations to keep your database in sync with your codebase. It also simplifies the creation of preview branches for all your pull requests.
+The Xata GitHub app promotes a collaborative Git-based workflow by managing all the necessary operations to keep your database in sync with your codebase. It also simplifies the creation of preview branches for all your pull requests.
 
 When you connect your application repo to your Xata database, Xata will take care of several steps for you. First, Xata will create a preview branch for all new pull requests. These preview branches contain a subset of the main (production) branch data, with up to 10,000 rows copied over from it. Additionally, any migrations present in the code will be executed to ensure that the branch follows the schema in the code.
 
 After a pull request is merged, Xata will migrate the main branch if there are any new migrations. This helps ensure that your main branch stays up to date with the latest changes to your schema.
 
-Check our [suggested workflow](/getting-started/workflow) for a full guide on how to use the Xata CLI, Xata Github integration and some app hosting services together.
+Check our [suggested workflow](/getting-started/workflow) for a full guide on how to use the Xata CLI, Xata GitHub integration and some app hosting services together.
 
 ## How to install the Xata integration for GitHub
 
@@ -22,7 +22,7 @@ Xata's GitHub application needs to be installed either at the user level (for pe
 
 ![Adding another organization](/docs/images/docs/workflow/add-github-organization.png)
 
-Once permissions are granted you should see a list of GitHub repositories that you can connect to your database to. You can only connect one repository to a Xata database. Clicking the **connect** button will tell the Xata app to keep everything in sync within that repository.
+Once permissions are granted you should see a list of GitHub repositories that you can connect to your database to. You can only connect one repository to a Xata database. Clicking **connect** will tell the Xata app to keep everything in sync within that repository.
 
 ## Preview branches
 

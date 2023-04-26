@@ -5,7 +5,7 @@ sidebar_label: Auth JS
 
 # Auth JS with Xata
 
-[Auth JS][0] (also known as Next Auth) is a popular open-source library to provide login support to Javascript based applications. It works within the OAuth specification to provide easy to use social login for popular providers like Google, Github, Facebook and others. Xata provides an official adapter that works with Next Auth to allow you to map these logins to a user table within a Xata database.
+[Auth JS][0] (also known as Next Auth) is a popular open-source library to provide login support to Javascript based applications. It works within the OAuth specification to provide easy to use social login for popular providers like Google, GitHub, Facebook, and others. Xata provides an official adapter that works with Next Auth to allow you to map these logins to a user table within a Xata database.
 
 ## Set up a new project using the Auth JS example
 

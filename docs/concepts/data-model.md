@@ -7,7 +7,7 @@ sidebar_label: Data Model
 
 Xata has a relational data model, with a strict schema (schemaful) and with support for JSON-like objects. Records are grouped into tables, which are grouped into databases. Xata supports rich column types and relations between tables can be represented via link columns, which are similar to foreign keys.
 
-Internally, we are storing the data both in a transactional database (OLTP) as well as in a search/analytics engine (OLAP). This is done transparently for you and the different stores are exposed via the same API. You can read more about how Xata works behind the scenes in the [How it Works](/concepts/how-it-works) page.
+Internally, we are storing the data both in a transactional database (OLTP) as well as in a search/analytics engine (OLAP). This is done transparently for you and the different stores are exposed via the same API. You can read more about how Xata works behind the scenes on the [How it Works](/concepts/how-it-works) page.
 
 Data is organized in "tables" which are grouped into "databases". Tables have a strict [schema](/concepts/schema), which contains a list of columns. Xata supports many column types and the type information is used, among other things, to generate type-safe clients.
 
