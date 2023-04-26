@@ -68,7 +68,7 @@ The following configuration is linked to a personal account for Dave Snider as w
 
 #### Installation for Netlify
 
-Xata provides [an official Netlify integration][3] you'll need to enable to provide previews. Click **Settings** in the top navigation for any Xata database, then click the Netlify integration from the listed options. This will transport you to Netlify's website, where you'll need to authorize the application and grant it permissions. Specifically this integration will allow Xata to automatically configure your environment variables on your Netlify site.
+Xata provides [an official Netlify integration](https://www.netlify.com/integrations/xata) you'll need to enable to provide previews. Click **Settings** in the top navigation for any Xata database, then click the Netlify integration from the listed options. This will transport you to Netlify's website, where you'll need to authorize the application and grant it permissions. Specifically this integration will allow Xata to automatically configure your environment variables on your Netlify site.
 
 ![Vercel integration](/docs/images/docs/workflow/netlify.png)
 
