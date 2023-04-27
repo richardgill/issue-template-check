@@ -15,7 +15,7 @@ We guarantee point-in-time consistency of the data. As a result, any changes mad
 
 Xata currently has a copy limit of 10,000 rows per database. 
 
-If your main branch database is under 10,000 rows, all your data will get copied. This includes columns with sensitive data. We have it on our roadmap to configure obfuscation of columns in the near future.
+If your main branch database is under 10,000 rows, all your data will get copied. This includes columns with sensitive data. We have it on our [roadmap](https://xata.io/roadmap) to configure obfuscation of columns in the near future.
 
 If your main branch database has more than 10,000 rows, we will copy approximately 10,000 rows, while ensuring the subset is self-contained - meaning that all the links resolve correctly.
 
