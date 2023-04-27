@@ -118,10 +118,10 @@ In the same Xata database that we installed the integrations to, create a new da
 xata init
 
 ## Once initialized. Create a new a branch from main
-xata branch my_feature
+xata branch create my_feature
 
 ## The above command is the equivalent of
-xata branch my_feature main
+xata branch create my_feature --from main
 ```
 
 If either of these commands fail, you likely haven't installed the Xata CLI locally. Please run through the [installation][1] guide and return here after.

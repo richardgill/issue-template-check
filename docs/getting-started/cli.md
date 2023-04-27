@@ -99,11 +99,11 @@ The `xata branch` command allows you to list, create or delete branches on a spe
 # List all branches available
 xata branch
 
-# Create a new my_feature branch from main
-xata branch my_feature
+# Create a new branch from main
+xata branch create my_feature
 
 # Create a new my_feature branch using from_another_branch as the base
-xata branch my_feature from_another_branch
+xata branch create my_feature --from from_another_branch
 
 # Delete a branch
 xata branch delete my_feature
