@@ -24,6 +24,7 @@ Below are the parameters passed to the methods in the following examples:
 - `deleteRecord`: table name (string), record id (string)
 - `bulkInsertTableRecords`: table name (string), records (dictionary with records array)
 - `users().getUser()`
+- `to_rfc3339()`: dt (datetime), tz (timezone, default: utc)
 
 ## Insert or update new Record
 
@@ -142,4 +143,38 @@ resp = client.users().getUser()
 
 print("Status code: %s" % resp.status_code)
 print("Response body: %s" % resp.json())
+```
+
+## Handling RFC 3339 dates
+
+To use the [`datetime`](/concepts/data-model#datetime) data type in Xata, you must provide an [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339) compliant string. 
+
+The Xata SDK provides a convenient `to_rfc3339()` helper function to simplify the submission of Python native [`datetime`](https://docs.python.org/3/library/datetime.html) values. You can pass the `datetime` object as a parameter to the helper function, and it will convert the value to a RFC 3339 compliant string. 
+
+To specify a timezone, you can do so by using the optional `timezone` argument. If no timezone is specified, UTC time is applied by default.
+
+The `to_rfc3339()` helper function was introduced with the [`v0.9.0`](https://github.com/xataio/xata-py/releases/tag/v0.9.0) release.
+
+```python
+# import the helper function
+from xata.helpers import to_rfc339
+from datetime import datetime
+
+# 
+my_date = datetime.strptime("2023-03-20 13:42:00", "%Y-%m-%d %H:%M:%S")
+print(to_rfc339(my_date))
+> "2023-03-20T13:42:00+00:00"
+
+# with time
+date_without_time = datetime.strptime("2023-03-20", "%Y-%m-%d")
+print(to_rfc339(date_without_time))
+> "2023-03-20T00:00:00+00:00"
+
+# With a timezone
+from pytz import timezone
+
+date_with_tz = datetime.strptime("2023-03-20 13:42:16", "%Y-%m-%d %H:%M:%S")
+tz_europe_vienna = timezone("Europe/Vienna")
+print(to_rfc339(date_with_tz, tz_europe_vienna))
+> "2023-03-20T13:42:16+01:05"
 ```
