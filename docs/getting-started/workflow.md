@@ -1,10 +1,10 @@
 ---
 sidebar_position: 1
-sidebar_label: Xata's suggested workflow
+sidebar_label: Workflow
 keywords: git, github, vercel, netlify
 ---
 
-# Xata's suggested workflow
+# Xata workflow
 
 This guide introduces the core Xata workflow and outlines the process of configuring a project for branching and migrations using GitHub in conjunction with Netlify or Vercel. After completing the configuration, pull requests created in GitHub will generate Xata database previews that link to preview deployments in either Vercel or Netlify. After merging the pull requests, Xata will perform database migrations in sync with your code, resulting in the deployment of changes to production.
 
