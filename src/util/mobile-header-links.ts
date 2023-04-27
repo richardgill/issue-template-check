@@ -2,27 +2,27 @@ export const mobileHeaderLinks = {
   links: [
     {
       title: 'Home',
-      href: '/',
+      href: 'https://xata.io/',
     },
     {
-      title: 'Features',
-      href: '/features',
+      title: 'About',
+      href: 'https://xata.io/about',
+    },
+    {
+      title: 'Roadmap',
+      href: 'https://xata.io/roadmap',
     },
     {
       title: 'Pricing',
-      href: '/pricing',
-    },
-    {
-      title: 'About Us',
-      href: '/about',
-    },
-    {
-      title: 'Careers',
-      href: '/careers',
+      href: 'https://xata.io/pricing',
     },
     {
       title: 'Blog',
-      href: '/blog',
+      href: 'https://xata.io/blog',
+    },
+    {
+      title: 'Careers',
+      href: 'https://xata.io/careers',
     },
     {
       title: 'Docs',
