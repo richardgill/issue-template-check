@@ -121,7 +121,7 @@ The following code snippet searches for the nearest neighbors of a given phrase.
 import { getXataClient } from "./xata.ts";
 import { Configuration, OpenAIApi } from "openai";
 
-question = "The quick brown fox jumps over the lazy dog.";
+const question = "The quick brown fox jumps over the lazy dog.";
 
 const openAIConfig = new Configuration({
   apiKey: `YOUR OPENAI API KEY`,
@@ -138,6 +138,7 @@ const xata = getXataClient();
 const records = await xata.db.docs.vectorSearch("embedding", embedding);
 
 for (const record of records) {
-  console.log(record.contents, record.xata.score);
+  const metadata = record.getMetadata();
+  console.log(record.contents, metadata);
 }
 ```
