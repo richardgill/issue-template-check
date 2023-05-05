@@ -69,31 +69,31 @@ assert resp.status_code == 200
 
 ## Get a record from a table
 
-The following example shows how to retrieve a record from a table and instantiate a [namespace](/python-sdk/namespace-reference) object directly using the Python SDK.
+The following example shows how to retrieve a record with the id `spidey`, from the table `Avengers` and how to handle records that do not exist.
 
 ```python
 from xata.client import XataClient
+records = XataClient().records()
 
-records = XataClient(api_key="REDACTED_API_KEY", db_name="my_db", branch_name="feature-042").records()
-
-resp = my_records.getRecord("Avengers", "spidey-1")
-assert resp.status_code == 200
-print("Record: %s" % resp.json())
+spiderman = records.getRecord("Avengers", "spidey")
+print(spiderman.json())
+# {"id": "spidey", "name": "Peter Parker", "job": "spiderman"}
 
 # If the record with the Id does not exist, the status code will be 404
-resp = my_records.getRecord("Avengers", "bruce-wayne-7")
-assert resp.status_code == 404
+batman = records.getRecord("Avengers", "bruce-wayne")
+print(batman.status_code)
+# 404
 ```
 
 ## Delete a Record from a Table
 
 ```python
 from xata.client import XataClient
+records = XataClient().records()
 
-client = XataClient(api_key="REDACTED_API_KEY", db_name="my_db", branch_name="feature-042")
-
-resp = client.records().deleteRecord("Avengers", "spidey-1")
-assert resp.status_code == 204
+record = records.deleteRecord("Avengers", "captain-america")
+print(record.status_code)
+# 204
 ```
 
 ## Insert records in bulk
@@ -138,11 +138,11 @@ print("Records: %s" % resp.json()["records"])
 ```python
 from xata.client import XataClient
 
-client = XataClient(api_key="REDACTED_API_KEY", workspace_id="REDACTED_WS_ID")
-resp = client.users().getUser()
+client = XataClient()
 
-print("Status code: %s" % resp.status_code)
-print("Response body: %s" % resp.json())
+user = client.users().getUser()
+print(user.status_code)
+# 200
 ```
 
 ## Handling RFC 3339 dates
