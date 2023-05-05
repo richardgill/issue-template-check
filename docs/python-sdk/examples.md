@@ -11,6 +11,8 @@ Each endpoint returns an instance of [`requests.Response`](https://requests.read
 
 You can refer to the [API Reference](https://xata-py.readthedocs.io/en/latest/api.html) for the relevant parameters to each method.
 
+More examples are available in the [GitHub repository of the SDK](https://github.com/xataio/xata-py/tree/main/examples), including runnable demo apps for the BulkProcessor, pagination of query results, and leveraging transactions.
+
 ## At a glance
 
 Below are the parameters passed to the methods in the following examples:
