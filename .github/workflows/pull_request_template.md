@@ -18,7 +18,7 @@ The following work still needs to be completed:
 
 - [ ] <List outstanding tasks here>
 
-### Dependecies
+### Dependencies
 
 - [ ] <Tasks that must be completed before merging this pull request>
 
