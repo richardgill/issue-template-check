@@ -5,7 +5,15 @@ import { getOpenapiReference } from '~/util/get-openapi-reference'
 
 const handler: NextApiHandler = async (req, res) => {
   try {
-    const apiReference = await getOpenapiReference();
+    const apiReference = await getOpenapiReference(
+        typeof req.query.branch === 'string' && req.query.branch
+          ? req.query.branch
+          : 'main',
+        typeof req.query.scope === 'string' &&
+          ['core', 'workspace'].includes(req.query.scope)
+          ? (req.query.scope as 'core' | 'workspace')
+          : 'all'
+      )
 
     res.setHeader('Accept-Encoding', 'gzip, compress, br')
     res.end(JSON.stringify(apiReference))

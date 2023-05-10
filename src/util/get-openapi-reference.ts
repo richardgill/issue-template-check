@@ -4,9 +4,16 @@ import { OpenAPIObject } from 'openapi3-ts'
 import { fetchFromGitHub } from './fetch-from-github'
 
 export const getOpenapiReference = async (
-  branch = 'main'
+  branch = 'main',
+  section: 'all' | 'core' | 'workspace' = 'all'
 ): Promise<OpenAPIObject> => {
   let org = 'xataio'
+  const file =
+    section === 'all'
+      ? 'openapi'
+      : section === 'core'
+      ? 'api_xata_io'
+      : 'xata_sh'
 
   if (branch.includes(':')) {
     org = branch.split(':')[0]
@@ -19,7 +26,7 @@ export const getOpenapiReference = async (
   }
 
   const documentFromGithub = await fetchFromGitHub(
-    `/repos/${org}/xata/contents/openapi/public/openapi.json?ref=${
+    `/repos/${org}/xata/contents/openapi/public/${file}.json?ref=${
       branch.includes(':') ? branch.split(':')[1] : branch
     }`
   ).then((r) => {

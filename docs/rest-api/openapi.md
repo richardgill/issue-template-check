@@ -7,13 +7,11 @@ sidebar_label: OpenAPI Specification
 
 To provide an easy way to use your favorite tools for exploring the Xata API, you can use the [OpenAPI](https://www.openapis.org/) specification:
 
-Core API:
-[`https://xata.io/api/openapi?scope=core`](https://xata.io/api/openapi?scope=core)
+[Core API spec](/api/openapi?scope=core)
 
 The base url is `https://api.xata.io` and this give you to access to the core API.
 
-Workspace API:
-[`https://xata.io/api/openapi?scope=workspace`](https://xata.io/api/openapi?scope=workspace)
+[Workspace API spec](/api/openapi?scope=workspace)
 
 The base url is `https://{workspaceId}.{regionId}.xata.sh` and this give you access to the workspace API.
 
