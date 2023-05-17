@@ -44,17 +44,8 @@ const handler = async (req: NextRequest): Promise<Response> => {
         'content',
         'section',
         { column: 'keywords', weight: 4 },
-      ],
-      boosters: [
-        {
-          valueBooster: {
-            column: 'section',
-            value: 'guide',
-            factor: 18,
-          },
-        },
-      ],
-    },
+      ]
+    }
   }
 
   return await fetch(
