@@ -48,7 +48,7 @@ apiKey=YOUR_API_KEY_HERE
 
 ## Create a new Astro app
 
-To start lets create a Next.js application. Set it up with typescript support so that we can utilize the SDK later in this tutorial. Move to that directory, and run `npm run` to see your website at http://localhost:3000
+To start lets create a new Astro project. Set it up with typescript support so that we can utilize the SDK later in this tutorial. Move to that directory, and run `npm run` to see your website at http://localhost:3000
 
 ```bash
 npm create astro@latest
