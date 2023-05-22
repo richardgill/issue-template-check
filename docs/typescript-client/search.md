@@ -584,7 +584,8 @@ be used to boost, for example, more recent articles.
             dateBooster: {
               column: "createdAt",
               decay: 0.5,
-              scale: "30d"
+              scale: "30d",
+              factor: 10
             }
           },
         ],
@@ -605,7 +606,8 @@ be used to boost, for example, more recent articles.
             "dateBooster": {
               "column": "createdAt",
               "decay": 0.5,
-              "scale": "30d"
+              "scale": "30d",
+              "factor": 10
             }
           }
         ]
@@ -616,10 +618,10 @@ be used to boost, for example, more recent articles.
 ````
 
 The date booster is configured via `origin`, `scale`, and `decay` parameters. The further away from the `origin`,
-the more the score is decayed. The decay function uses an exponential function.
+the more the score is decayed. The decay function uses an exponential function. The exponential function returns a value between 0 and 1, which is added to the score. This value can be multiplied by the `factor` parameter in order to have a bigger impact.
 
-In the example above, the parameters can be interpreted as: the posts from 30 days ago will be scored 50% of what
-the equivalent post from today would be scored.
+In the example above, the parameters can be interpreted as: the posts from 30 days ago will be boosted 50% of what
+the equivalent post from today would be boosted.
 
 The parameter definitions are:
 
@@ -627,6 +629,7 @@ The parameter definitions are:
 - `origin`: The datetime from where to apply the score decay function. If it is not specified, the current date and time is used.
 - `scale`: The duration at which distance from origin the score is decayed with factor, using an exponential function. It is formatted as number + units, for example: `5d`, `20m`, `10s`.
 - `decay`: The decay factor to expect at "scale" distance from the "origin".
+- `factor`: The factor to multiply the decayed boost with.
 
 ## Next Steps
 
