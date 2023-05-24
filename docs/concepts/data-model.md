@@ -330,6 +330,14 @@ The `xata.version` column contains the current version of the record. It is of t
 
 This column is meant to be use for optimistic concurrency control, see the [dedicated section](/typescript-client/update#optimistic-concurrency-control) for more information.
 
+### xata.createdAt
+
+The `xata.createdAt` column contains the timestamp of when the row was created. This timestamp is set when the row is inserted into the table and never updated.
+
+### xata.updatedAt
+
+The `xata.updatedAt` column contains the timestamp of when the row was last updated. 
+
 ## Links and Relations
 
 You can represent 1:N relations between tables by using columns of the `link` type. The value of the link column points to a record in the target table, specified by the ID. At query time, you can easily include columns from the target table by specifying the `"columns"` field in the request. For an example, see [Selecting Columns from the Linked Tables](/typescript-client/get#selecting-columns-from-the-linked-tables).

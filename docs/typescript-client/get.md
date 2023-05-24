@@ -57,7 +57,6 @@ The response looks like this:
   ```ts
   [
     {
-      "createdAt": "2022-10-20T23:49:10.573Z",
       "id": "rec_cd8s4kbo8dsvsjilo1ug",
       "name": "Matrix",
       "owner": {
@@ -75,9 +74,10 @@ The response looks like this:
         "owner": {
           "id": "myid"
         },
-        "createdAt": "2022-10-20T23:49:10.573Z",
         "xata": {
-          "version": 0
+          "version": 0,
+          "createdAt": "2023-05-15T08:21:31.96526+01:00",
+          "updatedAt": "2023-05-15T21:58:54.072595+01:00"
         }
       }
     ],
@@ -91,7 +91,7 @@ The response looks like this:
   ```
 ````
 
-For the REST API example, note that the `id` and `xata.version` are included in the returned records. We will discuss the `meta.page` object when we talk about [paginating](#paginating-results) through the records.
+For the REST API example, note that the `id`, `xata.version`, `xata.updatedAt` and `xata.createdAt` are included in the returned records. We will discuss the `meta.page` object when we talk about [paginating](#paginating-results) through the records.
 
 ## The TypeScript SDK Functions for Querying
 
@@ -177,12 +177,14 @@ A sample response will look like this:
   "id": "myid",
   "name": "Keanu Reave",
   "xata": {
-    "version": 1
+    "version": 1,
+    "createdAt": "2023-05-15T08:21:31.96526+01:00",
+    "updatedAt": "2023-05-15T21:58:54.072595+01:00"
   }
 }
 ```
 
-It's worth noting that the special columns [id](/concepts/data-model#id) and [xata.version](/concepts/data-model#xata-version) are always returned, even if they are not explicitly requested.
+It's worth noting that the special columns [id](/concepts/data-model#id), [xata.version](/concepts/data-model#xata-version), [xata.createdAt](/concepts/data-model#xata-createdat) and [xata.updatedAt](/concepts/data-model#xata-updatedat) are always returned, even if they are not explicitly requested.
 
 You can select all the sub-columns of an object type by using the wildcard `*` character. For example, if you want to select all the columns of the `address` object, you can use `address.*`:
 
@@ -509,7 +511,9 @@ Returns only the first two records:
         "id": "rec_c8hng2h26un90p8sr7k0"
       },
       "xata": {
-        "version": 2
+        "version": 2,
+        "createdAt": "2023-05-15T08:21:31.96526+01:00",
+        "updatedAt": "2023-05-15T21:58:54.072595+01:00"
       }
     },
     {
@@ -521,7 +525,9 @@ Returns only the first two records:
         "id": "rec_c8hng2h26un90p8sr7k0"
       },
       "xata": {
-        "version": 0
+        "version": 0,
+        "createdAt": "2023-05-15T08:21:31.96526+01:00",
+        "updatedAt": "2023-05-15T21:58:54.072595+01:00"
       }
     }
   ],

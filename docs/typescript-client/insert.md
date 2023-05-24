@@ -41,7 +41,9 @@ The TypeScript SDK returns the created record. The response looks like this:
   {
     "id": "rec_c8hnbch26un1nl0rthkg",
     "xata": {
-      "version": 0
+      "version": 0,
+      "createdAt": "2023-05-15T08:21:31.96526+01:00",
+      "updatedAt": "2023-05-15T21:58:54.072595+01:00",
     }
   }
   ```

@@ -148,7 +148,7 @@ After executing a request, you will notice that the version field of the record 
 ````ts|json
   ```ts
     user.getMetadata();
-    // { version: 2}
+    // { version: 2, "createdAt": "2023-05-15T08:21:31.96526+01:00", "updatedAt": "2023-05-15T21:58:54.072595+01:00" }
   ```
   ```json
   {
@@ -160,7 +160,9 @@ After executing a request, you will notice that the version field of the record 
     "fname": "Keanu Reeves",
     "id": "rec_c8hnbch26un1nl0rthkg",
     "xata": {
-      "version": 2
+      "version": 2,
+      "updatedAt": "2023-05-15T21:58:54.072595+01:00",
+      "createdAt": "2023-05-15T08:21:31.96526+01:00"
     }
   }
   ```

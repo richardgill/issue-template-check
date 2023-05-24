@@ -489,17 +489,17 @@ These operators work on strings, numbers, and datetimes. For example:
   ```
 ````
 
-Example with date ranges:
+Example with date ranges, using the built-in [Xata timestamp columns](/concepts/data-model#xata-createdat):
 
 ````ts|json
   ```ts
   const records = await xata.db.Posts.filter({
     $all: [
       {
-        createdAt: { $ge: new Date("2022-10-25T01:00:00Z") },
+        xata.createdAt: { $ge: new Date("2022-10-25T01:00:00Z") },
       },
       {
-        createdAt: { $lt: new Date("2022-10-25T02:00:00Z") },
+        xata.createdAt: { $lt: new Date("2022-10-25T02:00:00Z") },
       }
     ],
   }).getMany();
@@ -511,12 +511,12 @@ Example with date ranges:
     "filter": {
       "$all": [
         {
-          "createdAt": {
+          "xata.createdAt": {
             "$ge": "2022-10-25T01:00:00.000Z"
           }
         },
         {
-          "createdAt": {
+          "xata.createdAt": {
             "$lt": "2022-10-25T02:00:00.000Z"
           }
         }
