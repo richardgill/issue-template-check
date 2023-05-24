@@ -582,7 +582,7 @@ be used to boost, for example, more recent articles.
         boosters: [
           {
             dateBooster: {
-              column: "createdAt",
+              column: "xata.createdAt",
               decay: 0.5,
               scale: "30d",
               factor: 10
@@ -604,7 +604,7 @@ be used to boost, for example, more recent articles.
         "boosters": [
           {
             "dateBooster": {
-              "column": "createdAt",
+              "column": "xata.createdAt",
               "decay": 0.5,
               "scale": "30d",
               "factor": 10

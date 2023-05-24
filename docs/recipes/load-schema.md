@@ -41,10 +41,6 @@ xata init --schema /path/to/json_file.json
           }
         },
         {
-          "name": "createdAt",
-          "type": "datetime"
-        },
-        {
           "name": "views",
           "type": "int"
         }
@@ -98,10 +94,6 @@ xata init --schema /path/to/json_file.json
         {
           "name": "name",
           "type": "string"
-        },
-        {
-          "name": "createdAt",
-          "type": "datetime"
         },
         {
           "name": "owner",

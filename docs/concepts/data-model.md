@@ -141,7 +141,7 @@ Example definition:
 
 ```json
 {
-  "name": "createdAt",
+  "name": "publishedAt",
   "type": "datetime",
   "notNull": true,
   "defaultValue": "now"
@@ -152,13 +152,13 @@ Example values:
 
 ```json
 {
-  "createdAt": "2020-11-10T10:38:16Z"
+  "publishedAt": "2020-11-10T10:38:16Z"
 }
 ```
 
 ```json
 {
-  "createdAt": "2020-11-10T12:38:16+02:00"
+  "publishedAt": "2020-11-10T12:38:16+02:00"
 }
 ```
 
