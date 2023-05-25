@@ -12,7 +12,7 @@ body:
     attributes:
         label: Where is the issue?
         description: Link to the documentation page(s) where you identified this issue.
-        placeholder: * https://xata.io/docs/overview
+        placeholder: https://xata.io/docs/overview
   - type: textarea
     id: issue-text
     attributes:

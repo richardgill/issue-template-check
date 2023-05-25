@@ -23,7 +23,7 @@ body:
     attributes:
         label: Description
         description: Outline what needs to be changed.
-        placeholder: *
+        placeholder:
     validations:
         required: true
   - type: textarea
@@ -31,7 +31,7 @@ body:
     attributes:
         label: How will this impact users?
         description: Outline how this document change will affect users.
-        placeholder: *
+        placeholder:
       validations:
         required: true
   - type: textarea
