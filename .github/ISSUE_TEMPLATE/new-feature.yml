@@ -32,7 +32,7 @@ body:
         label: How will this impact users?
         description: Outline how this document change will affect users.
         placeholder:
-      validations:
+    validations:
         required: true
   - type: textarea
     id: issue-context
@@ -40,7 +40,7 @@ body:
         label: Context
         description: Provide any applicable background information.
         placeholder:
-      validations:
+    validations:
         required: true
   - type: textarea
     id: resolution
