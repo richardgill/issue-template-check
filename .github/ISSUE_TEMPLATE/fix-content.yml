@@ -1,5 +1,5 @@
 name: Fix Content
-about: Report typos or a minor documentation issue
+description: Report typos or a minor documentation issue
 title: "[FIX]: "
 labels: ["content update"]
 body:
